@@ -5,11 +5,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Skranji&display=swap" rel="stylesheet">
     <title>Test</title>
 </head>
-
 <body>
-    1111111111111
+    <div class="container-login">
+        <ul class="login-form">
+            <li>
+                <input type="radio" id="sing-in" name="singforms" value="" checked>
+                <label for="sing-in">Sing In</label>
+                <form class="sing" id="singin" action="">
+                    <input type="text" placeholder="login" data="login" autofocus>
+                    <input type="text" placeholder="password" data="password">
+                    <button>login</button>
+                </form>
+            </li>
+            <li>
+                <input type="radio" id="sing-up" name="singforms" value="">
+                <label for="sing-up">Sing Up</label>
+                <form class="sing" id="singup" action="">
+                    <input type="text" placeholder="first_name" data="first_name">
+                    <input type="text" placeholder="last_name" data="last_name">
+                    <input type="text" placeholder="login" data="login">
+                    <input type="text" placeholder="password" data="password">
+                    <button>submit</button>
+                </form>
+            </li>
+        </ul>
+    </div>
 </body>
 
 </html>
