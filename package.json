@@ -1,7 +1,6 @@
 {
   "name": "gallery",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --mode production",
@@ -22,7 +21,7 @@
     "css-loader": "^6.5.1",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.4.5",
-    "webpack": "^5.64.3",
+    "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.6.0"
   },
@@ -31,5 +30,14 @@
     "@babel/plugin-transform-runtime": "^7.16.4",
     "@babel/runtime": "^7.16.3",
     "normalize.css": "^8.0.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NazarenkoAnna2021/GeneralProject2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NazarenkoAnna2021/GeneralProject2/issues"
+  },
+  "homepage": "https://github.com/NazarenkoAnna2021/GeneralProject2#readme",
+  "description": ""
 }
