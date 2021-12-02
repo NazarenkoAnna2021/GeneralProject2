@@ -107,6 +107,7 @@ header{
 .filmWordDiv{
     height: 50px;
     width: 90vw;
+    margin-left: 6vw;
 }
 
 .filmsArea{
@@ -126,7 +127,7 @@ header{
     width: 250px;
     height: 290px;
     background-color: #9B8D62;
-    margin: 0px 20px 0px 0px;
+    margin: 0px 20px 20px 0px;
     border-radius: 40px;
 }
 img{
