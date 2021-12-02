@@ -9,4 +9,4 @@ export function singIn(e) {
 }
 export function singUp(e) {
     e.preventDefault();
-} 
+}
