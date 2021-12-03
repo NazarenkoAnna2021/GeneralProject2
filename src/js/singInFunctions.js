@@ -1,4 +1,5 @@
 import { DOM } from "./dom"
+
 const url = 'https://wowmeup.pp.ua/user/sing_up';
 const regexp = /^[A-Za-z]+$/
 let userSingUp= {
@@ -12,10 +13,11 @@ let userSingIn={
         password: null
 }
 
-
-export function hideForm() {
-    loginForm.classList.add('none');
+function hideForm() {
+    DOM.modalIcon.classList.add('none');
 }
+
+
 export function singIn(e) {
     e.preventDefault();
     validation(DOM.singInInputs, DOM.errorsMessagesSingIn)
@@ -23,8 +25,8 @@ export function singIn(e) {
         setuserbodyforrequest(userSingIn)
         postSingIn()
     }
-
 }
+
 export function singUp(e) {
     e.preventDefault();
     validation(DOM.singUpInputs, DOM.errorsMessagesSingUp)
@@ -104,6 +106,8 @@ export async function postSingIn (){
     {
         alert('Что-то пошло не так :(')
     }
+    hideForm();
+
 }
 
 
