@@ -1,8 +1,8 @@
 import { DOM } from "./dom.js"
 const aa = 'https://image.tmdb.org/t/p/original';
 const url = 'https://wowmeup.pp.ua';
-let state = {
-};
+let state = {};
+
 async function getResponseMovies() {
 	const res = await fetch(`${url}/movie`);
 	state = await res.json();
