@@ -120,3 +120,4 @@ export function setuserbodyforrequest(obj)
         userSingIn.password = DOM.singInPassword.value
     }
 }
+
