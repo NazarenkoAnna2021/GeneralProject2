@@ -17,8 +17,10 @@
                 <input type="radio" id="sing-in" name="singforms" value="" checked>
                 <label for="sing-in">Sing In</label>
                 <form class="sing" id="singin" action="">
-                    <input type="text" placeholder="login" data="login" autofocus>
-                    <input type="text" placeholder="password" data="password">
+                    <div class="errorSingIn">Please enter your</div>
+                    <input type="text" class="inputsSingIn" placeholder="login" data="login" autofocus>
+                    <div class="errorSingIn">Please enter your</div>
+                    <input type="text" class="inputsSingIn" placeholder="password" data="password">
                     <button>login</button>
                 </form>
             </li>
@@ -26,10 +28,14 @@
                 <input type="radio" id="sing-up" name="singforms" value="">
                 <label for="sing-up">Sing Up</label>
                 <form class="sing" id="singup" action="">
-                    <input type="text" placeholder="first_name" data="first_name">
-                    <input type="text" placeholder="last_name" data="last_name">
-                    <input type="text" placeholder="login" data="login">
-                    <input type="text" placeholder="password" data="password">
+                    <div class="error">Please enter your</div>
+                    <input type="text" class="inputsSingUp" placeholder="first_name" data="first_name">
+                    <div class="error">Please enter your</div>
+                    <input type="text" class="inputsSingUp" placeholder="last_name" data="last_name">
+                    <div class="error">Please enter your</div>
+                    <input type="text" class="inputsSingUp" placeholder="login" data="login">
+                    <div class="error">Please enter your</div>
+                    <input type="text" class="inputsSingUp" placeholder="password" data="password">
                     <button>submit</button>
                 </form>
             </li>
