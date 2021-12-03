@@ -1,59 +1,84 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 
 <head>
-	<meta charset = "UTF-8">
-	<meta http-equiv = "X-UA-Compatible" content = "IE=edge">
-	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-	<link rel = "preconnect" href = "https://fonts.googleapis.com">
-	<link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin>
-	<link href = "https://fonts.googleapis.com/css2?family=Skranji&display=swap" rel = "stylesheet">
-	<title>Test</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Skranji&display=swap" rel="stylesheet">
+    <title>Test</title>
 </head>
 
 <body>
-<header></header>
-<div class = "modalIcon">
-	<div class = "container-login">
-		<ul class = "login-form">
-			<li>
-				<input type = "radio" id = "sing-in" name = "singforms" value = "" checked>
-				<label for = "sing-in">Sing In</label>
-				<form class = "sing" id = "singin" action = "">
-					<input type = "text" placeholder = "login" data = "login" autofocus>
-					<input type = "text" placeholder = "password" data = "password">
-					<button>login</button>
-				</form>
-			</li>
-			<li>
-				<input type = "radio" id = "sing-up" name = "singforms" value = "">
-				<label for = "sing-up">Sing Up</label>
-				<form class = "sing" id = "singup" action = "">
-					<input type = "text" placeholder = "first_name" data = "first_name">
-					<input type = "text" placeholder = "last_name" data = "last_name">
-					<input type = "text" placeholder = "login" data = "login">
-					<input type = "text" placeholder = "password" data = "password">
-					<button>submit</button>
-				</form>
-			</li>
-		</ul>
-	</div>
-	<div class = "mainArea">
-		<div class = "filmWordDiv">
-			<h1 class = "filmWord">FILMS</h1>
-		</div>
-		<div class = "filmsArea"></div>
-	</div>
-</div>
-<script type = "text/template" id = "templateCard">
-	<div class = "filmCard" id = "card{{id}}">
-		<img src = "{{url}}" alt = "fim poster">
-		<div class = "title">
-			<p class = "rate" id = "rate{{id}}">5</p>
-			<p class = "titleText" id = "title{{id}}">Три орешка для золушки</p>
-		</div>
-	</div>
-</script>
+    <header class="header">
+        <div class="header-container">
+            <div class="header-inner">
+                <div class="logo">
+                    <div class="logo-img">
+                        <img class="img-film" src="./img/msg356849443-68908-removebg-preview 1.png" alt="">
+                    </div>
+                    <div class="logo-text">
+                        Retro Films
+                    </div>
+                </div>
+                <div class="nav">
+                    <div class="header-search">
+                        <input class="header-input">
+                        <img class="input-search" src="./img/icons8-поиск-144 1.png">
+                    </div>
+                    <div class="login-bg"></div>
+                    <img class="header-login" src="./img/free-icon-sign-in-3917365.png">
+                </div>
+            </div>
+        </div>
+    </header>
+    <div>
+        <div class="modalIcon none">
+            <div class="container-login">
+                <ul class="login-form">
+                    <li>
+                        <input type="radio" id="sing-in" name="singforms" value="" checked>
+                        <label for="sing-in">Sing In</label>
+                        <form class="sing" id="singin" action="">
+                            <input type="text" placeholder="login" data="login" autofocus>
+                            <input type="text" placeholder="password" data="password">
+                            <button>login</button>
+                        </form>
+                    </li>
+                    <li>
+                        <input type="radio" id="sing-up" name="singforms" value="">
+                        <label for="sing-up">Sing Up</label>
+                        <form class="sing" id="singup" action="">
+                            <input type="text" placeholder="first_name" data="first_name">
+                            <input type="text" placeholder="last_name" data="last_name">
+                            <input type="text" placeholder="login" data="login">
+                            <input type="text" placeholder="password" data="password">
+                            <button>submit</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mainArea">
+            <div class="filmWordDiv">
+                <h1 class="filmWord">FILMS</h1>
+            </div>
+            <div class="filmsArea"></div>
+        </div>
+        <!-- <div class="footer">
+            
+        </div> -->
+        <script type="text/template" id="templateCard">
+        <div class="filmCard" id="card{{id}}">
+            <img src="{{url}}" alt="fim poster">
+            <div class="title">
+                <p class="rate" id="rate{{id}}">{{5}}</p>
+                <p class="titleText" id="title{{id}}">{{text}}</p>
+            </div>
+        </div>  
+    </script>
 </body>
 
 </html>

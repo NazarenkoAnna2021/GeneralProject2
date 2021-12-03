@@ -1,8 +1,10 @@
 import "/css/style.css"
-import {DOM} from "./dom.js"
+import { DOM } from "./dom.js"
 import { singIn, singUp, hideForm } from "./singInFunctions"
 import { click } from "./constants"
-import "./gallery.js"
+import { main } from "./gallery.js"
+
+main();
 
 DOM.singInButton.addEventListener(click, singIn);
 DOM.singUpButton.addEventListener(click, singUp);

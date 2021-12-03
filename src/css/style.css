@@ -107,6 +107,7 @@ header{
 .filmWordDiv{
     height: 50px;
     width: 90vw;
+    margin-left: 6vw;
 }
 
 .filmsArea{
@@ -126,7 +127,7 @@ header{
     width: 250px;
     height: 290px;
     background-color: #9B8D62;
-    margin: 0px 20px 0px 0px;
+    margin: 0px 20px 20px 0px;
     border-radius: 40px;
 }
 img{
@@ -153,3 +154,89 @@ img{
     text-align: start;
     margin: 10px;
 }
+
+.header{
+    width: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.logo-text{
+    font-size: 50px;
+    font-weight: 400;
+    color: #000;
+    margin-left: 20px;
+}
+
+.header-inner{
+    display: flex;
+}
+
+.header-container{
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo{
+    display: flex;
+}
+
+.img-film{
+  width: 127px;
+  height: 60px;
+  border-radius: 0;
+}
+
+.header-input{
+    width: 255px;
+    height: 33px;
+    margin-top: 12px;
+    margin-left: 400px;
+    background-color: #5A5339;
+    border-radius: 54px;
+}
+
+.nav{
+    display: flex;
+}
+
+.input-search{
+    position: absolute;
+    width :35px;
+    height: 38px;
+    margin-top: 10px;
+    margin-left: 620px;
+}
+
+.header-search{
+    display: flex;
+}
+
+.header-login{
+    position: absolute;
+    border-radius: 0;
+    width: 34px;
+    height: 34px;
+    margin-left: 913px;
+    margin-top: 13px;
+}
+
+.login-bg{
+    width: 43px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 250px;
+    background-color: #5A5339;
+    border-radius: 43px;
+}
+
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #9B8D62;
+  }
