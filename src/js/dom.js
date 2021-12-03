@@ -7,5 +7,7 @@ export const DOM = {
     singUpLogin: document.querySelector('#singup input[data="login"]'),
     singUpPassword: document.querySelector('#singup input[data="password"]'),
     singUpButton: document.querySelector('#singup button'),
-    loginForm: document.querySelector('.container-login')
+    loginForm: document.querySelector('.container-login'),
+    filmsArea: document.querySelector('.filmsArea'),
+    templateCard: document.querySelector('#templateCard').innerHTML
 }
