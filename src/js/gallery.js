@@ -1,33 +1,35 @@
-import { DOM } from "./dom.js"
-const aa = 'https://image.tmdb.org/t/p/original';
-const url = 'https://wowmeup.pp.ua';
-let state = {
-};
+import {DOM} from "./dom.js";
+import {imagePosterLink, URL} from "./constants";
+
 async function getResponseMovies() {
-	const res = await fetch(`${url}/movie`);
-	state = await res.json();
+	const res = await fetch(`${URL}/movie`);
+	try {
+		return await res.json();
+	} catch {
+		await alert('Чтото фильмы не отображаются');
+	}
 }
-export async function main() {
-	await getResponseMovies();
-	// console.log(state);
-	// console.log(state.movies[0]);
-	createCards();
-	console.log(state);
+
+async function renderCards() {
+	const films = await getResponseMovies();
+	films.movies.forEach(card => {
+		DOM.filmsArea.appendChild(createCards(card));
+	})
 }
-//backdrop_path movie_rate title
-function createCards() {
-	state.movies.forEach((element, index) => {
-		const html = DOM.templateCard
-			.replace("{{id}}", index)
-			.replace("{{url}}", aa.concat(element.backdrop_path))
-			.replace("{{text}}", element.title)
-			.replace("{{5}}", element.movie_rate === null ? '' : element.movie_rate);
-		DOM.filmsArea.appendChild(htmlToElement(html));
-	});
+
+function createCards({ id, poster_path, title, movie_rate }) {
+	const tempCard = document.querySelector("#template-card").content;
+	const tempCardId = tempCard.querySelector('.film-card');
+	const tempCardPoster = tempCard.querySelector('.film-card__poster');
+	const tempCardRate = tempCard.querySelector('.film-card__rate');
+	const tempCardTitleText = tempCard.querySelector('.film-card__title-text');
+	tempCardId.setAttribute('id', `card${id}`);
+	tempCardPoster.setAttribute('src', `${imagePosterLink}${poster_path}`);
+	tempCardRate.setAttribute('id', `rate${id}`);
+	(tempCardRate.textContent === null) ? tempCardRate.textContent = '' : tempCardRate.textContent = movie_rate;
+	tempCardTitleText.setAttribute('id', `title${id}`);
+	tempCardTitleText.textContent = title;
+	return tempCardId.cloneNode(true);
 }
-function htmlToElement(html) {
-	const template = document.createElement('template');
-	html = html.trim();
-	template.innerHTML = html;
-	return template.content.firstChild;
-}
+
+renderCards();

@@ -13,5 +13,4 @@ export const DOM = {
     errorsMessagesSingUp: document.querySelectorAll('.error'),
     errorsMessagesSingIn: document.querySelectorAll('.errorSingIn'),
     filmsArea: document.querySelector('.filmsArea'),
-    templateCard: document.querySelector('#templateCard').innerHTML
 }

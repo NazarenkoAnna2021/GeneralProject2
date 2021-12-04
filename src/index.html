@@ -1,93 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang = "en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Skranji&display=swap" rel="stylesheet">
-    <title>Test</title>
+	<meta charset = "UTF-8">
+	<meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<link rel = "preconnect" href = "https://fonts.googleapis.com">
+	<link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin>
+	<link href = "https://fonts.googleapis.com/css2?family=Skranji&display=swap" rel = "stylesheet">
+	<title>Test</title>
 </head>
 
 <body>
-    <header class="header">
-        <div class="header-container">
-            <div class="header-inner">
-                <div class="logo">
-                    <div class="logo-img">
-                        <img class="img-film" src="./img/logo.png" alt="">
-                    </div>
-                    <div class="logo-text">
-                        Retro Films
-                    </div>
-                </div>
-                <div class="nav">
-                    <div class="header-search">
-                        <input class="header-input">
-                        <img class="input-search" src="./img/serch.png">
-                    </div>
-                    <div class="login-bg"></div>
-                    <img class="header-login" src="./img/iconSignIn.png">
-                </div>
-            </div>
-        </div>
-    </header>
-    <div>
-        <div class="modalIcon none">
-            <div class="container-login">
-                <ul class="login-form">
-                    <li>
-                        <input type="radio" id="sing-in" name="singforms" value="" checked>
-                        <label for="sing-in">Sing In</label>
-                        <form class="sing" id="singin" action="">
-                            <div class="errorSingIn">Please enter your</div>
-                            <input type="text" placeholder="login" class="inputsSingIn" data="login" autofocus>
-                            <div class="errorSingIn">Please enter your</div>
-                            <input type="text" placeholder="password" class="inputsSingIn" data="password">
-                            <button>login</button>
-                        </form>
-                    </li>
-                    <li>
-                        <input type="radio" id="sing-up" name="singforms" value="">
-                        <label for="sing-up">Sing Up</label>
-                        <form class="sing" id="singup" action="">
-                            <div class="error">Please enter your</div>
-                            <input type="text" placeholder="first_name" class="inputsSingUp" data="first_name">
-                            <div class="error">Please enter your</div>
-                            <input type="text" placeholder="last_name" class="inputsSingUp" data="last_name">
-                            <div class="error">Please enter your</div>
-                            <input type="text" placeholder="login" class="inputsSingUp" data="login">
-                            <div class="error">Please enter your</div>
-                            <input type="text" placeholder="password" class="inputsSingUp" data="password">
-                            <button>submit</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="mainArea">
-            <div class="filmWordDiv">
-                <h1 class="filmWord">FILMS</h1>
-            </div>
-            <div class="filmsArea"></div>
-        </div>
-        <!-- <div class="footer">
-            
-        </div> -->
-    </div>
-        <script type="text/template" id="templateCard">
-        <div class="filmCard" id="card{{id}}">
-            <img src="{{url}}" alt="fim poster">
-            <div class="title">
-                <p class="rate" id="rate{{id}}">{{5}}</p>
-                <p class="titleText" id="title{{id}}">{{text}}</p>
-            </div>
-        </div>
+<header class = "header">
+	<div class = "header-container">
+		<div class = "header-inner">
+			<div class = "logo">
+				<div class = "logo-img">
+					<img class = "img-film" src = "./src/img/formFon.jpg" alt = "">
+				</div>
+				<div class = "logo-text">
+					Retro Films
+				</div>
+			</div>
+			<div class = "nav">
+				<div class = "header-search">
+					<input class = "header-input">
+					<img class = "input-search" src = "./img/serch.png">
+				</div>
+				<div class = "login-bg"></div>
+				<img class = "header-login" src = "./img/iconSignIn.png">
+			</div>
+		</div>
+	</div>
+</header>
 
-    </script>
+<div class = "modalIcon">
+	<div class = "container-login">
+		<ul class = "login-form">
+			<li>
+				<input type = "radio" id = "sing-in" name = "singforms" value = "" checked>
+				<label for = "sing-in">Sing In</label>
+				<form class = "sing" id = "singin" action = "">
+					<div class = "errorSingIn">Please enter your</div>
+					<input type = "text" placeholder = "login" class = "inputsSingIn" data = "login" autofocus>
+					<div class = "errorSingIn">Please enter your</div>
+					<input type = "text" placeholder = "password" class = "inputsSingIn" data = "password">
+					<button>login</button>
+				</form>
+			</li>
+			<li>
+				<input type = "radio" id = "sing-up" name = "singforms" value = "">
+				<label for = "sing-up">Sing Up</label>
+				<form class = "sing" id = "singup" action = "">
+					<div class = "error">Please enter your</div>
+					<input type = "text" placeholder = "first_name" class = "inputsSingUp" data = "first_name">
+					<div class = "error">Please enter your</div>
+					<input type = "text" placeholder = "last_name" class = "inputsSingUp" data = "last_name">
+					<div class = "error">Please enter your</div>
+					<input type = "text" placeholder = "login" class = "inputsSingUp" data = "login">
+					<div class = "error">Please enter your</div>
+					<input type = "text" placeholder = "password" class = "inputsSingUp" data = "password">
+					<button>submit</button>
+				</form>
+			</li>
+		</ul>
+	</div>
+</div>
 
+<div class = "mainArea">
+	<div class = "filmWordDiv">
+		<h1 class = "filmWord">FILMS</h1>
+	</div>
+	<div class = "filmsArea"></div>
+	<ul class="films-pagination">1111</ul>
+</div>
+<!-- <div class="footer">
+
+</div> -->
+
+<template id="template-card">
+	<div class = "film-card" id = "card{{id}}">
+		<img class = "film-card__poster" src = "{{url}}" alt = "film poster">
+		<div class = "film-card__title">
+			<p class = "film-card__rate" id = "rate{{id}}">{{5}}</p>
+			<p class = "film-card__title-text" id = "title{{id}}">{{text}}</p>
+		</div>
+	</div>
+</template>
+<template id="pagination">
+	<li class="pagination__item"></li>
+</template>
 </body>
 
 </html>

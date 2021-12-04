@@ -121,7 +121,7 @@ header{
     margin: auto;
 }
 
-.filmCard{
+.film-card{
     display: flex;
     justify-content: center;
     width: 250px;
@@ -130,13 +130,13 @@ header{
     margin: 0px 20px 20px 0px;
     border-radius: 40px;
 }
-img{
+.film-card__poster{
     width: 250px;
     height: 290px;
     border-radius: 40px;
     object-fit:cover;
 }
-.title{
+.film-card__title{
     background-color: #0b0a00c9;
     position: absolute;
     align-items: center;
@@ -145,12 +145,12 @@ img{
     margin-top: 230px;
     border-radius: 40px;
 }
-.rate{
+.film-card__rate{
     position: absolute;
     font-size: 18px;
     margin: 7px 0px 0px 220px;
 }
-.titleText{
+.film-card__title-text{
     text-align: start;
     margin: 10px;
 }
