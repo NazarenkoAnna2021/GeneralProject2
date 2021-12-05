@@ -6,11 +6,11 @@ async function getResponseMovies() {
 	try {
 		return await res.json();
 	} catch {
-		await alert('Чтото фильмы не отображаются');
+		 alert('Что-то фильмы не отображаются');
 	}
 }
 
-async function renderCards() {
+export async function renderCards() {
 	const films = await getResponseMovies();
 	films.movies.forEach(card => {
 		DOM.filmsArea.appendChild(createCards(card));
@@ -18,11 +18,10 @@ async function renderCards() {
 }
 
 function createCards({ id, poster_path, title, movie_rate }) {
-	const tempCard = document.querySelector("#template-card").content;
-	const tempCardId = tempCard.querySelector('.film-card');
-	const tempCardPoster = tempCard.querySelector('.film-card__poster');
-	const tempCardRate = tempCard.querySelector('.film-card__rate');
-	const tempCardTitleText = tempCard.querySelector('.film-card__title-text');
+	const tempCardId = DOM.tempCard.querySelector('.film-card');
+	const tempCardPoster = DOM.tempCard.querySelector('.film-card__poster');
+	const tempCardRate = DOM.tempCard.querySelector('.film-card__rate');
+	const tempCardTitleText = DOM.tempCard.querySelector('.film-card__title-text');
 	tempCardId.setAttribute('id', `card${id}`);
 	tempCardPoster.setAttribute('src', `${imagePosterLink}${poster_path}`);
 	tempCardRate.setAttribute('id', `rate${id}`);
@@ -32,4 +31,4 @@ function createCards({ id, poster_path, title, movie_rate }) {
 	return tempCardId.cloneNode(true);
 }
 
-renderCards();
+
