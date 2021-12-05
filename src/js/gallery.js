@@ -18,10 +18,10 @@ export async function renderCards() {
 }
 
 function createCards({ id, poster_path, title, movie_rate }) {
-	const tempCardId = DOM.tempCard.querySelector('.film-card');
-	const tempCardPoster = DOM.tempCard.querySelector('.film-card__poster');
-	const tempCardRate = DOM.tempCard.querySelector('.film-card__rate');
-	const tempCardTitleText = DOM.tempCard.querySelector('.film-card__title-text');
+	const tempCardId = DOM.templateCard.querySelector('.film-card');
+	const tempCardPoster = DOM.templateCard.querySelector('.film-card__poster');
+	const tempCardRate = DOM.templateCard.querySelector('.film-card__rate');
+	const tempCardTitleText = DOM.templateCard.querySelector('.film-card__title-text');
 	tempCardId.setAttribute('id', `card${id}`);
 	tempCardPoster.setAttribute('src', `${imagePosterLink}${poster_path}`);
 	tempCardRate.setAttribute('id', `rate${id}`);
