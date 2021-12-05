@@ -6,6 +6,17 @@
     font-family: 'Skranji', cursive;
     color: white;
 }
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+input:focus{
+    outline: 0;
+}
+input{
+    border: 0px;
+}
 body{
     background-color: black;
     color: blanchedalmond;
@@ -41,13 +52,27 @@ body{
     position:absolute;
     left: 0;
     top: 40px;
-    border-radius:30%;
+    border-radius: 195px;
     padding:10px;
-    width:550px;
-    height: 550px;
+    height: 620px;
+    width: 625px;
     box-shadow:0px 0px 5px 0px gray;
-    z-index: 10;
-    background:  rgb(207, 192, 152) url(../img/formFon.jpg) no-repeat fixed center;
+    z-index: 1;
+    background-color: #37361ec9;
+}
+.login-form__background{
+    object-fit: cover;
+    height: 619px;
+    width: 615px;
+    border-radius: 195px;
+}
+.login-form__img{
+    position: absolute;
+    margin-right: 10px;
+    left: 0;    
+    margin-bottom: 10px;
+    top: 0;
+    z-index: 1;
 }
 .sign-form input {
     background: rgba(55, 54, 30, 0.95);
@@ -57,6 +82,7 @@ body{
     margin-bottom: 20px;
     padding-left: 20px;
     border-radius: 20px;
+    z-index: 3;
     margin: 5px auto;
 }
 .sign-form input::placeholder {
@@ -80,6 +106,7 @@ body{
     font-size: 1.5em;
     box-sizing: border-box;
     margin: 10px auto;
+    z-index: 3;
 }
 
 .modal-icon{
@@ -101,27 +128,24 @@ body{
     height: 100vh;
 }
 
-header{
-    height: 60px;
-    margin-bottom: 80px;
-    background-color: #9B8D62;
-}
-
 .film-word{
     height: 50px;
-    width: 90vw;
-    margin-left: 6vw;
+    width: 100vw;
+    margin: 20vh 0vw 10vh 6vw;
+}
+h1{
+    color: #CDC6B0;
 }
 
 .films-area{
     display: flex;
+    justify-content: center;
     flex-wrap:wrap;
     overflow: hidden;
-    justify-content: center;
-    width: 90vw;
+    width: 100vw;
     min-height: 620px;
     color: white;
-    margin: auto;
+    /* margin-left: 6vw; */
 }
 .error-signup,
 .error-signin {
@@ -141,13 +165,13 @@ label:hover {
     height: 290px;
     background-color: #9B8D62;
     margin: 0px 20px 20px 0px;
-    border-radius: 40px;
+    border-radius: 45px;
 }
 img{
     width: 250px;
     height: 290px;
-    border-radius: 40px;
-    object-fit:cover;
+    border-radius: 45px;
+    object-fit: cover;
 }
 .title{
     background-color: #0b0a00c9;
@@ -168,88 +192,105 @@ img{
     margin: 10px;
 }
 
-.header{
-    width: 100%;
-    left: 0;
-    top: 0;
-    right: 0;
-    z-index: 1000;
-}
-
-.logo-text{
-    font-size: 50px;
-    font-weight: 400;
-    color: #000;
-    margin-left: 20px;
-}
+/* header{
+    width: 100vw;
+    height: 60px;
+    background-color: #9B8D62;
+} */
 
 .header-inner{
     display: flex;
+    width: 100vw;
+    height: 60px;
+    background-color: #9B8D62;
 }
 
-.header-container{
-    width: 100%;
-    max-width: 1400px;
+/* .header-container{
+    max-width: 100vw;
+    max-height: 10vh;
     margin: 0 auto;
-}
+} */
 
 .logo{
     display: flex;
+    margin-left: 6vw;
+    
 }
 
-.img-film{
+.logo__img{
   width: 127px;
-  height: 60px;
+  height: 100%;
   border-radius: 0;
 }
 
+.logo__text{
+    font-size: 50px;
+    font-weight: 400;
+    margin-left: 20px;
+}
+
+p{
+    color: #000;
+}
+span{
+    color: #9B8D62;
+}
 .header-input{
     width: 255px;
     height: 33px;
-    margin-top: 12px;
-    margin-left: 400px;
     background-color: #5A5339;
     border-radius: 54px;
+    border: none;
+    text-align: center;
+    font-size: 24px;
 }
-
-.nav{
+.navigation{
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 15vw;
 }
-
-.input-search{
+.search__img{
+    display: flex;
     position: absolute;
-    width :35px;
-    height: 38px;
-    margin-top: 10px;
-    margin-left: 620px;
+    width: 30px;
+    height: 30px;
+    /* margin-top: 10px;
+    margin-left: 620px; */
 }
 
 .header-search{
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-.header-login{
+.login__img{
     position: absolute;
     border-radius: 0;
-    width: 34px;
-    height: 34px;
-    margin-left: 913px;
-    margin-top: 13px;
+    width: 30px;
+    height: 30px;
+    /* margin-left: 913px;
+    margin-top: 13px; */
 }
 
-.login-bg{
-    width: 43px;
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
     height: 40px;
-    margin-top: 10px;
-    margin-left: 250px;
+    /* margin-top: 10px;
+    margin-left: 250px; */
     background-color: #5A5339;
     border-radius: 43px;
+    margin-left: 15vw;
 }
 
-.footer {
+/* .footer {
     left: 0;
     bottom: 0;
     width: 100%;
     height: 60px;
     background-color: #9B8D62;
-  }
+  } */
