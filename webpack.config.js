@@ -50,8 +50,15 @@ module.exports = {
                     plugins: ['@babel/plugin-transform-runtime']
                   }
                 }
-              }
-        ]
+              },
+              {
+                test: /\.(png|jpe?g|gif)$/i,
+                    loader: 'file-loader',
+                    options: {
+                      name: '[path][name].[ext]'
+                    }
+              },
+        ],
     },
     devServer: {
         port: 4200
