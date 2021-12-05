@@ -163,17 +163,17 @@ label:hover {
     justify-content: center;
     width: 250px;
     height: 290px;
-    background-color: #9B8D62;
+    background-color: #9b8d6200;
     margin: 0px 20px 20px 0px;
     border-radius: 45px;
 }
-img{
+.film-card__poster{
     width: 250px;
     height: 290px;
     border-radius: 45px;
     object-fit: cover;
 }
-.title{
+.film-card__title{
     background-color: #0b0a00c9;
     position: absolute;
     align-items: center;
@@ -182,14 +182,18 @@ img{
     margin-top: 230px;
     border-radius: 40px;
 }
-.rate{
+.film-card__rate{
     position: absolute;
     font-size: 18px;
     margin: 7px 0px 0px 220px;
+    color: #FFFFFF;
 }
-.title-text{
+.film-card__title-text{
     text-align: start;
     margin: 10px;
+    color: #FFFFFF;
+    width: 190px;
+    height: 50px;
 }
 
 /* header{

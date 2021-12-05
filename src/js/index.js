@@ -1,6 +1,6 @@
 import "/css/style.css"
 import { DOM } from "./dom.js"
-import { singIn, singUp, hideForm } from "./singInFunctions"
+import { singIn, singUp } from "./singInFunctions"
 import { click } from "./constants"
 import "/img/logo.png"
 import "/img/formFon.jpg"
