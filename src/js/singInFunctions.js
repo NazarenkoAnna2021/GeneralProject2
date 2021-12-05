@@ -14,20 +14,18 @@ let userSingIn = {
 	password: null
 }
 
-
-export function hideForm() {
-	loginForm.classList.add('none');
+function hideForm() {
+	DOM.modalIcon.classList.add('none');
 }
 
 export function singIn(e) {
 	e.preventDefault();
 	validation(DOM.singInInputs, DOM.errorsMessagesSingIn)
 	if (isValid(DOM.errorsMessagesSingIn)) {
-		setuserbodyforrequest(userSingIn);
-		postSingIn();
+		setuserbodyforrequest(userSingIn)
+		postSingIn()
 		renderCards();
 	}
-
 }
 
 export function singUp(e) {
@@ -101,6 +99,7 @@ export async function postSingIn() {
 	if (localStorage.getItem('token') === 'undefined') {
 		alert('Что-то пошло не так :(')
 	}
+	hideForm();
 }
 
 
