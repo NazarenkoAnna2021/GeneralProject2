@@ -1,27 +1,31 @@
 import { DOM } from "./dom"
+import { main } from "./gallery.js"
 
 const url = 'https://wowmeup.pp.ua/user/sing_up';
 const regexp = /^[A-Za-z]+$/
-let userSingUp= {
+let userSingUp = {
     first_name: null,
     last_name: null,
     login: null,
     password: null
 }
-let userSingIn={
-        login: null,
-        password: null
+let userSingIn = {
+    login: null,
+    password: null
 }
 
-function hideForm() {
-    DOM.modalIcon.classList.add('none');
+function hideForm(form) {
+    form.classList.add('none');
 }
 
+function showForm(form) {
+    form.classList.remove('none');
+}
 
 export function singIn(e) {
     e.preventDefault();
     validation(DOM.singInInputs, DOM.errorsMessagesSingIn)
-    if (isValid(DOM.errorsMessagesSingIn)){
+    if (isValid(DOM.errorsMessagesSingIn)) {
         setuserbodyforrequest(userSingIn)
         postSingIn()
     }
@@ -39,48 +43,45 @@ export function singUp(e) {
 
 
 
-export function validation(element, errorsection)
-{
-    for (let i=0; i<element.length-1; i++) {
+export function validation(element, errorsection) {
+    for (let i = 0; i < element.length - 1; i++) {
         if (element[i].value.length < 3) {
-        errorfunc('This field must contains at least 3 letters!', i, errorsection)
-        }else {
+            errorfunc('This field must contains at least 3 letters!', i, errorsection)
+        } else {
             if (regexp.test(element[i].value) === false) {
                 errorfunc('This field must contains only letters!', i, errorsection)
             }
-            else{
+            else {
                 errorfunc('This field is OK!', i, errorsection)
             }
         }
     }
-    if (element[element.length-1].value.length < 6) {
-        errorfunc('This field must contains at least 8 symbols!', element.length-1, errorsection)
+    if (element[element.length - 1].value.length < 6) {
+        errorfunc('This field must contains at least 8 symbols!', element.length - 1, errorsection)
     }
-    else{
-        errorfunc('This field is OK!',element.length-1, errorsection)
+    else {
+        errorfunc('This field is OK!', element.length - 1, errorsection)
     }
 }
 
-function isValid(element)
-{
+function isValid(element) {
     let countofvalidinputs = 0;
-    for (let i=0; i<element.length; i++) {
+    for (let i = 0; i < element.length; i++) {
         if (element[i].innerText === 'This field is OK!') {
             countofvalidinputs++
         }
     }
-    if (countofvalidinputs === element.length){
+    if (countofvalidinputs === element.length) {
         return true
     }
 }
 
-export function errorfunc(textoferror, position, errorsection)
-{
-    let error = errorsection
-        error[position].innerHTML = textoferror
+export function errorfunc(textoferror, position, errorsection) {
+    let error = errorsection;
+    error[position].innerHTML = textoferror;
 }
 
-export async function postSingUp () {
+export async function postSingUp() {
     let response = await fetch('https://wowmeup.pp.ua/user/sing_up', {
         method: 'POST',
         headers: {
@@ -92,7 +93,7 @@ export async function postSingUp () {
     alert(result);
 }
 
-export async function postSingIn (){
+export async function postSingIn() {
     let response = await fetch('https://wowmeup.pp.ua/user/sign_in', {
         method: 'POST',
         headers: {
@@ -101,25 +102,24 @@ export async function postSingIn (){
         body: JSON.stringify(userSingIn)
     });
     let result = await response.json();
-    localStorage.setItem('token',result['token'])
-    if (localStorage.getItem('token')==='undefined')
-    {
+    localStorage.setItem('token', result['token'])
+    if (localStorage.getItem('token') === 'undefined') {
         alert('Что-то пошло не так :(')
     }
-    hideForm();
-
+    hideForm(DOM.modalIcon);
+    showForm(DOM.mainArea);
+    main();
 }
 
 
-export function setuserbodyforrequest(obj)
-{
-    if(obj===userSingUp) {
+export function setuserbodyforrequest(obj) {
+    if (obj === userSingUp) {
         userSingUp.first_name = DOM.singUpFirstName.value
         userSingUp.last_name = DOM.singUpLastName.value
         userSingUp.login = DOM.singUpLogin.value
         userSingUp.password = DOM.singUpPassword.value
     }
-    if(obj===userSingIn){
+    if (obj === userSingIn) {
         userSingIn.login = DOM.singInLogin.value
         userSingIn.password = DOM.singInPassword.value
     }
