@@ -15,5 +15,6 @@ export const DOM = {
     filmsArea: document.querySelector('.films-area'),
     modalIcon: document.querySelector('.modal-icon'),
     mainArea: document.querySelector('.main-area'),
-    templateCard: document.querySelector('#template-card').innerHTML
+    templateCard: document.querySelector('#template-card').innerHTML,
+    loginImg: document.querySelector('.login__img')
 }

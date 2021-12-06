@@ -1,16 +1,17 @@
 import { DOM } from "./dom"
 import { renderCards } from "./gallery"
+import "./img"
 
 const url = 'https://wowmeup.pp.ua/user/sing_up';//Это константа!!!
 
-const regexp = /^[A-Za-z]+$/
+const regexp = /^[A-Za-z]+$/;
+
 let userSingUp = {
 	first_name: null,
 	last_name: null,
 	login: null,
 	password: null
 }
-
 let userSingIn = {
 	login: null,
 	password: null
@@ -18,6 +19,10 @@ let userSingIn = {
 
 function hideForm(form) {
 	form.classList.add('none');
+}
+
+function changeImg(url, dom) {
+	dom.setAttribute('src', url);
 }
 
 function showForm(form) {
@@ -42,7 +47,6 @@ export function singUp(e) {
 		postSingUp()
 	}
 }
-
 
 function validation(element, errorsection) {
 	for (let i = 0; i < element.length - 1; i++) {//Использовать forEach
@@ -106,8 +110,8 @@ async function postSingIn() {
 	}
 	hideForm(DOM.modalIcon);
 	showForm(DOM.mainArea);
+	changeImg('/img/signOut.png', DOM.loginImg);
 }
-
 
 function setUserBodyForFequest(obj) {
 	if (obj === userSingUp) {

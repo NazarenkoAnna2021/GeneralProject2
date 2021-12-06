@@ -4,7 +4,7 @@
     text-decoration: none;
     list-style: none;
     font-family: 'Skranji', cursive;
-    color: white;
+    color: #ffffff;
 }
 *,*:before,*:after{
 	-moz-box-sizing: border-box;
@@ -20,10 +20,9 @@ input{
 button{
     border: 0px;
 }
-
 body{
-    background-color: black;
-    color: blanchedalmond;
+    background-color: #000000;
+    color: #ffebcd;
 }
 .container-login-form {
     width: 580px;
@@ -46,7 +45,7 @@ body{
     left: -70px;
     top: 290px;
     padding: 10px;
-    background-color: rgba(74, 72, 0, 0.9);
+    background-color: #4a4800e6;
     font-size: 1.7em;
     border-radius: 20%;
 }
@@ -57,16 +56,16 @@ body{
     top: 40px;
     border-radius: 195px;
     padding:10px;
-    height: 620px;
-    width: 625px;
-    box-shadow:0px 0px 5px 0px gray;
+    height: 520px;
+    width: 525px;
+    box-shadow:0px 0px 5px 0px #808080;
     z-index: 1;
     background-color: #37361ec9;
 }
 .login-form__background{
     object-fit: cover;
-    height: 619px;
-    width: 615px;
+    height: 519px;
+    width: 515px;
     border-radius: 195px;
 }
 .login-form__img{
@@ -78,8 +77,8 @@ body{
     z-index: 1;
 }
 .sign-form input {
-    background: rgba(55, 54, 30, 0.95);
-    color: white;
+    background: #37361ef2;
+    color: #ffffff;
     width: 300px;
     height: 70px;
     margin-bottom: 20px;
@@ -89,7 +88,7 @@ body{
     margin: 5px auto;
 }
 .sign-form input::placeholder {
-    color: white;
+    color: #ffffff;
 }
 .login-form input[type=radio] {
     -webkit-appearance:none;
@@ -100,9 +99,13 @@ body{
     text-align: center;
     justify-content: center;
 }
+input:hover{
+    background-color: #ecddb5d5;
+    color: #37361e;
+}
 .login-form button {
-    background: rgba(236, 221, 181, 0.97);
-    color: black;
+    background-color: #ecddb5f7;
+    color: #000000;
     height: 120px;
     width: 100px;
     border-radius: 40%;
@@ -144,19 +147,19 @@ h1{
     overflow: hidden;
     width: 100vw;
     min-height: 620px;
-    color: white;
-    /* margin-left: 6vw; */
+    color: #ffffff;
+    padding-left: 20px;
 }
 .error-signup,
 .error-signin {
     height: 20px;
 }
 .login-form li input:checked~label {
-    background-color: rgb(162, 165, 116);
-    box-shadow: 0 0 20px rgb(218, 218, 218);
+    background-color: #a2a574;
+    box-shadow: 0 0 20px #dadada;
 }
 label:hover {
-    box-shadow: 0 0 10px white;
+    box-shadow: 0 0 10px #ffffff;
 }
 .film-card{
     display: flex;
@@ -195,22 +198,12 @@ label:hover {
     width: 190px;
     height: 50px;
 }
-/* header{
-    width: 100vw;
-    height: 60px;
-    background-color: #9B8D62;
-} */
 .header-inner{
     display: flex;
     width: 100vw;
     height: 60px;
     background-color: #9B8D62;
 }
-/* .header-container{
-    max-width: 100vw;
-    max-height: 10vh;
-    margin: 0 auto;
-} */
 .logo{
     display: flex;
     margin-left: 6vw;
@@ -224,6 +217,7 @@ label:hover {
 .logo__text{
     font-size: 50px;
     font-weight: 400;
+    min-width: 445px;
     margin-left: 20px;
 }
 p{
@@ -251,9 +245,6 @@ span{
     display: flex;
     position: absolute;
     width: 30px;
-    height: 30px;
-    /* margin-top: 10px;
-    margin-left: 620px; */
 }
 .header-search{
     display: flex;
@@ -265,8 +256,6 @@ span{
     border-radius: 0;
     width: 30px;
     height: 30px;
-    /* margin-left: 913px;
-    margin-top: 13px; */
 }
 .login{
     display: flex;
@@ -274,17 +263,7 @@ span{
     align-items: center;
     width: 40px;
     height: 40px;
-    /* margin-top: 10px;
-    margin-left: 250px; */
     background-color: #5A5339;
     border-radius: 43px;
     margin-left: 15vw;
 }
-
-/* .footer {
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    background-color: #9B8D62;
-  } */
