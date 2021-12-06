@@ -17,6 +17,10 @@ input:focus{
 input{
     border: 0px;
 }
+button{
+    border: 0px;
+}
+
 body{
     background-color: black;
     color: blanchedalmond;
@@ -27,7 +31,6 @@ body{
     position: relative;
     margin: 0 auto;
 }
-
 .login-form {
     justify-content: center;
     display: block;
@@ -108,7 +111,6 @@ body{
     margin: 10px auto;
     z-index: 3;
 }
-
 .modal-icon{
     display: flex;
     justify-content: center;
@@ -127,7 +129,6 @@ body{
 .main-area{
     height: 100vh;
 }
-
 .film-word{
     height: 50px;
     width: 100vw;
@@ -136,7 +137,6 @@ body{
 h1{
     color: #CDC6B0;
 }
-
 .films-area{
     display: flex;
     justify-content: center;
@@ -195,44 +195,37 @@ label:hover {
     width: 190px;
     height: 50px;
 }
-
 /* header{
     width: 100vw;
     height: 60px;
     background-color: #9B8D62;
 } */
-
 .header-inner{
     display: flex;
     width: 100vw;
     height: 60px;
     background-color: #9B8D62;
 }
-
 /* .header-container{
     max-width: 100vw;
     max-height: 10vh;
     margin: 0 auto;
 } */
-
 .logo{
     display: flex;
     margin-left: 6vw;
     
 }
-
 .logo__img{
   width: 127px;
   height: 100%;
   border-radius: 0;
 }
-
 .logo__text{
     font-size: 50px;
     font-weight: 400;
     margin-left: 20px;
 }
-
 p{
     color: #000;
 }
@@ -262,13 +255,11 @@ span{
     /* margin-top: 10px;
     margin-left: 620px; */
 }
-
 .header-search{
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-
 .login__img{
     position: absolute;
     border-radius: 0;
@@ -277,7 +268,6 @@ span{
     /* margin-left: 913px;
     margin-top: 13px; */
 }
-
 .login{
     display: flex;
     justify-content: center;

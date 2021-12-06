@@ -121,4 +121,3 @@ function setUserBodyForFequest(obj) {
 		userSingIn.password = DOM.singInPassword.value
 	}
 }
-

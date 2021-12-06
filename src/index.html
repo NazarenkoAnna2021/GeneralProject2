@@ -21,7 +21,7 @@
 				<!-- </div> -->
 				<div class="logo__text">
 					<p>
-						R e t r o<span>oo</span>F i l m s
+						R e t r o<span>__</span>F i l m s
 					</p>
 				</div>
 			</div>
@@ -85,12 +85,12 @@
 		</div>
 		<!-- <div class="footer"></div> -->
 	</div>
-	<template id="template-card">
+	<template type="text" id="template-card">
 		<div class="film-card">
-			<img class="film-card__poster" src="" alt="film poster">
+			<img class="film-card__poster" id="img{{id}}" src="{{url}}" alt="film poster">
 			<div class="film-card__title">
-				<p class="film-card__rate" id="rate{{id}}"></p>
-				<p class="film-card__title-text"></p>
+				<p class="film-card__rate" id="rate{{id}}">{{5}}</p>
+				<p class="film-card__title-text" id="text{{id}}">{{text}}</p>
 			</div>
 		</div>
 	</template>
