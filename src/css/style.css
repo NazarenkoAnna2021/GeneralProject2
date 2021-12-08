@@ -13,6 +13,7 @@
 }
 input:focus{
     outline: 0;
+    box-shadow: 0 0 10px #ffffff;
 }
 input{
     border: 0px;
@@ -23,6 +24,9 @@ button{
 body{
     background-color: #000000;
     color: #ffebcd;
+}
+a{
+    color: #000000;
 }
 .container-login-form {
     width: 580px;
@@ -77,8 +81,9 @@ body{
     z-index: 1;
 }
 .sign-form input {
-    background: #37361ef2;
+    background: #37361ef8;
     color: #ffffff;
+    box-shadow: 10px 12px 5px #252515d7;
     width: 300px;
     height: 70px;
     margin-bottom: 20px;
@@ -99,13 +104,15 @@ body{
     text-align: center;
     justify-content: center;
 }
-input:hover{
-    background-color: #ecddb5d5;
+input:hover, input:focus{
+    background-color: #ecddb5ec;
+    box-shadow: 0 0 10px #ffffff;
     color: #37361e;
 }
 .login-form button {
     background-color: #ecddb5f7;
     color: #000000;
+    box-shadow: 0 0 5px #aaa084d8;
     height: 120px;
     width: 100px;
     border-radius: 40%;
@@ -114,6 +121,11 @@ input:hover{
     margin: 10px auto;
     z-index: 3;
 }
+button:hover{
+    background-color: #f5e7c0f3;
+    box-shadow: 0 0 10px #ffffff;
+    
+}
 .modal-icon{
     display: flex;
     justify-content: center;
@@ -121,6 +133,19 @@ input:hover{
     z-index: 5;
     width: 100vw;
     height: 100vh;
+}
+.preview{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+.preview__gif{
+    width: 50vw;
+    height: 50vh;
+    object-fit: scale-down;
 }
 .none {
     display: none;
@@ -244,7 +269,8 @@ span{
 .search__img{
     display: flex;
     position: absolute;
-    width: 30px;
+    width: 29px;
+    height: 30px;
 }
 .header-search{
     display: flex;
@@ -275,6 +301,20 @@ span{
     width: 100vw;
     height: 60px;
 }
-.main-area__page-info{
-    font-size: 40px;
-}
+.main-area__previous, .main-area__next, .search__img, .login__img {
+    transition: all 0.8s ease 0s;
+  }
+  .main-area__previous:hover {
+    position: relative;
+    transform: translate(-10px, -3px);
+  }
+  .main-area__next:hover{
+    position: relative;
+    transform: translate(10px, -3px);
+  }
+  .main-area__page-info{
+      font-size: 40px;
+  }
+  .search__img:hover, .login__img:hover{
+    transform: rotate(360deg);
+  }

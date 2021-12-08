@@ -17,5 +17,6 @@ export const DOM = {
     mainArea: document.querySelector('.main-area'),
     templateCard: document.querySelector('#template-card').innerHTML,
     loginImg: document.querySelector('.login__img'),
-    pagination: document.querySelector('.main-area__pagination')
+    pagination: document.querySelector('.main-area__pagination'),
+    preview: document.querySelector('.preview')
 }
