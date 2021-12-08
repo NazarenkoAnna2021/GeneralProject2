@@ -13,12 +13,9 @@
 
 <body>
 	<header>
-		<!-- <div class="header-container"> -->
 		<div class="header-inner">
 			<div class="logo">
-				<!-- <div class="logo__film"> -->
 				<img class="logo__img" src="/img/logo.png" alt="">
-				<!-- </div> -->
 				<div class="logo__text">
 					<p>
 						R e t r o<span>--</span>F i l m s
@@ -35,9 +32,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- </div> -->
 	</header>
-	<div>
 		<div class="modal-icon">
 			<div class="container-login-form">
 				<ul class="login-form">
@@ -57,7 +52,6 @@
 					</li>
 					<li>
 						<input type="radio" id="signup-input" name="sign-forms" value="">
-
 						<label for="signup-input">Sing Up</label>
 						<form class="sign-form" id="singup-form" action="">
 							<div class="login-form__img">
@@ -78,12 +72,16 @@
 			</div>
 		</div>
 		<div class="main-area none">
-			<div class="film-word">
+			<div class="main-area__film-word">
 				<h1>FILMS</h1>
 			</div>
-			<div class="films-area"></div>
+			<div class="main-area__films-area"></div>
+			<div class="main-area__pagination">
+				<img class="main-area__previous" src="/img/arrowLeft-64.png" alt="">
+				<p class="main-area__page-info">1/?</p>
+				<img class="main-area__next" src="/img/arrowRight-64.png" alt="">
+			</div>
 		</div>
-	</div>
 	<template type="text" id="template-card">
 		<div class="film-card">
 			<img class="film-card__poster" id="img{{id}}" src="{{url}}" alt="film poster">

@@ -12,9 +12,10 @@ export const DOM = {
     singUpInputs: document.querySelectorAll('.inputs-signup'),
     errorsMessagesSingUp: document.querySelectorAll('.error-signup'),
     errorsMessagesSingIn: document.querySelectorAll('.error-signin'),
-    filmsArea: document.querySelector('.films-area'),
+    filmsArea: document.querySelector('.main-area__films-area'),
     modalIcon: document.querySelector('.modal-icon'),
     mainArea: document.querySelector('.main-area'),
     templateCard: document.querySelector('#template-card').innerHTML,
-    loginImg: document.querySelector('.login__img')
+    loginImg: document.querySelector('.login__img'),
+    pagination: document.querySelector('.main-area__pagination')
 }

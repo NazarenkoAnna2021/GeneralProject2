@@ -132,15 +132,15 @@ input:hover{
 .main-area{
     height: 100vh;
 }
-.film-word{
+.main-area__film-word{
     height: 50px;
-    width: 100vw;
+    width: 90vw;
     margin: 10vh 0vw 6vh 6vw;
 }
 h1{
     color: #CDC6B0;
 }
-.films-area{
+.main-area__films-area{
     display: flex;
     justify-content: center;
     flex-wrap:wrap;
@@ -266,4 +266,15 @@ span{
     background-color: #5A5339;
     border-radius: 43px;
     margin-left: 15vw;
+}
+.main-area__pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #9B8D62;
+    width: 100vw;
+    height: 60px;
+}
+.main-area__page-info{
+    font-size: 40px;
 }
