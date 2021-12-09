@@ -16,5 +16,11 @@ export const DOM = {
     modalIcon: document.querySelector('.modal-icon'),
     mainArea: document.querySelector('.main-area'),
     templateCard: document.querySelector('#template-card').innerHTML,
-    loginImg: document.querySelector('.login__img')
+    loginImg: document.querySelector('.login__img'),
+    checkAdult: document.querySelector('#adult'),
+    checkPaidOff: document.querySelector('#paid-off'),
+    checkReleased: document.querySelector('#released'),
+    countrySelect: document.querySelector('#country-select'),
+    genresSelect: document.querySelector('#genres-select'),
+    bigButton: document.querySelector('.big-button')
 }
