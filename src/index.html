@@ -77,6 +77,96 @@
 		</div>
 	</div>
 	<div class="main-area none">
+		<div class="filters-form none">
+			<div class="wrapper year">
+				<div class="values">
+					<span class="range1">
+						0
+					</span>
+					<span> YEARS </span>
+					<span class="range2">
+						100
+					</span>
+				</div>
+				<div class="container-range">
+					<div class="slider-track"></div>
+					<input type="range" min="1895" max="2022" value="1950" class="slider-1">
+					<input type="range" min="1895" max="2022" value="1989" class="slider-2">
+				</div>
+			</div>
+			<div class="wrapper budget">
+				<div class="values">
+					<span class="range1">
+						0
+					</span>
+					<span> BUDGET </span>
+					<span class="range2">
+						100
+					</span>
+				</div>
+				<div class="container-range">
+					<div class="slider-track"></div>
+					<input type="range" min="0" max="400" value="30" class="slider-1">
+					<input type="range" min="0" max="400" value="170" class="slider-2">
+				</div>
+			</div>
+			<div class="wrapper rating">
+				<div class="values">
+					<span class="range1">
+						0
+					</span>
+					<span> RATING </span>
+					<span class="range2">
+						100
+					</span>
+				</div>
+				<div class="container-range">
+					<div class="slider-track"></div>
+					<input type="range" min="0" max="10" value="5" class="slider-1">
+					<input type="range" min="0" max="10" value="10" class="slider-2">
+				</div>
+			</div>
+			<div class="checkboxs column">
+				<div>
+					<label for="adult" class="check-container">adult
+						<input type="checkbox" name="adult" id="adult">
+						<span class="checkmark"></span>
+					</label>
+				</div>
+				<div>
+					<label for="paid-off" class="check-container">paid off
+						<input type="checkbox" name="paid-off" id="paid-off">
+						<span class="checkmark"></span>
+					</label>
+				</div>
+				<div>
+					<label for="released" class="check-container">released
+						<input type="checkbox" name="released" id="released" checked>
+						<span class="checkmark"></span>
+					</label>
+				</div>
+			</div>
+			<div class="country column">
+				<label for="country-select">COUNTRY</label>
+				<select name="country" id="country-select">
+					<option value="all">all</option>
+					<option value="en">EN</option>
+					<option value="ru">RU</option>
+					<option value="ua">UA</option>
+				</select>
+			</div>
+			<div class="GENRES column">
+				<label for="genres-select">GENRES</label>
+				<select name="genres" id="genres-select">
+					<option value="all">all</option>
+					<option value="comedy">comedy</option>
+					<option value="horror">horror</option>
+					<option value="sci-fi">sci-fi</option>
+					<option value="fantasy">fantasy</option>
+				</select>
+			</div>
+			<button class="big-button">GO</button>
+		</div>
 		<div class="main-area__film-word">
 			<h1>FILMS</h1>
 		</div>

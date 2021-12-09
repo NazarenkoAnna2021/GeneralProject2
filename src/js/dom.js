@@ -18,5 +18,11 @@ export const DOM = {
     templateCard: document.querySelector('#template-card').innerHTML,
     loginImg: document.querySelector('.login__img'),
     pagination: document.querySelector('.main-area__pagination'),
-    preview: document.querySelector('.preview')
+    preview: document.querySelector('.preview'),
+    checkAdult: document.querySelector('#adult'),
+    checkPaidOff: document.querySelector('#paid-off'),
+    checkReleased: document.querySelector('#released'),
+    countrySelect: document.querySelector('#country-select'),
+    genresSelect: document.querySelector('#genres-select'),
+    bigButton: document.querySelector('.big-button')
 }
