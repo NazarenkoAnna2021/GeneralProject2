@@ -1,6 +1,7 @@
 import { DOM } from "./dom"
 import { renderCards } from "./gallery"
 import "./img"
+import { hideForm, showForm, changeImg } from "./visibility"
 
 const url = 'https://wowmeup.pp.ua/user/sing_up';//Это константа!!!
 
@@ -15,18 +16,6 @@ let userSingUp = {
 let userSingIn = {
 	login: null,
 	password: null
-}
-
-function hideForm(form) {
-	form.classList.add('none');
-}
-
-function changeImg(url, dom) {
-	dom.setAttribute('src', url);
-}
-
-function showForm(form) {
-	form.classList.remove('none');
 }
 
 export function singIn(e) {

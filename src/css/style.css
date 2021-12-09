@@ -13,6 +13,7 @@
 }
 input:focus{
     outline: 0;
+    box-shadow: 0 0 10px #ffffff;
 }
 input{
     border: 0px;
@@ -23,6 +24,9 @@ button{
 body{
     background-color: #000000;
     color: #ffebcd;
+}
+a{
+    color: #000000;
 }
 .container-login-form {
     width: 580px;
@@ -77,8 +81,9 @@ body{
     z-index: 1;
 }
 .sign-form input {
-    background: #37361ef2;
+    background: #37361ef8;
     color: #ffffff;
+    box-shadow: 10px 12px 5px #252515d7;
     width: 300px;
     height: 70px;
     margin-bottom: 20px;
@@ -99,13 +104,15 @@ body{
     text-align: center;
     justify-content: center;
 }
-input:hover{
-    background-color: #ecddb5d5;
+input:hover, input:focus{
+    background-color: #ecddb5ec;
+    box-shadow: 0 0 10px #ffffff;
     color: #37361e;
 }
 .login-form button {
     background-color: #ecddb5f7;
     color: #000000;
+    box-shadow: 0 0 5px #aaa084d8;
     height: 120px;
     width: 100px;
     border-radius: 40%;
@@ -113,6 +120,11 @@ input:hover{
     box-sizing: border-box;
     margin: 10px auto;
     z-index: 3;
+}
+button:hover{
+    background-color: #f5e7c0f3;
+    box-shadow: 0 0 10px #ffffff;
+    
 }
 .modal-icon{
     display: flex;
@@ -122,8 +134,18 @@ input:hover{
     width: 100vw;
     height: 100vh;
 }
-.none {
-    display: none;
+.preview{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+.preview__gif{
+    width: 50vw;
+    height: 50vh;
+    object-fit: scale-down;
 }
 ::-webkit-scrollbar {
     width: 0px;
@@ -132,15 +154,15 @@ input:hover{
 .main-area{
     height: 100vh;
 }
-.film-word{
+.main-area__film-word{
     height: 50px;
-    width: 100vw;
+    width: 90vw;
     margin: 10vh 0vw 6vh 6vw;
 }
 h1{
     color: #CDC6B0;
 }
-.films-area{
+.main-area__films-area{
     display: flex;
     justify-content: center;
     flex-wrap:wrap;
@@ -244,7 +266,8 @@ span{
 .search__img{
     display: flex;
     position: absolute;
-    width: 30px;
+    width: 29px;
+    height: 30px;
 }
 .header-search{
     display: flex;
@@ -266,4 +289,79 @@ span{
     background-color: #5A5339;
     border-radius: 43px;
     margin-left: 15vw;
+}
+.main-area__pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #9B8D62;
+    width: 100vw;
+    height: 60px;
+}
+.main-area__previous, .main-area__next, .search__img, .login__img {
+    transition: all 0.8s ease 0s;
+  }
+  .main-area__previous:hover {
+    position: relative;
+    transform: translate(-10px, -3px);
+  }
+  .main-area__next:hover{
+    position: relative;
+    transform: translate(10px, -3px);
+  }
+  .main-area__page-info{
+      font-size: 40px;
+  }
+  .search__img:hover, .login__img:hover{
+    transform: rotate(360deg);
+  }
+.main-container{
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.title-film{
+    font-weight: 400;
+    font-size: 48px;
+    color : #CDC6B0;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.main-content{
+    display: flex;
+    width: 100%;
+    height: 400px;
+    background: rgba(155, 141, 98, 0.5);
+    border-radius: 48px;
+}
+.main-poster{
+    margin: 28px;
+    border-radius: 40px;
+}
+.film-deteils{
+    margin: 30px;
+}
+.film-date{
+    margin-top: 20px;
+}
+.film-country{
+    margin-top: 20px;
+}
+.film-maker{
+    margin-top: 20px;
+}
+.film-genre{
+    margin-top: 20px;
+}
+.film-actors{
+    margin-top: 20px;
+}
+.discription{
+    margin: 30px;
+    font-weight: 400;
+    font-size: 20px;
+    color: #CDC6B0;
+}
+.none {
+    display: none;
 }
