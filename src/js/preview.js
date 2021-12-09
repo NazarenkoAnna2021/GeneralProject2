@@ -7,7 +7,7 @@ function randomGif(){
     switch(true){
         case randomNum >= 0 && randomNum <= 0.5: return '/img/dribbble.gif';
         case randomNum > 0.5: return '/img/preview.gif';
-    }  
+    }
 }
 
 export function preview(){

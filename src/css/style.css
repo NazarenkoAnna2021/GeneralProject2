@@ -318,3 +318,50 @@ span{
   .search__img:hover, .login__img:hover{
     transform: rotate(360deg);
   }
+.main-container{
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.title-film{
+    font-weight: 400;
+    font-size: 48px;
+    color : #CDC6B0;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.main-content{
+    display: flex;
+    width: 100%;
+    height: 400px;
+    background: rgba(155, 141, 98, 0.5);
+    border-radius: 48px;
+}
+.main-poster{
+    margin: 28px;
+    border-radius: 40px;
+}
+.film-deteils{
+    margin: 30px;
+}
+.film-date{
+    margin-top: 20px;
+}
+.film-country{
+    margin-top: 20px;
+}
+.film-maker{
+    margin-top: 20px;
+}
+.film-genre{
+    margin-top: 20px;
+}
+.film-actors{
+    margin-top: 20px;
+}
+.discription{
+    margin: 30px;
+    font-weight: 400;
+    font-size: 20px;
+    color: #CDC6B0;
+}

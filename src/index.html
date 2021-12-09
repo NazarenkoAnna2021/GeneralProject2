@@ -18,7 +18,7 @@
 				<img class="logo__img" src="/img/logo.png" alt="">
 				<div class="logo__text">
 					<p>
-						<a href="">
+						<a href="index.html">
 							R e t r o<span>--</span>F i l m s
 						</a>
 					</p>
@@ -89,7 +89,9 @@
 	</div>
 	<template type="text" id="template-card">
 		<div class="film-card">
-			<img class="film-card__poster" id="img{{id}}" src="{{url}}" alt="film poster">
+			<a href="filmPage.html" target="_blank">
+				<img class="film-card__poster" id="img{{id}}" src="{{url}}" alt="film poster">
+			</a>
 			<div class="film-card__title">
 				<p class="film-card__rate" id="rate{{id}}">{{5}}</p>
 				<p class="film-card__title-text" id="text{{id}}">{{text}}</p>

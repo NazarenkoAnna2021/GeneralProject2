@@ -1,7 +1,7 @@
 import { DOM } from "./dom"
 import { renderCards } from "./gallery"
 import "./img"
-import "./visibility"
+import { hideForm, showForm, changeImg } from "./visibility"
 
 const url = 'https://wowmeup.pp.ua/user/sing_up';//Это константа!!!
 
