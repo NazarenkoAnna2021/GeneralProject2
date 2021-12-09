@@ -147,9 +147,6 @@ button:hover{
     height: 50vh;
     object-fit: scale-down;
 }
-.none {
-    display: none;
-}
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent;
@@ -364,4 +361,7 @@ span{
     font-weight: 400;
     font-size: 20px;
     color: #CDC6B0;
+}
+.none {
+    display: none;
 }
