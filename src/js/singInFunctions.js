@@ -81,7 +81,7 @@ async function postSingUp() {
 		body: JSON.stringify(userSingUp)
 	});
 	let result = await response.json();
-	alert(result);
+	console.log(result);
 }
 
 async function postSingIn() {
@@ -96,11 +96,12 @@ async function postSingIn() {
 	localStorage.setItem('token', result['token'])
 	if (localStorage.getItem('token') === 'undefined') {
 		alert('Что-то пошло не так :(')
+	}else {
+		hideForm(DOM.modalIcon);
+		showForm(DOM.mainArea);
+		changeImg('/img/signOut.png', DOM.loginImg);
 	}
-	hideForm(DOM.modalIcon);
-	showForm(DOM.mainArea);
-	changeImg('/img/signOut.png', DOM.loginImg);
-}
+	}
 
 function setUserBodyForFequest(obj) {
 	if (obj === userSingUp) {
