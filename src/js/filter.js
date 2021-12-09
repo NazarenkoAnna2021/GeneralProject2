@@ -1,12 +1,13 @@
+import { DOM } from "./dom.js"
 class DoubleRange {
     constructor(container) {
         this.container = container;
-        this.sliderOne = document.querySelector(`${this.container} .slider-1`);
-        this.sliderTwo = document.querySelector(`${this.container} .slider-2`);
-        this.displayValOne = document.querySelector(`${this.container} .range1`);
-        this.displayValTwo = document.querySelector(`${this.container} .range2`);
+        this.sliderOne = document.querySelector(`.${this.container} .slider-1`);
+        this.sliderTwo = document.querySelector(`.${this.container} .slider-2`);
+        this.displayValOne = document.querySelector(`.${this.container} .range1`);
+        this.displayValTwo = document.querySelector(`.${this.container} .range2`);
         this.minGap = 0;
-        this.sliderTrack = document.querySelector(`${this.container} .slider-track`);
+        this.sliderTrack = document.querySelector(`.${this.container} .slider-track`);
         this.sliderMaxValue = this.sliderOne?.max;
         this.slideOne = this.slideOne.bind(this);
         this.slideTwo = this.slideTwo.bind(this);
@@ -28,10 +29,24 @@ class DoubleRange {
         this.displayValTwo.textContent = this.sliderTwo.value;
     }
     getValue() {
-        return [Number(this.sliderOne.value), Number(this.sliderTwo.value)];
+        return {[`${this.container}_min`] : Number(this.sliderOne.value), 
+                [`${this.container}_max`] : Number(this.sliderTwo.value)};
     }
 
 }
-const doubleRangeYear = new DoubleRange('.year');
-const doubleRangeBudget = new DoubleRange('.budget');
-const doubleRangeRating = new DoubleRange('.rating');
+export function getFilters() {
+    console.log(doubleRangeYear.getValue());
+    console.log(doubleRangeBudget.getValue());
+    console.log(doubleRangeRating.getValue());
+    console.log(DOM.checkAdult.checked);
+    console.log(DOM.checkPaidOff.checked);
+    console.log(DOM.checkReleased.checked);
+    console.log(DOM.countrySelect.value);
+    console.log(DOM.genresSelect.value);
+}
+
+
+const doubleRangeYear = new DoubleRange('year');
+const doubleRangeBudget = new DoubleRange('budget');
+const doubleRangeRating = new DoubleRange('rating');
+
