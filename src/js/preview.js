@@ -1,20 +1,28 @@
 import { DOM } from "./dom"
+import { gif, constants } from "./constants";
 import './img'
 import * as visibility from './visibility'
 
-function randomGif(){
-    const randomNum = Math.random();
-    switch(true){
-        case randomNum >= 0 && randomNum <= 0.5: return '/img/dribbble.gif';
-        case randomNum > 0.5: return '/img/preview.gif';
+function randomGif() {
+    const randomNum = Math.round(Math.random() * 10);
+    console.log(randomNum);
+    switch (randomNum) {
+        case 1: return gif.gif1;
+        case 2: return gif.gif2;
+        case 3: return gif.gif3;
+        case 4: return gif.gif4;
+        case 5: return gif.gif5;
+        case 6: return gif.gif6;
+        case 7: return gif.gif7;
+        default: return gif.gif1;
     }
 }
 
-export function preview(){
-    DOM.preview.firstChild.setAttribute('src', randomGif());
+export function preview() {
+    DOM.preview.firstChild.setAttribute(constants.src, randomGif());
 }
 
-export function openSignIn(){
+export function openSignIn() {
     visibility.hideForm(DOM.preview);
     visibility.showForm(DOM.modalIcon);
 }

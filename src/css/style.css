@@ -241,6 +241,14 @@ label:hover {
     font-weight: 400;
     min-width: 445px;
     margin-left: 20px;
+    letter-spacing: 15px;
+}
+.logo__text:hover{
+    text-shadow: 0 0 10px #ffffff;
+}
+a:hover{
+    
+    color: rgb(32, 32, 32);
 }
 p{
     color: #000;
