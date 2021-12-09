@@ -303,11 +303,11 @@ span{
   }
   .main-area__previous:hover {
     position: relative;
-    transform: translate(-10px, -3px);
+    transform: translate(-10px);
   }
   .main-area__next:hover{
     position: relative;
-    transform: translate(10px, -3px);
+    transform: translate(10px);
   }
   .main-area__page-info{
       font-size: 40px;
