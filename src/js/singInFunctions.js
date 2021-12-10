@@ -5,7 +5,8 @@ import { hideForm, showForm, changeImg } from "./visibility"
 
 const url = 'https://wowmeup.pp.ua/user/sing_up';//Это константа!!!
 
-const regexp = /^[A-Za-z]+$/;
+const regexp = /^[A-Z][a-z]+$/;
+const regexplogin = /^[a-zA-Z][a-zA-Z0-9]+$/
 
 let userSingUp = {
 	first_name: null,
@@ -38,18 +39,29 @@ export function singUp(e) {
 }
 
 function validation(element, errorsection) {
-	for (let i = 0; i < element.length - 1; i++) {//Использовать forEach
+	for (let i = 0; i < element.length - 2; i++) {//Использовать forEach
 		if (element[i].value.length < 3) errorfunc('This field must contains at least 3 letters!', i, errorsection)
 		else {
 			if (regexp.test(element[i].value) === false) {
-				errorfunc('This field must contains only letters!', i, errorsection)
+				errorfunc('This field must contains only letters, and first must be title!', i, errorsection)
 			} else {
 				errorfunc('This field is OK!', i, errorsection)
 			}// тут нужна тернарка
 		}
 	}
-	if (element[element.length - 1].value.length < 6) {
-		errorfunc('This field must contains at least 8 symbols!', element.length - 1, errorsection)
+
+	if (element[element.length - 2].value.length < 3) {
+		errorfunc('This field must contains at least 3 letters or numbers!', element.length - 2, errorsection)
+	} else {
+		if (regexplogin.test(element[element.length - 2].value) === false) {
+			errorfunc('This field must starts with letter!', element.length - 2, errorsection)
+		}else{
+			errorfunc('This field is OK!', element.length - 2, errorsection)
+		}
+
+	}
+	if (element[element.length - 1].value.length < 8) {
+		errorfunc('This field must contains at least 8 symbols and 1 number!', element.length - 1, errorsection)
 	} else {
 		errorfunc('This field is OK!', element.length - 1, errorsection)
 	}
@@ -67,6 +79,8 @@ function isValid(element) {
 	}
 }
 
+
+
 function errorfunc(textoferror, position, errorsection) {
 	let error = errorsection
 	error[position].innerHTML = textoferror
@@ -81,7 +95,12 @@ async function postSingUp() {
 		body: JSON.stringify(userSingUp)
 	});
 	let result = await response.json();
-	alert(result);
+	if (response.ok) {
+
+
+	}else{
+		alert(result.message)
+	}
 }
 
 async function postSingIn() {
@@ -93,14 +112,15 @@ async function postSingIn() {
 		body: JSON.stringify(userSingIn)
 	});
 	let result = await response.json();
-	localStorage.setItem('token', result['token'])
-	if (localStorage.getItem('token') === 'undefined') {
-		alert('Что-то пошло не так :(')
+	if (response.ok) {
+		localStorage.setItem('token', result['token'])
+		hideForm(DOM.modalIcon);
+		showForm(DOM.mainArea);
+		changeImg('/img/signOut.png', DOM.loginImg);
+	}else {
+		alert(result.message)
 	}
-	hideForm(DOM.modalIcon);
-	showForm(DOM.mainArea);
-	changeImg('/img/signOut.png', DOM.loginImg);
-}
+	}
 
 function setUserBodyForFequest(obj) {
 	if (obj === userSingUp) {
