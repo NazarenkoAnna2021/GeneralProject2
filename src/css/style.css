@@ -64,7 +64,8 @@ a{
     width: 525px;
     box-shadow:0px 0px 5px 0px #808080;
     z-index: 1;
-    background-color: #37361ec9;
+    background-image: url("http://localhost:4200/img/formFon.jpg");
+    background-size: cover;
 }
 .login-form__background{
     object-fit: cover;
