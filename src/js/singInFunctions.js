@@ -79,8 +79,6 @@ function isValid(element) {
 	}
 }
 
-
-
 function errorfunc(textoferror, position, errorsection) {
 	let error = errorsection
 	error[position].innerHTML = textoferror

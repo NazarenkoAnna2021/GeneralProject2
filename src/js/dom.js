@@ -1,5 +1,5 @@
 export const DOM = {
-    singInLogin: document.querySelector('#singup-form input[data="login"]'),
+    singInLogin: document.querySelector('#signin-form input[data="login"]'),
     singInPassword: document.querySelector('#signin-form input[data="password"]'),
     singInButton: document.querySelector('#signin-form button'),
     singUpFirstName: document.querySelector('#singup-form input[data="first-name"]'),
