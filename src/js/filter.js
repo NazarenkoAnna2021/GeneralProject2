@@ -32,20 +32,33 @@ class DoubleRange {
         return {[`${this.container}_min`] : Number(this.sliderOne.value), 
                 [`${this.container}_max`] : Number(this.sliderTwo.value)};
     }
-
+    setValue(min, max) {
+        this.sliderOne.value = min;
+        this.sliderTwo.value = max;
+        this.slideOne();
+        this.slideTwo();
+    }
 }
 export function getFilters() {
+    console.log(DOM.searchInput.value);
     console.log(doubleRangeYear.getValue());
     console.log(doubleRangeBudget.getValue());
     console.log(doubleRangeRating.getValue());
     console.log(DOM.checkAdult.checked);
-    console.log(DOM.checkPaidOff.checked);
-    console.log(DOM.checkReleased.checked);
     console.log(DOM.countrySelect.value);
     console.log(DOM.genresSelect.value);
+    console.log(DOM.statusSelect.value);
 }
-
-
+export function resetFilters() {
+    DOM.searchInput.value = '';
+    doubleRangeYear.setValue(1950, 1989);
+    doubleRangeBudget.getValue(30, 170);
+    doubleRangeRating.getValue(5, 10);
+    DOM.checkAdult.checked = false;
+    DOM.countrySelect.value = 'all';
+    DOM.genresSelect.value = 'all';
+    DOM.statusSelect.value = 'all';
+}
 const doubleRangeYear = new DoubleRange('year');
 const doubleRangeBudget = new DoubleRange('budget');
 const doubleRangeRating = new DoubleRange('rating');
