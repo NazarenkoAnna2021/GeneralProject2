@@ -114,6 +114,8 @@ async function postSingIn() {
 		localStorage.setItem('token', result['token'])
 		hideForm(DOM.modalIcon);
 		showForm(DOM.mainArea);
+		showForm(DOM.searchImg);
+		DOM.headerInput.disabled = !DOM.headerInput.disabled;
 		changeImg('/img/signOut.png', DOM.loginImg);
 	}else {
 		alert(result.message)
