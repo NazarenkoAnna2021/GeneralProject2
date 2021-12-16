@@ -99,22 +99,37 @@ container-range input[type="range"]::-webkit-slider-runnable-track{
 .range1,.range2{
     margin-top: 15px;
 }
-.column {
+.range-name{
+    position: absolute;
+    left: 70px;
+}
+.column{
     display: flex;
     flex-direction: column;
     color: var(--main-text-color);
 }
-.selector select{
+select{
     background-color: var(--input-bg-color);
     color: var(--main-text-color);
 }
-.big-button{
+.label-select{
+    margin-bottom: 10px;
+    border: none;
+}
+.filter-buttons{
     width: 70px;
     height: 70px;
     border-radius: 50%;
     color: #0D0C0C;
-    background-color: #ECDDB5;
     font-size: var(--button-font-size);
+}
+.go-button{
+    background-color: #ECDDB5;
+    margin-right: 5px;
+}
+.reset-button{
+    background-color: rgb(224, 145, 145);
+    margin-left: 5px;
 }
 .filters-form{
     justify-content: space-between;
@@ -122,10 +137,19 @@ container-range input[type="range"]::-webkit-slider-runnable-track{
     border-radius: 65px;
 }
 .filters-form > *{
-    margin-right: 20px;
+    margin-left: 5px;
+}
+.search-btn{
+    background: transparent url('../img/serch.png') no-repeat center;
+    height: 30px;
+    width: 30px;
+    position: absolute;
 }
 .checkboxs{
     margin-top: 10px;
+}
+.filters-form label:hover {
+    box-shadow: none;
 }
 .check-container {
     display: block;
