@@ -23,13 +23,18 @@ export const DOM = {
     mainArea: document.querySelector('.main-area'),
 
     filmsArea: document.querySelector('.main-area__films-area'),
+    filterButton: document.querySelector('.main-area__filter-img'),
+    filtersForm: document.querySelector('.filters-form'),
     templateCard: document.querySelector('#template-card').innerHTML,
+    statusSelect: document.querySelector('.label-select'),
+    resetButton: document.querySelector('.reset-button'),
+
     pagination: document.querySelector('.main-area__pagination'),
 
     checkAdult: document.querySelector('#adult'),
     checkPaidOff: document.querySelector('#paid-off'),
-    checkReleased: document.querySelector('#released'),
+    checkReleased: document.querySelector('#status-select'),
     countrySelect: document.querySelector('#country-select'),
     genresSelect: document.querySelector('#genres-select'),
-    bigButton: document.querySelector('.big-button')
+    bigButton: document.querySelector('.go-button')
 }

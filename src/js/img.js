@@ -5,6 +5,7 @@ import "/img/serch.png"
 import "/img/signOut.png"
 import "/img/arrowRight-64.png"
 import "/img/arrowLeft-64.png"
+import '/img/filters.png'
 import "/img/dribbble.gif"
 import "/img/preview.gif"
 import "/img/prev3.gif"
@@ -12,4 +13,3 @@ import "/img/prev4.gif"
 import "/img/prev5.gif"
 import "/img/prev6.gif"
 import "/img/prev8.gif"
-

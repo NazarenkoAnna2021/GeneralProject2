@@ -1,5 +1,5 @@
 import { DOM } from "./dom.js";
-import { constants } from "./constants";
+import { URL } from "./constants";
 
 export async function renderCards() {
 	const films = await getResponseMovies();
@@ -9,7 +9,7 @@ export async function renderCards() {
 }
 
 async function getResponseMovies() {
-	const res = await fetch(`${constants.URL}/movie`);
+	const res = await fetch(`${URL.URL}/movie`);
 	try {
 		return await res.json();
 	} catch {
@@ -20,7 +20,7 @@ async function getResponseMovies() {
 function createCards({ id, poster_path, title, movie_rate }) {
 	const templateCardHtml = DOM.templateCard
 		.replace("{{id}}", id)
-		.replace("{{url}}", constants.imagePosterLink.concat(poster_path))
+		.replace("{{url}}", URL.imagePosterLink.concat(poster_path))
 		.replace("{{text}}", title)
 		.replace("{{5}}", movie_rate === null ? '' : movie_rate);
 	return htmlToElement(templateCardHtml);
