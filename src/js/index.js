@@ -1,14 +1,13 @@
 import "/css/filter.css"
 import "/css/style.css"
+import "./img"
 import {DOM} from "./dom.js"
 import {singIn, singUp} from "./singInFunctions"
 import {constants} from "./constants"
-import "./img"
 import {openSignIn, preview} from "./preview"
-import "./filter.js"
-import {getFilters} from "./filter.js"
-import {switchNext, switchPrev} from "./gallery";
-
+import {resetFilters} from "./filter.js"
+import {getFilters, openFilters} from "./filter.js"
+import {switchNext, switchPrev} from "./gallery"
 
 preview();
 
@@ -21,4 +20,6 @@ DOM.paginationBtnPrev.addEventListener(constants.click, switchPrev);
 DOM.paginationBtnNext.addEventListener(constants.click, switchNext);
 //============
 DOM.bigButton.addEventListener(constants.click, getFilters);
+DOM.filterButton.addEventListener(constants.click, openFilters);
+DOM.resetButton.addEventListener(constants.click, resetFilters);
 

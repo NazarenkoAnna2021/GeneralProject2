@@ -5,7 +5,6 @@ import * as visibility from './visibility'
 
 function randomGif() {
     const randomNum = Math.round(Math.random() * 10);
-    console.log(randomNum);
     switch (randomNum) {
         case 1: return gif.gif1;
         case 2: return gif.gif2;

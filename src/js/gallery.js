@@ -1,12 +1,12 @@
-import {DOM} from "./dom.js";
-import {constants} from "./constants";
+import { DOM } from "./dom.js";
+import { URL } from "./constants";
 
 let current = 1;
 let films = {};
 let pagesCount = 0;
 
 async function getResponseMoviePage(currentPageNumber) {
-	const res = await fetch(`${constants.URL}/movie?page=${currentPageNumber}`);
+	const res = await fetch(`${URL.URL}/movie?page=${currentPageNumber}`);
 	try {
 		return res.json();
 	} catch {
@@ -74,7 +74,7 @@ function check(current, lastPage) {
 function createCards({ id, poster_path, title, movie_rate }) {
 	const templateCardHtml = DOM.templateCard
 		.replace("{{id}}", id)
-		.replace("{{url}}", constants.imagePosterLink.concat(poster_path))
+		.replace("{{url}}", URL.imagePosterLink.concat(poster_path))
 		.replace("{{text}}", title)
 		.replace("{{5}}", movie_rate === null ? '' : movie_rate);
 	return htmlToElement(templateCardHtml);
