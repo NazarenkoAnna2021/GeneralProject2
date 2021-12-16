@@ -28,8 +28,8 @@
 			</div>
 			<div class="navigation">
 				<div class="header-search">
-					<input class="header-input">
-					<button class="search-btn"><img class="search__img" src="/img/serch.png"></button>
+					<input class="header-input" disabled>
+					<img class="search__img none" src="/img/serch.png">
 				</div>
 				<div class="login">
 					<img class="login__img" src="/img/iconSignIn.png">
@@ -47,26 +47,36 @@
 					<input type="radio" id="signin-input" name="sign-forms" value="" checked>
 					<label for="signin-input">Sing In</label>
 					<form class="sign-form" id="signin-form" action="">
-						<div class="error-signin"></div>
-						<input type="text" placeholder="login" class="inputs-signin" data="login" autofocus>
-						<div class="error-signin"></div>
-						<input type="password" placeholder="password" class="inputs-signin" data="password">
-						<button>login</button>
+						<div class="form-conteiner">
+							<div class="sign-form__tooltip error-signin" data-tooltip="includs only letters">
+								<input type="text" placeholder="login" class="inputs-signin" data="login" autofocus>
+							</div>
+							<div class="sign-form__tooltip error-signin" data-tooltip="this is pass, fool">
+								<input type="password" placeholder="password" class="inputs-signin" data="password">
+							</div>
+							<button>login</button>
+						</div>
 					</form>
 				</li>
 				<li>
 					<input type="radio" id="signup-input" name="sign-forms" value="">
 					<label for="signup-input">Sing Up</label>
 					<form class="sign-form" id="singup-form" action="">
-						<div class="error-signup"></div>
-						<input type="text" placeholder="first_name" class="inputs-signup" data="first-name">
-						<div class="error-signup"></div>
-						<input type="text" placeholder="last_name" class="inputs-signup" data="last-name">
-						<div class="error-signup"></div>
-						<input type="text" placeholder="login" class="inputs-signup" data="login">
-						<div class="error-signup"></div>
-						<input type="password" placeholder="password" class="inputs-signup" data="password">
-						<button>submit</button>
+						<div form-conteiner>
+							<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
+								<input type="text" placeholder="first_name" class="inputs-signup" data="first-name">
+							</div>
+							<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
+								<input type="text" placeholder="last_name" class="inputs-signup" data="last-name">
+							</div>
+							<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
+								<input type="text" placeholder="login" class="inputs-signup" data="login">
+							</div>
+							<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
+								<input type="password" placeholder="password" class="inputs-signup" data="password">
+							</div>
+							<button>submit</button>
+						</div>
 					</form>
 				</li>
 			</ul>
