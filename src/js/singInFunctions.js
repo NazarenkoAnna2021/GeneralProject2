@@ -55,7 +55,7 @@ function validation(element, errorsection) {
 	} else {
 		if (regexplogin.test(element[element.length - 2].value) === false) {
 			errorfunc('This field must starts with letter!', element.length - 2, errorsection)
-		}else{
+		} else {
 			errorfunc('This field is OK!', element.length - 2, errorsection)
 		}
 
@@ -96,7 +96,7 @@ async function postSingUp() {
 	if (response.ok) {
 
 
-	}else{
+	} else {
 		alert(result.message)
 	}
 }
@@ -117,10 +117,10 @@ async function postSingIn() {
 		showForm(DOM.searchImg);
 		DOM.headerInput.disabled = !DOM.headerInput.disabled;
 		changeImg('/img/signOut.png', DOM.loginImg);
-	}else {
+	} else {
 		alert(result.message)
 	}
-	}
+}
 
 function setUserBodyForFequest(obj) {
 	if (obj === userSingUp) {

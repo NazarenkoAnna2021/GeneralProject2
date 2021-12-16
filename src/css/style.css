@@ -401,7 +401,6 @@ span{
   transition: 150ms transform;
   transform-origin: bottom center;
 }
-
 .sign-form__tooltip::before {
   --translate-y: calc(-100% - var(--arrow-size));
 
@@ -414,16 +413,29 @@ span{
   max-width: 100%;
   background: var(--tooltip-color);
 }
-
 .sign-form__tooltip:hover::before,
 .sign-form__tooltip:hover::after {
   --scale: 1;
 }
-
 .sign-form__tooltip::after {
   --translate-y: calc(-1 * var(--arrow-size));
   content: '';
   border: var(--arrow-size) solid transparent;
   border-top-color: var(--tooltip-color);
   transform-origin: top center;
+}
+.main-area__filter-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #5A5339;
+    border-radius: 43px;
+    margin: 0 0 0 3vw;
+}
+.main-area__filter-img{
+    margin-top: 3px;
+    height: 80%;
+    width: 80%;
 }

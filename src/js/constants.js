@@ -1,8 +1,10 @@
 export const constants = {
     click: 'click',
+    src: 'src',
+}
+export const URL = {
     imagePosterLink: 'https://image.tmdb.org/t/p/original',
     URL: 'https://wowmeup.pp.ua',
-    src: 'src',
 }
 export const gif = {
     gif1: '/img/dribbble.gif',
@@ -13,3 +15,4 @@ export const gif = {
     gif6: '/img/prev6.gif',
     gif7: '/img/prev8.gif'
 }
+export const films = { movies: [] };
