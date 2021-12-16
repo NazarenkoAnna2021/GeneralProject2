@@ -24,5 +24,10 @@ export const DOM = {
     checkReleased: document.querySelector('#released'),
     countrySelect: document.querySelector('#country-select'),
     genresSelect: document.querySelector('#genres-select'),
-    bigButton: document.querySelector('.big-button')
+    bigButton: document.querySelector('.big-button'),
+    //for pagination
+    currentPage: document.querySelector('.current-page-number'),
+    lastPage: document.querySelector('.last-page-number'),
+    paginationBtnNext: document.querySelector('.main-area__next'),
+    paginationBtnPrev: document.querySelector('.main-area__previous'),
 }

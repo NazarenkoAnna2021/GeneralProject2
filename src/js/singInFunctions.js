@@ -1,7 +1,7 @@
-import { DOM } from "./dom"
-import { renderCards } from "./gallery"
+import {DOM} from "./dom"
+import {renderStartCards} from "./gallery"
 import "./img"
-import { hideForm, showForm, changeImg } from "./visibility"
+import {hideForm, showForm, changeImg} from "./visibility"
 
 const url = 'https://wowmeup.pp.ua/user/sing_up';//Это константа!!!
 
@@ -19,13 +19,13 @@ let userSingIn = {
 	password: null
 }
 
-export function singIn(e) {
+export async function singIn(e) {
 	e.preventDefault();
 	validation(DOM.singInInputs, DOM.errorsMessagesSingIn)
 	if (isValid(DOM.errorsMessagesSingIn)) {
 		setUserBodyForFequest(userSingIn)
-		postSingIn()
-		renderCards();
+		await postSingIn()
+		await renderStartCards();
 	}
 }
 
@@ -55,7 +55,7 @@ function validation(element, errorsection) {
 	} else {
 		if (regexplogin.test(element[element.length - 2].value) === false) {
 			errorfunc('This field must starts with letter!', element.length - 2, errorsection)
-		}else{
+		} else {
 			errorfunc('This field is OK!', element.length - 2, errorsection)
 		}
 
@@ -96,7 +96,7 @@ async function postSingUp() {
 	if (response.ok) {
 
 
-	}else{
+	} else {
 		alert(result.message)
 	}
 }
@@ -115,10 +115,10 @@ async function postSingIn() {
 		hideForm(DOM.modalIcon);
 		showForm(DOM.mainArea);
 		changeImg('/img/signOut.png', DOM.loginImg);
-	}else {
+	} else {
 		alert(result.message)
 	}
-	}
+}
 
 function setUserBodyForFequest(obj) {
 	if (obj === userSingUp) {
