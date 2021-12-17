@@ -62,15 +62,17 @@ function validation(element) {
 	if (element[element.length - 1].value.length < 8) {
 		marker(element[element.length - 1], 'red')
 	} else {
-		marker(element[element.length - 1], 'green')
-		countOfValidInputs++
+		if (constants.regExpLogin.test(element[element.length - 1].value) === false) {
+			marker(element[element.length - 1], 'red')
+		} else {
+			marker(element[element.length - 1], 'green')
+			countOfValidInputs++
+		}
 	}
 }
 
 function isValid(element) {
 	if (countOfValidInputs === element.length) {
-		console.log(element.length)
-		console.log(countOfValidInputs)
 		countOfValidInputs = 0;
 		return true
 	}
