@@ -9,7 +9,8 @@ export const DOM = {
     singInPassword: document.querySelector('#signin-form input[data="password"]'),
     singInButton: document.querySelector('#signin-form button'),
     singInInputs: document.querySelectorAll('.inputs-signin'),
-    errorsMessagesSingIn: document.querySelectorAll('.error-signin'),
+    messageSignIn : document.getElementById('messageSignIn'),
+    messageSignUp : document.getElementById('messageSignUp'),
 
     singUpFirstName: document.querySelector('#singup-form input[data="first-name"]'),
     singUpLastName: document.querySelector('#singup-form input[data="last-name"]'),
@@ -17,7 +18,6 @@ export const DOM = {
     singUpPassword: document.querySelector('#singup-form input[data="password"]'),
     singUpButton: document.querySelector('#singup-form button'),
     singUpInputs: document.querySelectorAll('.inputs-signup'),
-    errorsMessagesSingUp: document.querySelectorAll('.error-signup'),
 
     modalIcon: document.querySelector('.modal-icon'),
     mainArea: document.querySelector('.main-area'),
@@ -31,5 +31,11 @@ export const DOM = {
     checkReleased: document.querySelector('#released'),
     countrySelect: document.querySelector('#country-select'),
     genresSelect: document.querySelector('#genres-select'),
-    bigButton: document.querySelector('.big-button')
+    bigButton: document.querySelector('.big-button'),
+
+    title: document.querySelector('.title-film'),
+    poster: document.querySelector('.main-poster'),
+    filmRate: document.querySelector('.film-rate'),
+    filmDate: document.querySelector('.film-date'),
+
 }

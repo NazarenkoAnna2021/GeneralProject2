@@ -69,8 +69,9 @@ function validation(element) {
 
 function isValid(element) {
 	if (countOfValidInputs === element.length) {
-		countOfValidInputs = 0;
+		console.log(element.length)
 		console.log(countOfValidInputs)
+		countOfValidInputs = 0;
 		return true
 	}
 	console.log(countOfValidInputs)
@@ -93,7 +94,7 @@ async function postSingUp() {
 	if (response.ok) {
 		DOM.signInRadio.click()
 	}else{
-		alert(result.message)
+		DOM.messageSignUp.innerHTML = result.message
 	}
 }
 
@@ -109,8 +110,9 @@ async function postSingIn() {
 	if (response.ok) {
 		localStorage.setItem('token', result['token'])
 		isAuthorised()
+		DOM.messageSignIn.innerHTML = result.message
 	}else {
-		alert(result.message)
+		DOM.messageSignIn.innerHTML = result.message
 	}
 	}
 
@@ -128,7 +130,7 @@ function setUserBodyForFequest(obj) {
 }
 
 export function isAuthorised() {
-	if (!(localStorage.getItem('token') === 'undefined'))
+	if (!(localStorage.getItem('token') === 'undefined') && !(localStorage.getItem('token') === null))
 	{
 		hideForm(DOM.modalIcon);
 		showForm(DOM.mainArea);
@@ -138,4 +140,3 @@ export function isAuthorised() {
 		renderCards();
 	}
 }
-

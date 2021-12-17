@@ -3,6 +3,7 @@ import { gif, constants } from "./constants";
 import './img'
 import * as visibility from './visibility'
 import {isAuthorised} from "./singInFunctions";
+import {hideForm, showForm} from "./visibility";
 
 function randomGif() {
     const randomNum = Math.round(Math.random() * 10);
@@ -27,4 +28,13 @@ export function openSignIn() {
     visibility.hideForm(DOM.preview);
     visibility.showForm(DOM.modalIcon);
     isAuthorised()
+}
+
+export function signOut(){
+    localStorage.removeItem('token')
+    hideForm(DOM.preview);
+    showForm(DOM.modalIcon);
+    hideForm(DOM.mainArea);
+    hideForm(DOM.searchImg);
+    DOM.headerInput.disabled = true
 }
