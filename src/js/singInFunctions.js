@@ -1,7 +1,7 @@
-import { DOM } from "./dom"
-import { renderCards } from "./gallery"
+import {DOM} from "./dom"
+import {renderStartCards} from "./gallery"
 import "./img"
-import { hideForm, showForm, changeImg } from "./visibility"
+import {hideForm, showForm, changeImg} from "./visibility"
 
 const url = 'https://wowmeup.pp.ua/user/sing_up';//Это константа!!!
 
@@ -19,13 +19,13 @@ let userSingIn = {
 	password: null
 }
 
-export function singIn(e) {
+export async function singIn(e) {
 	e.preventDefault();
 	validation(DOM.singInInputs, DOM.errorsMessagesSingIn)
 	if (isValid(DOM.errorsMessagesSingIn)) {
 		setUserBodyForFequest(userSingIn)
-		postSingIn()
-		renderCards();
+		await postSingIn()
+		await renderStartCards();
 	}
 }
 

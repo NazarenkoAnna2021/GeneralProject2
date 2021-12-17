@@ -6,39 +6,48 @@
     font-family: 'Skranji', cursive;
     color: #ffffff;
 }
-*,*:before,*:after{
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
-input:focus{
+
+input:focus {
     outline: 0;
     box-shadow: 0 0 10px #ffffff;
 }
-input{
+
+input {
     border: 0px;
 }
-button{
+
+button {
     border: 0px;
 }
-body{
+
+body {
     background-color: #000000;
     color: #ffebcd;
 }
-a{
+
+a {
     color: #000000;
 }
+
 .container-login-form {
     width: 580px;
     height: 600px;
     position: relative;
     margin: 0 auto;
 }
+
 .login-form {
     justify-content: center;
     display: block;
 }
-.login-form li label{
+
+.login-form li label {
     display: block;
     text-align: center;
     width: 110px;
@@ -54,20 +63,22 @@ a{
     border-radius: 20%;
     cursor: pointer;
 }
+
 .sign-form {
-    display:none;
-    position:absolute;
+    display: none;
+    position: absolute;
     left: 0;
     top: 40px;
     border-radius: 195px;
-    padding:10px;
+    padding: 10px;
     height: 520px;
     width: 525px;
-    box-shadow:0px 0px 5px 0px #808080;
+    box-shadow: 0px 0px 5px 0px #808080;
     z-index: 1;
     background-image: url("http://localhost:4200/img/formFon.jpg");
     background-size: cover;
 }
+
 #singup-form{
     height: 620px;
     padding-top: 5%;
@@ -78,14 +89,16 @@ a{
     width: 515px;
     border-radius: 195px;
 }
-.login-form__img{
+
+.login-form__img {
     position: absolute;
     margin-right: 10px;
-    left: 0;    
+    left: 0;
     margin-bottom: 10px;
     top: 0;
     z-index: 1;
 }
+
 .sign-form input {
     background: #37361ef8;
     color: #ffffff;
@@ -98,24 +111,29 @@ a{
     z-index: 3;
     margin: 5px auto;
 }
+
 .sign-form input::placeholder {
     color: #ffffff;
 }
+
 .login-form input[type=radio] {
-    -webkit-appearance:none;
+    -webkit-appearance: none;
 }
+
 .login-form input[type=radio]:checked ~ .sign-form {
-    display:flex;
+    display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
 }
-input:hover, input:focus{
+
+input:hover, input:focus {
     background-color: #ecddb5ec;
     box-shadow: 0 0 10px #ffffff;
     color: #37361e;
     cursor: pointer;
 }
+
 .login-form button {
     background-color: #ecddb5f7;
     color: #000000;
@@ -128,13 +146,15 @@ input:hover, input:focus{
     margin: 10px auto;
     z-index: 3;
 }
-button:hover{
+
+button:hover {
     background-color: #f5e7c0f3;
     box-shadow: 0 0 10px #ffffff;
     cursor: pointer;
     
 }
-.modal-icon{
+
+.modal-icon {
     display: flex;
     justify-content: center;
     position: absolute;
@@ -142,7 +162,8 @@ button:hover{
     width: 100vw;
     height: 100vh;
 }
-.preview{
+
+.preview {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -150,19 +171,23 @@ button:hover{
     width: 100vw;
     height: 100vh;
 }
-.preview__gif{
+
+.preview__gif {
     width: 50vw;
     height: 50vh;
     object-fit: scale-down;
     cursor: pointer;
 }
+
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent;
 }
-.main-area{
+
+.main-area {
     height: 100vh;
 }
+
 .main-area__film-word{
     display: flex;
     justify-content: left;
@@ -170,28 +195,39 @@ button:hover{
     width: 90vw;
     margin: 10vh 0 6vh 7vw;
 }
-h1{
+
+h1 {
     color: #CDC6B0;
     text-align: left;
 }
-.main-area__films-area{
+
+.main-area__films-area {
     display: flex;
     justify-content: center;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     overflow: hidden;
     width: 100vw;
     min-height: 620px;
     color: #ffffff;
     padding-left: 20px;
 }
+
+ror-signup,
+.error-signin {
+    height: 20px;
+}
+
 .login-form li input:checked~label {
+
     background-color: #a2a574;
     box-shadow: 0 0 20px #dadada;
 }
+
 label:hover {
     box-shadow: 0 0 10px #ffffff;
 }
-.film-card{
+
+.film-card {
     display: flex;
     justify-content: center;
     width: 250px;
@@ -200,13 +236,15 @@ label:hover {
     margin: 0px 20px 20px 0px;
     border-radius: 45px;
 }
-.film-card__poster{
+
+.film-card__poster {
     width: 250px;
     height: 290px;
     border-radius: 45px;
     object-fit: cover;
 }
-.film-card__title{
+
+.film-card__title {
     background-color: #0b0a00c9;
     position: absolute;
     align-items: center;
@@ -215,36 +253,42 @@ label:hover {
     margin-top: 230px;
     border-radius: 40px;
 }
-.film-card__rate{
+
+.film-card__rate {
     position: absolute;
     font-size: 18px;
     margin: 7px 0px 0px 220px;
     color: #FFFFFF;
 }
-.film-card__title-text{
+
+.film-card__title-text {
     text-align: start;
     margin: 10px;
     color: #FFFFFF;
     width: 190px;
     height: 50px;
 }
-.header-inner{
+
+.header-inner {
     display: flex;
     width: 100vw;
     height: 60px;
     background-color: #9B8D62;
 }
-.logo{
+
+.logo {
     display: flex;
     margin-left: 6vw;
-    
+
 }
-.logo__img{
-  width: 127px;
-  height: 100%;
-  border-radius: 0;
+
+.logo__img {
+    width: 127px;
+    height: 100%;
+    border-radius: 0;
 }
-.logo__text{
+
+.logo__text {
     font-size: 50px;
     font-weight: 400;
     min-width: 445px;
@@ -252,20 +296,25 @@ label:hover {
     letter-spacing: 15px;
     cursor: pointer;
 }
-.logo__text:hover{
+
+.logo__text:hover {
     text-shadow: 0 0 10px #ffffff;
 }
-a:hover{
-    
+
+a:hover {
+
     color: rgb(32, 32, 32);
 }
-p{
+
+p {
     color: #000;
 }
-span{
+
+span {
     color: #9B8D62;
 }
-.header-input{
+
+.header-input {
     width: 255px;
     height: 33px;
     background-color: #5A5339;
@@ -275,24 +324,28 @@ span{
     font-size: 24px;
     cursor: pointer;
 }
-.navigation{
+
+.navigation {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin-left: 15vw;
 }
-.search__img{
+
+.search__img {
     display: flex;
     position: absolute;
     width: 29px;
     height: 30px;
     cursor: pointer;
 }
-.header-search{
+
+.header-search {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
+
 .header-input:disabled{
     opacity: .5;
 }
@@ -303,7 +356,8 @@ span{
     height: 30px;
     cursor: pointer;
 }
-.login{
+
+.login {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -313,7 +367,8 @@ span{
     border-radius: 43px;
     margin-left: 15vw;
 }
-.main-area__pagination{
+
+.main-area__pagination {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -321,6 +376,7 @@ span{
     width: 100vw;
     height: 60px;
 }
+
 .main-area__previous, .main-area__next, .search__img, .login__img {
     transition: all 0.8s ease 0s;
     cursor: pointer;
@@ -328,66 +384,93 @@ span{
   .main-area__previous:hover {
     position: relative;
     transform: translate(-10px);
-  }
-  .main-area__next:hover{
+}
+
+.main-area__next:hover {
     position: relative;
     transform: translate(10px);
-  }
-  .main-area__page-info{
-      font-size: 40px;
-  }
-  .search__img:hover, .login__img:hover{
+}
+
+.main-area__page-info {
+    font-size: 40px;
+}
+
+.search__img:hover, .login__img:hover {
     transform: rotate(360deg);
-  }
-.main-container{
+}
+
+.main-container {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
 }
-.title-film{
+
+.title-film {
     font-weight: 400;
     font-size: 48px;
-    color : #CDC6B0;
+    color: #CDC6B0;
     margin-top: 30px;
     margin-bottom: 20px;
 }
-.main-content{
+
+.main-content {
     display: flex;
     width: 100%;
     height: 400px;
     background: rgba(155, 141, 98, 0.5);
     border-radius: 48px;
 }
-.main-poster{
+
+.main-poster {
     margin: 28px;
     border-radius: 40px;
 }
-.film-deteils{
+
+.film-deteils {
     margin: 30px;
 }
-.film-date{
+
+.film-date {
     margin-top: 20px;
 }
-.film-country{
+
+.film-country {
     margin-top: 20px;
 }
-.film-maker{
+
+.film-maker {
     margin-top: 20px;
 }
-.film-genre{
+
+.film-genre {
     margin-top: 20px;
 }
-.film-actors{
+
+.film-actors {
     margin-top: 20px;
 }
-.discription{
+
+.discription {
     margin: 30px;
     font-weight: 400;
     font-size: 20px;
     color: #CDC6B0;
 }
+
 .none {
     display: none;
+}
+
+/*pagination*/
+.disabled {
+    pointer-events: none;
+    cursor: none;
+    opacity: 0.5;
+}
+
+.current-page-number,
+.last-page-number {
+    color: #000;
 }
 .form-conteiner{
     display: flex;
