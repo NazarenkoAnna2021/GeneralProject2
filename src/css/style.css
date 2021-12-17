@@ -52,6 +52,7 @@ a{
     background-color: #4a4800e6;
     font-size: 1.7em;
     border-radius: 20%;
+    cursor: pointer;
 }
 .sign-form {
     display:none;
@@ -113,6 +114,7 @@ input:hover, input:focus{
     background-color: #ecddb5ec;
     box-shadow: 0 0 10px #ffffff;
     color: #37361e;
+    cursor: pointer;
 }
 .login-form button {
     background-color: #ecddb5f7;
@@ -129,6 +131,7 @@ input:hover, input:focus{
 button:hover{
     background-color: #f5e7c0f3;
     box-shadow: 0 0 10px #ffffff;
+    cursor: pointer;
     
 }
 .modal-icon{
@@ -151,6 +154,7 @@ button:hover{
     width: 50vw;
     height: 50vh;
     object-fit: scale-down;
+    cursor: pointer;
 }
 ::-webkit-scrollbar {
     width: 0px;
@@ -246,6 +250,7 @@ label:hover {
     min-width: 445px;
     margin-left: 20px;
     letter-spacing: 15px;
+    cursor: pointer;
 }
 .logo__text:hover{
     text-shadow: 0 0 10px #ffffff;
@@ -268,6 +273,7 @@ span{
     border: none;
     text-align: center;
     font-size: 24px;
+    cursor: pointer;
 }
 .navigation{
     display: flex;
@@ -280,6 +286,7 @@ span{
     position: absolute;
     width: 29px;
     height: 30px;
+    cursor: pointer;
 }
 .header-search{
     display: flex;
@@ -294,6 +301,7 @@ span{
     border-radius: 0;
     width: 30px;
     height: 30px;
+    cursor: pointer;
 }
 .login{
     display: flex;
@@ -315,6 +323,7 @@ span{
 }
 .main-area__previous, .main-area__next, .search__img, .login__img {
     transition: all 0.8s ease 0s;
+    cursor: pointer;
   }
   .main-area__previous:hover {
     position: relative;
@@ -438,4 +447,5 @@ span{
     margin-top: 3px;
     height: 80%;
     width: 80%;
+    cursor: pointer;
 }
