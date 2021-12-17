@@ -456,3 +456,13 @@ span{
     width: 80%;
     cursor: pointer;
 }
+/*pagination*/
+.disabled {
+    pointer-events: none;
+    cursor: none;
+    opacity: 0.5;
+}
+.current-page-number,
+.last-page-number {
+    color: #000;
+}
