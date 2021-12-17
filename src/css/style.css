@@ -67,6 +67,10 @@ a{
     background-image: url("http://localhost:4200/img/formFon.jpg");
     background-size: cover;
 }
+#singup-form{
+    height: 620px;
+    padding-top: 5%;
+}
 .login-form__background{
     object-fit: cover;
     height: 519px;
@@ -156,12 +160,15 @@ button:hover{
     height: 100vh;
 }
 .main-area__film-word{
+    display: flex;
+    justify-content: left;
     height: 50px;
     width: 90vw;
-    margin: 10vh 0vw 6vh 6vw;
+    margin: 10vh 0 6vh 7vw;
 }
 h1{
     color: #CDC6B0;
+    text-align: left;
 }
 .main-area__films-area{
     display: flex;
@@ -172,10 +179,6 @@ h1{
     min-height: 620px;
     color: #ffffff;
     padding-left: 20px;
-}
-.error-signup,
-.error-signin {
-    height: 20px;
 }
 .login-form li input:checked~label {
     background-color: #a2a574;
@@ -242,6 +245,14 @@ label:hover {
     font-weight: 400;
     min-width: 445px;
     margin-left: 20px;
+    letter-spacing: 15px;
+}
+.logo__text:hover{
+    text-shadow: 0 0 10px #ffffff;
+}
+a:hover{
+    
+    color: rgb(32, 32, 32);
 }
 p{
     color: #000;
@@ -274,6 +285,9 @@ span{
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+.header-input:disabled{
+    opacity: .5;
 }
 .login__img{
     position: absolute;
@@ -365,4 +379,51 @@ span{
 }
 .none {
     display: none;
+}
+.form-conteiner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sign-form__tooltip{
+    margin-bottom: 5%;
+}
+.sign-form__tooltip::before,
+.sign-form__tooltip::after {
+  --scale: 0;
+  --arrow-size: 20px;
+  --tooltip-color: #cdc6b0d3;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(var(--translate-y, 0)) scale(var(--scale));
+  transition: 150ms transform;
+  transform-origin: bottom center;
+}
+
+.sign-form__tooltip::before {
+  --translate-y: calc(-100% - var(--arrow-size));
+
+  content: attr(data-tooltip);
+  color: white;
+  padding: 4px;
+  border-radius: 30px;
+  text-align: center;
+  width: max-content;
+  max-width: 100%;
+  background: var(--tooltip-color);
+}
+
+.sign-form__tooltip:hover::before,
+.sign-form__tooltip:hover::after {
+  --scale: 1;
+}
+
+.sign-form__tooltip::after {
+  --translate-y: calc(-1 * var(--arrow-size));
+  content: '';
+  border: var(--arrow-size) solid transparent;
+  border-top-color: var(--tooltip-color);
+  transform-origin: top center;
 }

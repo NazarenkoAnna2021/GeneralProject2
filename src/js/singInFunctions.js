@@ -2,11 +2,8 @@ import { DOM } from "./dom"
 import { renderCards } from "./gallery"
 import "./img"
 import { hideForm, showForm, changeImg } from "./visibility"
+import {constants} from "./constants";
 
-const url = 'https://wowmeup.pp.ua/user/sing_up';//Это константа!!!
-
-const regexp = /^[A-Z][a-z]+$/;
-const regexplogin = /^[a-zA-Z][a-zA-Z0-9]+$/
 
 let userSingUp = {
 	first_name: null,
@@ -19,75 +16,73 @@ let userSingIn = {
 	password: null
 }
 
+let countOfValidInputs = 0;
+
 export function singIn(e) {
 	e.preventDefault();
-	validation(DOM.singInInputs, DOM.errorsMessagesSingIn)
-	if (isValid(DOM.errorsMessagesSingIn)) {
+	validation(DOM.singInInputs)
+	if (isValid(DOM.singInInputs)) {
 		setUserBodyForFequest(userSingIn)
 		postSingIn()
-		renderCards();
 	}
 }
 
 export function singUp(e) {
 	e.preventDefault();
-	validation(DOM.singUpInputs, DOM.errorsMessagesSingUp)
-	if (isValid(DOM.errorsMessagesSingUp)) {
+	validation(DOM.singUpInputs)
+	if (isValid(DOM.singUpInputs)) {
 		setUserBodyForFequest(userSingUp)
 		postSingUp()
 	}
 }
 
-function validation(element, errorsection) {
-	for (let i = 0; i < element.length - 2; i++) {//Использовать forEach
-		if (element[i].value.length < 3) errorfunc('This field must contains at least 3 letters!', i, errorsection)
+function validation(element) {
+	for (let i = 0; i < element.length - 2; i++) {
+		if (element[i].value.length < 3) marker(element[i], 'red')
 		else {
-			if (regexp.test(element[i].value) === false) {
-				errorfunc('This field must contains only letters, and first must be title!', i, errorsection)
+			if (constants.regExp.test(element[i].value) === false) {
+				marker(element[i], 'red')
 			} else {
-				errorfunc('This field is OK!', i, errorsection)
-			}// тут нужна тернарка
+				marker(element[i], 'green')
+				countOfValidInputs++
+			}
 		}
 	}
 
 	if (element[element.length - 2].value.length < 3) {
-		errorfunc('This field must contains at least 3 letters or numbers!', element.length - 2, errorsection)
+		marker(element[element.length - 2], 'red')
 	} else {
-		if (regexplogin.test(element[element.length - 2].value) === false) {
-			errorfunc('This field must starts with letter!', element.length - 2, errorsection)
+		if (constants.regExpLogin.test(element[element.length - 2].value) === false) {
+			marker(element[element.length - 2], 'red')
 		}else{
-			errorfunc('This field is OK!', element.length - 2, errorsection)
+			marker(element[element.length - 2], 'green')
+			countOfValidInputs++
 		}
-
 	}
 	if (element[element.length - 1].value.length < 8) {
-		errorfunc('This field must contains at least 8 symbols and 1 number!', element.length - 1, errorsection)
+		marker(element[element.length - 1], 'red')
 	} else {
-		errorfunc('This field is OK!', element.length - 1, errorsection)
+		marker(element[element.length - 1], 'green')
+		countOfValidInputs++
 	}
 }
 
 function isValid(element) {
-	let countofvalidinputs = 0;
-	for (let i = 0; i < element.length; i++) {//Использовать forEach
-		if (element[i].innerText === 'This field is OK!') {
-			countofvalidinputs++
-		}
-	}
-	if (countofvalidinputs === element.length) {
+	if (countOfValidInputs === element.length) {
+		countOfValidInputs = 0;
+		console.log(countOfValidInputs)
 		return true
 	}
+	console.log(countOfValidInputs)
+	countOfValidInputs = 0;
 }
 
-
-
-function errorfunc(textoferror, position, errorsection) {
-	let error = errorsection
-	error[position].innerHTML = textoferror
+function marker(input, color) {
+	input.style.boxShadow = `0 0 10px ${color}`
 }
 
 async function postSingUp() {
-	let response = await fetch('https://wowmeup.pp.ua/user/sing_up', {
+	let response = await fetch(constants.signUpURL, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8'
@@ -96,15 +91,14 @@ async function postSingUp() {
 	});
 	let result = await response.json();
 	if (response.ok) {
-
-
+		DOM.signInRadio.click()
 	}else{
 		alert(result.message)
 	}
 }
 
 async function postSingIn() {
-	let response = await fetch('https://wowmeup.pp.ua/user/sign_in', {
+	let response = await fetch(constants.signInURL, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8'
@@ -114,9 +108,7 @@ async function postSingIn() {
 	let result = await response.json();
 	if (response.ok) {
 		localStorage.setItem('token', result['token'])
-		hideForm(DOM.modalIcon);
-		showForm(DOM.mainArea);
-		changeImg('/img/signOut.png', DOM.loginImg);
+		isAuthorised()
 	}else {
 		alert(result.message)
 	}
@@ -134,3 +126,16 @@ function setUserBodyForFequest(obj) {
 		userSingIn.password = DOM.singInPassword.value
 	}
 }
+
+export function isAuthorised() {
+	if (!(localStorage.getItem('token') === 'undefined'))
+	{
+		hideForm(DOM.modalIcon);
+		showForm(DOM.mainArea);
+		showForm(DOM.searchImg);
+		DOM.headerInput.disabled = !DOM.headerInput.disabled;
+		changeImg('/img/signOut.png', DOM.loginImg);
+		renderCards();
+	}
+}
+
