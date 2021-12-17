@@ -9,6 +9,7 @@ import { resetFilters } from "./filter.js"
 import {getFilters, openFilters} from "./filter.js"
 import {switchNext, switchPrev} from "./gallery";
 
+
 preview();
 
 DOM.loginImg.addEventListener(constants.click, openSignIn);

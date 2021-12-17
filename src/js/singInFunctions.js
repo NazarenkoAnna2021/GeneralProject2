@@ -19,13 +19,13 @@ let userSingIn = {
 	password: null
 }
 
-export async function singIn(e) {
+export function singIn(e) {
 	e.preventDefault();
 	validation(DOM.singInInputs, DOM.errorsMessagesSingIn)
 	if (isValid(DOM.errorsMessagesSingIn)) {
 		setUserBodyForFequest(userSingIn)
-		await postSingIn()
-		await renderStartCards();
+		postSingIn()
+		renderCards();
 	}
 }
 
