@@ -1,5 +1,5 @@
 import { DOM } from "./dom"
-import { renderCards } from "./gallery"
+import {renderStartCards} from "./gallery"
 import "./img"
 import { hideForm, showForm, changeImg } from "./visibility"
 
@@ -19,13 +19,13 @@ let userSingIn = {
 	password: null
 }
 
-export function singIn(e) {
+export async function singIn(e) {
 	e.preventDefault();
 	validation(DOM.singInInputs, DOM.errorsMessagesSingIn)
 	if (isValid(DOM.errorsMessagesSingIn)) {
 		setUserBodyForFequest(userSingIn)
-		postSingIn()
-		renderCards();
+		await postSingIn()
+		await renderStartCards()
 	}
 }
 

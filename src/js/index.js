@@ -7,6 +7,8 @@ import { constants } from "./constants"
 import { openSignIn, preview } from "./preview"
 import { resetFilters } from "./filter.js"
 import {getFilters, openFilters} from "./filter.js"
+import {switchNext, switchPrev} from "./gallery";
+
 
 preview();
 
@@ -17,3 +19,7 @@ DOM.preview.addEventListener(constants.click, openSignIn);
 DOM.bigButton.addEventListener(constants.click, getFilters);
 DOM.filterButton.addEventListener(constants.click, openFilters);
 DOM.resetButton.addEventListener(constants.click, resetFilters);
+//pagination
+DOM.paginationBtnPrev.addEventListener(constants.click, switchPrev);
+DOM.paginationBtnNext.addEventListener(constants.click, switchNext);
+//============
