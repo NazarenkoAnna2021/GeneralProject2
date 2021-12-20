@@ -456,7 +456,6 @@ span{
     width: 80%;
     cursor: pointer;
 }
-/*pagination*/
 .disabled {
     pointer-events: none;
     cursor: none;

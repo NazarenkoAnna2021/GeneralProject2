@@ -75,6 +75,7 @@
 							<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
 								<input type="password" placeholder="password" class="inputs-signup" data="password">
 							</div>
+							<div id="messageSignUp"></div>
 							<button>submit</button>
 						</div>
 					</form>
@@ -84,93 +85,93 @@
 	</div>
 	<div class="main-area none">
 		<div class="filters-form none">
-			<button class="reset-button filter-buttons">RST</button>
-			<div class="wrapper year">
-				<div class="values">
-					<span class="range1">
-						0
-					</span>
-					<span class="range-name"> YEARS </span>
-					<span class="range2">
-						100
-					</span>
+				<button class="reset-button filter-buttons">RST</button>
+				<div class="wrapper year">
+					<div class="values">
+						<span class="range1">
+							 0 
+						</span>
+						<span class="range-name"> YEARS </span>
+						<span class="range2">
+							 100 
+						</span>
+					</div>
+					<div class="container-range">
+						<div class="slider-track"></div>
+						<input type="range" min="1895" max="2022" value="1950" class="slider-1">
+						<input type="range" min="1895" max="2022" value="1989" class="slider-2">
+					</div>
 				</div>
-				<div class="container-range">
-					<div class="slider-track"></div>
-					<input type="range" min="1895" max="2022" value="1950" class="slider-1">
-					<input type="range" min="1895" max="2022" value="1989" class="slider-2">
+				<div class="wrapper budget">
+					<div class="values">
+						<span class="range1">
+							 0 
+						</span>
+						<span class="range-name"> BUDGET </span>
+						<span class="range2">
+							 100 
+						</span>
+					</div>
+					<div class="container-range">
+						<div class="slider-track"></div>
+						<input type="range" min="0" max="400" value="30" class="slider-1">
+						<input type="range" min="0" max="400" value="170" class="slider-2">
+					</div>
 				</div>
-			</div>
-			<div class="wrapper budget">
-				<div class="values">
-					<span class="range1">
-						0
-					</span>
-					<span class="range-name"> BUDGET </span>
-					<span class="range2">
-						100
-					</span>
+				<div class="wrapper rating">
+					<div class="values">
+						<span class="range1">
+							 0 
+						</span>
+						<span class="range-name"> RATING </span>
+						<span class="range2">
+							 100 
+						</span>
+					</div>
+					<div class="container-range">
+						<div class="slider-track"></div>
+						<input type="range" min="0" max="10" value="5" class="slider-1">
+						<input type="range" min="0" max="10" value="10" class="slider-2">
+					</div>
 				</div>
-				<div class="container-range">
-					<div class="slider-track"></div>
-					<input type="range" min="0" max="400" value="30" class="slider-1">
-					<input type="range" min="0" max="400" value="170" class="slider-2">
+				<div class="country column">
+					<label class="label-select" for="country-select">COUNTRY</label>
+					<select name="country" id="country-select">
+						<option value="all">all</option>
+						<option value="en">EN</option>
+						<option value="ru">RU</option>
+						<option value="ua">UA</option>
+					</select>
 				</div>
-			</div>
-			<div class="wrapper rating">
-				<div class="values">
-					<span class="range1">
-						0
-					</span>
-					<span class="range-name"> RATING </span>
-					<span class="range2">
-						100
-					</span>
+				<div class="genres column">
+					<label class="label-select" for="genres-select">GENRES</label>
+					<select name="genres" id="genres-select">
+						<option value="all">all</option>
+						<option value="comedy">comedy</option>
+						<option value="horror">horror</option>
+						<option value="sci-fi">sci-fi</option>
+						<option value="fantasy">fantasy</option>
+					</select>
 				</div>
-				<div class="container-range">
-					<div class="slider-track"></div>
-					<input type="range" min="0" max="10" value="5" class="slider-1">
-					<input type="range" min="0" max="10" value="10" class="slider-2">
+				<div class="status column">
+					<label class="label-select" for="status-select">STATUS</label>
+					<select name="status" id="status-select">
+						<option value="all">all</option>
+						<option value="released">released</option>
+						<option value="in_production">in product</option>
+						<option value="trailer">trailer</option>
+					</select>
 				</div>
-			</div>
-			<div class="country column">
-				<label class="label-select" for="country-select">COUNTRY</label>
-				<select name="country" id="country-select" class="select">
-					<option value="all">all</option>
-					<option value="en">EN</option>
-					<option value="ru">RU</option>
-					<option value="ua">UA</option>
-				</select>
-			</div>
-			<div class="genres column">
-				<label class="label-select" for="genres-select">GENRES</label>
-				<select name="genres" id="genres-select" class="select">
-					<option value="all">all</option>
-					<option value="comedy">comedy</option>
-					<option value="horror">horror</option>
-					<option value="sci-fi">sci-fi</option>
-					<option value="fantasy">fantasy</option>
-				</select>
-			</div>
-			<div class="status column">
-				<label class="label-select" for="status-select">STATUS</label>
-				<select name="status" id="status-select" class="select">
-					<option value="all">all</option>
-					<option value="released">released</option>
-					<option value="in_production">in product</option>
-					<option value="trailer">trailer</option>
-				</select>
-			</div>
-			<div class="checkboxs column">
-				<div>
-					<label for="adult" class="check-container">adult
-						<input type="checkbox" name="adult" id="adult">
-						<span class="checkmark"></span>
-					</label>
+				<div class="checkboxs column">
+					<div>
+						<label for="adult" class="check-container">adult
+							<input type="checkbox" name="adult" id="adult">
+							<span class="checkmark"></span>
+						</label>
+					</div>
 				</div>
+				<button class="go-button filter-buttons">GO</button>
 			</div>
-			<button class="go-button filter-buttons">GO</button>
-		</div>
 		<div class="main-area__film-word">
 			<h1>FILMS</h1>
 			<div class="main-area__filter-button">

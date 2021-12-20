@@ -4,12 +4,14 @@ export const DOM = {
     loginImg: document.querySelector('.login__img'),
     searchImg: document.querySelector('.search__img'),
     headerInput: document.querySelector('.header-input'),
+    signInRadio: document.getElementById('signin-input'),
 
     singInLogin: document.querySelector('#signin-form input[data="login"]'),
     singInPassword: document.querySelector('#signin-form input[data="password"]'),
     singInButton: document.querySelector('#signin-form button'),
     singInInputs: document.querySelectorAll('.inputs-signin'),
-    errorsMessagesSingIn: document.querySelectorAll('.error-signin'),
+    messageSignIn : document.getElementById('messageSignIn'),
+    messageSignUp : document.getElementById('messageSignUp'),
 
     singUpFirstName: document.querySelector('#singup-form input[data="first-name"]'),
     singUpLastName: document.querySelector('#singup-form input[data="last-name"]'),
@@ -17,7 +19,6 @@ export const DOM = {
     singUpPassword: document.querySelector('#singup-form input[data="password"]'),
     singUpButton: document.querySelector('#singup-form button'),
     singUpInputs: document.querySelectorAll('.inputs-signup'),
-    errorsMessagesSingUp: document.querySelectorAll('.error-signup'),
 
     modalIcon: document.querySelector('.modal-icon'),
     mainArea: document.querySelector('.main-area'),
@@ -37,10 +38,9 @@ export const DOM = {
     countrySelect: document.querySelector('#country-select'),
     genresSelect: document.querySelector('#genres-select'),
     bigButton: document.querySelector('.go-button'),
-    //for pagination
+
     currentPage: document.querySelector('.current-page-number'),
     lastPage: document.querySelector('.last-page-number'),
     paginationBtnNext: document.querySelector('.main-area__next'),
-    paginationBtnPrev: document.querySelector('.main-area__previous'),
-    //=================
+    paginationBtnPrev: document.querySelector('.main-area__previous')
 }
