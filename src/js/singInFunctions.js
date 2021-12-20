@@ -1,8 +1,8 @@
 import { DOM } from "./dom"
-import {renderStartCards} from "./gallery"
+import { renderStartCards } from "./gallery"
 import "./img"
-import { hideForm, showForm, changeImg } from "./visibility"
-import {constants} from "./constants";
+import { hideShowElement, changeImg } from "./visibility"
+import { URL, constants } from "./constants";
 
 
 let userSingUp = {
@@ -54,7 +54,7 @@ function validation(element) {
 	} else {
 		if (constants.regExpLogin.test(element[element.length - 2].value) === false) {
 			marker(element[element.length - 2], 'red')
-		}else{
+		} else {
 			marker(element[element.length - 2], 'green')
 			countOfValidInputs++
 		}
@@ -85,7 +85,7 @@ function marker(input, color) {
 }
 
 async function postSingUp() {
-	let response = await fetch(constants.signUpURL, {
+	let response = await fetch(URL.signUpURL, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8'
@@ -95,13 +95,13 @@ async function postSingUp() {
 	let result = await response.json();
 	if (response.ok) {
 		DOM.signInRadio.click()
-	}else{
+	} else {
 		DOM.messageSignUp.innerHTML = result.message
 	}
 }
 
 async function postSingIn() {
-	let response = await fetch(constants.signInURL, {
+	let response = await fetch(URL.signInURL, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8'
@@ -113,7 +113,7 @@ async function postSingIn() {
 		localStorage.setItem('token', result['token'])
 		isAuthorised()
 		DOM.messageSignIn.innerHTML = result.message
-	}else {
+	} else {
 		DOM.messageSignIn.innerHTML = result.message
 	}
 }
@@ -132,23 +132,27 @@ function setUserBodyForFequest(obj) {
 }
 
 export function isAuthorised() {
-	if (!(localStorage.getItem('token') === 'undefined') && !(localStorage.getItem('token') === null))
-	{
-		hideForm(DOM.modalIcon);
-		showForm(DOM.mainArea);
-		showForm(DOM.searchImg);
+	if (!(localStorage.getItem('token') === 'undefined') && !(localStorage.getItem('token') === null)) {
+		hideShowElement(DOM.modalIcon);
+		hideShowElement(DOM.mainArea);
+		hideShowElement(DOM.searchImg);
 		DOM.headerInput.disabled = !DOM.headerInput.disabled;
 		changeImg('/img/signOut.png', DOM.loginImg);
 		renderStartCards();
 	}
 }
 
-export function signOut(){
-    localStorage.removeItem('token')
-    hideForm(DOM.preview);
-    showForm(DOM.modalIcon);
-    hideForm(DOM.mainArea);
-    hideForm(DOM.searchImg);
-    changeImg('/img/iconSignIn.png', DOM.loginImg);
-    DOM.headerInput.disabled = true;
+export function openSignIn() {
+	hideShowElement(DOM.preview);
+	hideShowElement(DOM.modalIcon);
+	isAuthorised();
+}
+
+export function signOut() {
+	localStorage.removeItem('token')
+	DOM.mainArea.classList.value();
+	hideShowElement(DOM.mainArea);
+	hideShowElement(DOM.searchImg);
+	changeImg('/img/iconSignIn.png', DOM.loginImg);
+	DOM.headerInput.disabled = true;
 }

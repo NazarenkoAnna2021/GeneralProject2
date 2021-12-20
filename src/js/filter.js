@@ -1,5 +1,5 @@
 import { DOM } from "./dom.js"
-import { hideForm, showForm } from "./visibility"
+import { hideShowElement } from "./visibility"
 
 class DoubleRange {
     constructor(container) {
@@ -62,7 +62,7 @@ export function resetFilters() {
     DOM.genresSelect.value = 'all';
     DOM.statusSelect.value = 'all';
 }
-export function openFilters() {showForm(DOM.filtersForm)}
+export function openFilters() {hideShowElement(DOM.filtersForm)};
 const doubleRangeYear = new DoubleRange('year');
 const doubleRangeBudget = new DoubleRange('budget');
 const doubleRangeRating = new DoubleRange('rating');

@@ -24,13 +24,13 @@ module.exports = {
                 collapseWhitespace: isProd
             }
         }),
-        new HTMLWebpackPlugin({
+        /* new HTMLWebpackPlugin({
             template: path.resolve('src/filmPage.html'),
             filename: 'filmPage.html',
             minify: {
                 collapseWhitespace: isProd
             }
-        }),
+        }), */
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: `./css/${filename('css')}`

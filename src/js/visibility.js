@@ -1,12 +1,8 @@
 
-export function hideForm(form) {
-	form.classList.add('none');
+export function hideShowElement(form) {
+	form.classList.toggle('none');
 }
 
 export function changeImg(url, dom) {
 	dom.setAttribute('src', url);
-}
-
-export function showForm(form) {
-	form.classList.remove('none');
 }
