@@ -54,7 +54,6 @@
 							<div class="sign-form__tooltip error-signin" data-tooltip="this is pass, fool">
 								<input type="password" placeholder="password" class="inputs-signin" data="password">
 							</div>
-							<div id="messageSignIn"></div>
 							<button>login</button>
 						</div>
 					</form>
@@ -85,7 +84,7 @@
 		</div>
 	</div>
 	<div class="main-area none">
-		<div class="filters-form">
+		<div class="filters-form none">
 				<button class="reset-button filter-buttons">RST</button>
 				<div class="wrapper year">
 					<div class="values">
@@ -175,11 +174,14 @@
 			</div>
 		<div class="main-area__film-word">
 			<h1>FILMS</h1>
+			<div class="main-area__filter-button">
+				<img class="main-area__filter-img " src="/img/filters.png">
+			</div>
 		</div>
 		<div class="main-area__films-area"></div>
 		<div class="main-area__pagination">
-			<img class="main-area__previous" src="/img/arrowLeft-64.png" alt="">
-			<p class="main-area__page-info">1/?</p>
+			<img class="main-area__previous disabled" src="/img/arrowLeft-64.png" alt="">
+			<p class="main-area__page-info"><span class="current-page-number">1</span>/<span class="last-page-number">?</span></p>
 			<img class="main-area__next" src="/img/arrowRight-64.png" alt="">
 		</div>
 	</div>

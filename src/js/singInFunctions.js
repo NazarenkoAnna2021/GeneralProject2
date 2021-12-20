@@ -1,5 +1,5 @@
 import { DOM } from "./dom"
-import { renderCards } from "./gallery"
+import {renderStartCards} from "./gallery"
 import "./img"
 import { hideForm, showForm, changeImg } from "./visibility"
 import {constants} from "./constants";
@@ -116,7 +116,7 @@ async function postSingIn() {
 	}else {
 		DOM.messageSignIn.innerHTML = result.message
 	}
-	}
+}
 
 function setUserBodyForFequest(obj) {
 	if (obj === userSingUp) {
@@ -139,6 +139,16 @@ export function isAuthorised() {
 		showForm(DOM.searchImg);
 		DOM.headerInput.disabled = !DOM.headerInput.disabled;
 		changeImg('/img/signOut.png', DOM.loginImg);
-		renderCards();
+		renderStartCards();
 	}
+}
+
+export function signOut(){
+    localStorage.removeItem('token')
+    hideForm(DOM.preview);
+    showForm(DOM.modalIcon);
+    hideForm(DOM.mainArea);
+    hideForm(DOM.searchImg);
+    changeImg('/img/iconSignIn.png', DOM.loginImg);
+    DOM.headerInput.disabled = true;
 }

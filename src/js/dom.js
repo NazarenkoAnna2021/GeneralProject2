@@ -5,6 +5,7 @@ export const DOM = {
     searchImg: document.querySelector('.search__img'),
     headerInput: document.querySelector('.header-input'),
     signInRadio: document.getElementById('signin-input'),
+
     singInLogin: document.querySelector('#signin-form input[data="login"]'),
     singInPassword: document.querySelector('#signin-form input[data="password"]'),
     singInButton: document.querySelector('#signin-form button'),
@@ -23,19 +24,23 @@ export const DOM = {
     mainArea: document.querySelector('.main-area'),
 
     filmsArea: document.querySelector('.main-area__films-area'),
+    filterButton: document.querySelector('.main-area__filter-img'),
+    filtersForm: document.querySelector('.filters-form'),
     templateCard: document.querySelector('#template-card').innerHTML,
+    statusSelect: document.querySelector('.label-select'),
+    resetButton: document.querySelector('.reset-button'),
+
     pagination: document.querySelector('.main-area__pagination'),
 
     checkAdult: document.querySelector('#adult'),
     checkPaidOff: document.querySelector('#paid-off'),
-    checkReleased: document.querySelector('#released'),
+    checkReleased: document.querySelector('#status-select'),
     countrySelect: document.querySelector('#country-select'),
     genresSelect: document.querySelector('#genres-select'),
-    bigButton: document.querySelector('.big-button'),
+    bigButton: document.querySelector('.go-button'),
 
-    title: document.querySelector('.title-film'),
-    poster: document.querySelector('.main-poster'),
-    filmRate: document.querySelector('.film-rate'),
-    filmDate: document.querySelector('.film-date'),
-
+    currentPage: document.querySelector('.current-page-number'),
+    lastPage: document.querySelector('.last-page-number'),
+    paginationBtnNext: document.querySelector('.main-area__next'),
+    paginationBtnPrev: document.querySelector('.main-area__previous')
 }

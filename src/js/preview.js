@@ -7,7 +7,6 @@ import {hideForm, showForm} from "./visibility";
 
 function randomGif() {
     const randomNum = Math.round(Math.random() * 10);
-    console.log(randomNum);
     switch (randomNum) {
         case 1: return gif.gif1;
         case 2: return gif.gif2;
@@ -28,13 +27,4 @@ export function openSignIn() {
     visibility.hideForm(DOM.preview);
     visibility.showForm(DOM.modalIcon);
     isAuthorised()
-}
-
-export function signOut(){
-    localStorage.removeItem('token')
-    hideForm(DOM.preview);
-    showForm(DOM.modalIcon);
-    hideForm(DOM.mainArea);
-    hideForm(DOM.searchImg);
-    DOM.headerInput.disabled = true
 }

@@ -1,12 +1,15 @@
 export const constants = {
     click: 'click',
-    imagePosterLink: 'https://image.tmdb.org/t/p/original',
-    URL: 'https://wowmeup.pp.ua',
     src: 'src',
     regExp: /^[A-Z][a-z]+$/,
     regExpLogin: /^[a-zA-Z][a-zA-Z0-9]+$/,
     signUpURL : 'https://wowmeup.pp.ua/user/sing_up',
     signInURL : 'https://wowmeup.pp.ua/user/sign_in',
+    src: 'src',
+}
+export const URL = {
+    imagePosterLink: 'https://image.tmdb.org/t/p/original',
+    URL: 'https://wowmeup.pp.ua',
 }
 export const gif = {
     gif1: '/img/dribbble.gif',

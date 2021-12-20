@@ -1,5 +1,5 @@
 :root {
-    --main-bg-color: ;
+    /*--main-bg-color: ;*/
     --main-text-color: #ffffff;
     --input-bg-color: #9B8D62;
     --button-font-size: 2em;
@@ -115,6 +115,9 @@ select{
 .label-select{
     margin-bottom: 10px;
     border: none;
+    text-align: center;
+    font-size: 1em;
+    color: var(--input-bg-color);
 }
 .filter-buttons{
     width: 70px;
@@ -124,11 +127,12 @@ select{
     font-size: var(--button-font-size);
 }
 .go-button{
-    background-color: #ECDDB5;
+    background-color: #f7e3ae; 
+    box-shadow: inset 0 0 10px var(--checkmark-bg-color);
     margin-right: 5px;
 }
 .reset-button{
-    background-color: rgb(224, 145, 145);
+    background-color: #6e6446;
     margin-left: 5px;
 }
 .filters-form{
@@ -148,7 +152,7 @@ select{
 .checkboxs{
     margin-top: 10px;
 }
-.filters-form label:hover {
+.filters-form label:hover, .filters-form input:hover {
     box-shadow: none;
 }
 .check-container {
@@ -162,6 +166,7 @@ select{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    color: var(--input-bg-color);
 }
 .check-container input {
     position: absolute;
@@ -193,4 +198,11 @@ select{
 }
 .check-container input:checked ~ .checkmark:after {
     display: block;
+}
+.select {
+    width: 100px;
+    height: 40px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1.3em;
 }

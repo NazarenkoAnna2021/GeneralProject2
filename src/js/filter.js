@@ -1,4 +1,6 @@
 import { DOM } from "./dom.js"
+import { hideForm, showForm } from "./visibility"
+
 class DoubleRange {
     constructor(container) {
         this.container = container;
@@ -39,8 +41,9 @@ class DoubleRange {
         this.slideTwo();
     }
 }
+
 export function getFilters() {
-    console.log(DOM.searchInput.value);
+    //console.log(DOM.searchInput.value);
     console.log(doubleRangeYear.getValue());
     console.log(doubleRangeBudget.getValue());
     console.log(doubleRangeRating.getValue());
@@ -50,15 +53,16 @@ export function getFilters() {
     console.log(DOM.statusSelect.value);
 }
 export function resetFilters() {
-    DOM.searchInput.value = '';
-    doubleRangeYear.setValue(1950, 1989);
-    doubleRangeBudget.getValue(30, 170);
-    doubleRangeRating.getValue(5, 10);
+    DOM.headerInput.value = '';
+    doubleRangeYear.setValue(1895, 2022);
+    doubleRangeBudget.setValue(0, 400);
+    doubleRangeRating.setValue(0, 10);
     DOM.checkAdult.checked = false;
     DOM.countrySelect.value = 'all';
     DOM.genresSelect.value = 'all';
     DOM.statusSelect.value = 'all';
 }
+export function openFilters() {showForm(DOM.filtersForm)}
 const doubleRangeYear = new DoubleRange('year');
 const doubleRangeBudget = new DoubleRange('budget');
 const doubleRangeRating = new DoubleRange('rating');

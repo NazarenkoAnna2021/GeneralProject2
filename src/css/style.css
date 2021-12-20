@@ -52,6 +52,7 @@ a{
     background-color: #4a4800e6;
     font-size: 1.7em;
     border-radius: 20%;
+    cursor: pointer;
 }
 .sign-form {
     display:none;
@@ -113,6 +114,7 @@ input:hover, input:focus{
     background-color: #ecddb5ec;
     box-shadow: 0 0 10px #ffffff;
     color: #37361e;
+    cursor: pointer;
 }
 .login-form button {
     background-color: #ecddb5f7;
@@ -129,6 +131,7 @@ input:hover, input:focus{
 button:hover{
     background-color: #f5e7c0f3;
     box-shadow: 0 0 10px #ffffff;
+    cursor: pointer;
     
 }
 .modal-icon{
@@ -151,6 +154,7 @@ button:hover{
     width: 50vw;
     height: 50vh;
     object-fit: scale-down;
+    cursor: pointer;
 }
 ::-webkit-scrollbar {
     width: 0px;
@@ -191,37 +195,44 @@ label:hover {
     display: flex;
     justify-content: center;
     width: 250px;
-    height: 290px;
+    height: 380px;
     background-color: #9b8d6200;
     margin: 0px 20px 20px 0px;
     border-radius: 45px;
+    position: relative;
 }
 .film-card__poster{
-    width: 250px;
-    height: 290px;
+    width: 100%;
+    height: 100%;
     border-radius: 45px;
     object-fit: cover;
 }
 .film-card__title{
+    display: flex;
+    align-items: center;
     background-color: #0b0a00c9;
     position: absolute;
     align-items: center;
     height: 60px;
     width: 250px;
-    margin-top: 230px;
     border-radius: 40px;
+    bottom: 0;
 }
 .film-card__rate{
     position: absolute;
     font-size: 18px;
-    margin: 7px 0px 0px 220px;
     color: #FFFFFF;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .film-card__title-text{
+    display: flex;
+    align-items: center;
     text-align: start;
     margin: 10px;
     color: #FFFFFF;
-    width: 190px;
+    width: 100%;
     height: 50px;
 }
 .header-inner{
@@ -246,6 +257,7 @@ label:hover {
     min-width: 445px;
     margin-left: 20px;
     letter-spacing: 15px;
+    cursor: pointer;
 }
 .logo__text:hover{
     text-shadow: 0 0 10px #ffffff;
@@ -268,6 +280,7 @@ span{
     border: none;
     text-align: center;
     font-size: 24px;
+    cursor: pointer;
 }
 .navigation{
     display: flex;
@@ -280,6 +293,7 @@ span{
     position: absolute;
     width: 29px;
     height: 30px;
+    cursor: pointer;
 }
 .header-search{
     display: flex;
@@ -294,6 +308,7 @@ span{
     border-radius: 0;
     width: 30px;
     height: 30px;
+    cursor: pointer;
 }
 .login{
     display: flex;
@@ -315,6 +330,7 @@ span{
 }
 .main-area__previous, .main-area__next, .search__img, .login__img {
     transition: all 0.8s ease 0s;
+    cursor: pointer;
   }
   .main-area__previous:hover {
     position: relative;
@@ -401,7 +417,6 @@ span{
   transition: 150ms transform;
   transform-origin: bottom center;
 }
-
 .sign-form__tooltip::before {
   --translate-y: calc(-100% - var(--arrow-size));
 
@@ -414,16 +429,39 @@ span{
   max-width: 100%;
   background: var(--tooltip-color);
 }
-
 .sign-form__tooltip:hover::before,
 .sign-form__tooltip:hover::after {
   --scale: 1;
 }
-
 .sign-form__tooltip::after {
   --translate-y: calc(-1 * var(--arrow-size));
   content: '';
   border: var(--arrow-size) solid transparent;
   border-top-color: var(--tooltip-color);
   transform-origin: top center;
+}
+.main-area__filter-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #5A5339;
+    border-radius: 43px;
+    margin: 0 0 0 3vw;
+}
+.main-area__filter-img{
+    margin-top: 3px;
+    height: 80%;
+    width: 80%;
+    cursor: pointer;
+}
+.disabled {
+    pointer-events: none;
+    cursor: none;
+    opacity: 0.5;
+}
+.current-page-number,
+.last-page-number {
+    color: #000;
 }
