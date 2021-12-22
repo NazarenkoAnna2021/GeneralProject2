@@ -1,5 +1,7 @@
-export const DOM = {
-    preview: document.querySelector('.preview'),
+import { TDOM } from "./types"
+
+export const DOM:TDOM = {
+    preview: document.querySelector('.preview__gif'),
     loginForm: document.querySelector('.container-login'),
     loginImg: document.querySelector('.login__img'),
     searchImg: document.querySelector('.search__img'),
@@ -10,8 +12,8 @@ export const DOM = {
     singInPassword: document.querySelector('#signin-form input[data="password"]'),
     singInButton: document.querySelector('#signin-form button'),
     singInInputs: document.querySelectorAll('.inputs-signin'),
-    messageSignIn : document.getElementById('messageSignIn'),
-    messageSignUp : document.getElementById('messageSignUp'),
+    messageSignIn: document.getElementById('message-sign-in'),
+    messageSignUp: document.getElementById('message-sign-up'),
 
     singUpFirstName: document.querySelector('#singup-form input[data="first-name"]'),
     singUpLastName: document.querySelector('#singup-form input[data="last-name"]'),
@@ -29,7 +31,6 @@ export const DOM = {
     templateCard: document.querySelector('#template-card').innerHTML,
     statusSelect: document.querySelector('.label-select'),
     resetButton: document.querySelector('.reset-button'),
-
     pagination: document.querySelector('.main-area__pagination'),
 
     checkAdult: document.querySelector('#adult'),

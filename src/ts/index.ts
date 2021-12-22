@@ -1,12 +1,13 @@
 import "/css/filter.css"
 import "/css/style.css"
-import { DOM } from "./dom.js"
+import { DOM } from "./dom"
 import { singIn, singUp, openSignIn, signOut } from "./singInFunctions"
 import { constants } from "./constants"
 import "./img"
 import { preview } from "./preview"
 import { getFilters, resetFilters, openFilters } from "./filter.js"
 import { switchNext, switchPrev } from "./gallery";
+import { object } from "../../node_modules/joi/lib/index"
 
 preview();
 

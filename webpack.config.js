@@ -22,8 +22,14 @@ module.exports = {
     },
     plugins: [
         new HTMLWebpackPlugin({
-            template: path.resolve('src/*.html'),
+            template: path.resolve('src/index.html'),
             filename: 'index.html',
+            minify: {
+                collapseWhitespace: isProd
+            }
+        }),
+        new HTMLWebpackPlugin({
+            template: path.resolve('src/filmPage.html'),
             filename: 'filmPage.html',
             minify: {
                 collapseWhitespace: isProd
@@ -31,7 +37,7 @@ module.exports = {
         }),
         new ForkTsCheckerWebpackPlugin({
             typescript: {
-                configFile : path.resolve(__dirname, './tsconfig.json')
+                configFile: path.resolve(__dirname, './tsconfig.json')
             }
         }),
         new CleanWebpackPlugin(),

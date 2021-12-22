@@ -3,7 +3,7 @@ import { renderStartCards } from "./gallery"
 import "./img"
 import { hideShowElement, changeImg } from "./visibility"
 import { URL, constants } from "./constants";
-
+//import axios from 'axios'
 
 let userSingUp = {
 	first_name: null,
@@ -149,9 +149,8 @@ export function openSignIn() {
 }
 
 export function signOut() {
-	localStorage.removeItem('token')
-	DOM.mainArea.classList.value();
-	hideShowElement(DOM.mainArea);
+	localStorage.removeItem('token');
+	if(DOM.modalIcon.classList.contains('hiden')) hideShowElement(DOM.mainArea);
 	hideShowElement(DOM.searchImg);
 	changeImg('/img/iconSignIn.png', DOM.loginImg);
 	DOM.headerInput.disabled = true;
