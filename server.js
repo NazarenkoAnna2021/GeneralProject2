@@ -1,6 +1,6 @@
 const http = require('http');
 require('./database');
-const { router } = require('./router/router');
+//const { router } = require('./router/router');
 
 const port = 3000;
 
@@ -17,7 +17,7 @@ const server = http.createServer(async (req, res) => {
 
     req.on('end', async () => {
         const body = bodyBuffer.length ? JSON.parse(bodyBuffer) : null;
-        return await router({ req, res, body });
+        //return await router({ req, res, body });
     });
 
     res.on('error', (err) => {
