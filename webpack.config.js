@@ -22,8 +22,9 @@ module.exports = {
     },
     plugins: [
         new HTMLWebpackPlugin({
-            template: path.resolve('src/index.html'),
+            template: path.resolve('src/*.html'),
             filename: 'index.html',
+            filename: 'filmPage.html',
             minify: {
                 collapseWhitespace: isProd
             }
