@@ -1,13 +1,12 @@
 import "/css/filter.css"
 import "/css/style.css"
-import "./img"
 import { DOM } from "./dom.js"
-import { singIn, singUp, signOut } from "./singInFunctions"
+import { singIn, singUp, openSignIn, signOut } from "./singInFunctions"
 import { constants } from "./constants"
 import "./img"
-import {openSignIn, preview} from "./preview"
-import {getFilters, resetFilters, openFilters} from "./filter.js"
-import {switchNext, switchPrev} from "./gallery";
+import { preview } from "./preview"
+import { getFilters, resetFilters, openFilters } from "./filter.js"
+import { switchNext, switchPrev } from "./gallery";
 
 preview();
 

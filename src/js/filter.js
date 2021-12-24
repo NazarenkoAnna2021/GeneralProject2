@@ -1,5 +1,8 @@
 import { DOM } from "./dom.js"
-import { hideForm, showForm } from "./visibility"
+import { hideShowElement } from "./visibility"
+let str = '';
+import {cleanHTML, current, renderCards, renderPagination} from "./gallery";
+
 
 class DoubleRange {
     constructor(container) {
@@ -43,15 +46,10 @@ class DoubleRange {
 }
 
 export function getFilters() {
-    //console.log(DOM.searchInput.value);
-    console.log(doubleRangeYear.getValue());
-    console.log(doubleRangeBudget.getValue());
-    console.log(doubleRangeRating.getValue());
-    console.log(DOM.checkAdult.checked);
-    console.log(DOM.countrySelect.value);
-    console.log(DOM.genresSelect.value);
-    console.log(DOM.statusSelect.value);
+    str = `movie?language=${DOM.countrySelect.value}&status=${DOM.statusSelect.value}&budget_min=${doubleRangeBudget.getValue().budget_min}&budget_max=${doubleRangeBudget.getValue().budget_max}&release_date_first=${doubleRangeYear.getValue().year_min}.01.01&release_date_last=${doubleRangeYear.getValue().year_max}.01.01&title=${DOM.headerInput.value}`
+    sendData()
 }
+
 export function resetFilters() {
     DOM.headerInput.value = '';
     doubleRangeYear.setValue(1895, 2022);
@@ -62,8 +60,17 @@ export function resetFilters() {
     DOM.genresSelect.value = 'all';
     DOM.statusSelect.value = 'all';
 }
-export function openFilters() {showForm(DOM.filtersForm)}
+export function openFilters() {hideShowElement(DOM.filtersForm)};
 const doubleRangeYear = new DoubleRange('year');
 const doubleRangeBudget = new DoubleRange('budget');
 const doubleRangeRating = new DoubleRange('rating');
 
+async function sendData()
+{
+    let response = await fetch(`https://wowmeup.pp.ua/${str}`);
+    let result = await response.json();
+    console.log(result)
+    cleanHTML()
+    await renderCards(result);
+    await renderPagination(result);
+}
