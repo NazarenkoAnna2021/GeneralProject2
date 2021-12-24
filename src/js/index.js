@@ -1,5 +1,5 @@
-import "/css/filter.css"
 import "/css/style.css"
+import "/css/filter.css"
 import { DOM } from "./dom.js"
 import { singIn, singUp, openSignIn, signOut } from "./singInFunctions"
 import { constants } from "./constants"
