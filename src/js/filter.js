@@ -1,14 +1,16 @@
 import { DOM } from "./dom.js"
 import { hideShowElement } from "./visibility"
+import { cleanHTML, renderCards, renderPagination } from "./gallery";
+
 
 class DoubleRange {
-    constructor(container) {
+    constructor(container, gap) {
         this.container = container;
         this.sliderOne = document.querySelector(`.${this.container} .slider-1`);
         this.sliderTwo = document.querySelector(`.${this.container} .slider-2`);
         this.displayValOne = document.querySelector(`.${this.container} .range1`);
         this.displayValTwo = document.querySelector(`.${this.container} .range2`);
-        this.minGap = 0;
+        this.minGap = gap;
         this.sliderTrack = document.querySelector(`.${this.container} .slider-track`);
         this.sliderMaxValue = this.sliderOne?.max;
         this.slideOne = this.slideOne.bind(this);
@@ -18,21 +20,23 @@ class DoubleRange {
         window.addEventListener('load', this.slideOne);
         window.addEventListener('load', this.slideTwo);
     }
-    slideOne(){
-        if(Number(this.sliderTwo.value) - Number(this.sliderOne.value) <= this.minGap){
+    slideOne() {
+        if (Number(this.sliderTwo.value) - Number(this.sliderOne.value) <= this.minGap) {
             this.sliderOne.value = Number(this.sliderTwo.value) - this.minGap;
         }
         this.displayValOne.textContent = this.sliderOne.value;
     }
-    slideTwo(){
-        if(Number(this.sliderTwo.value) - Number(this.sliderOne.value) <= this.minGap){
+    slideTwo() {
+        if (Number(this.sliderTwo.value) - Number(this.sliderOne.value) <= this.minGap) {
             this.sliderTwo.value = Number(this.sliderOne.value) + this.minGap;
         }
         this.displayValTwo.textContent = this.sliderTwo.value;
     }
     getValue() {
-        return {[`${this.container}_min`] : Number(this.sliderOne.value), 
-                [`${this.container}_max`] : Number(this.sliderTwo.value)};
+        return {
+            [`${this.container}_min`]: Number(this.sliderOne.value),
+            [`${this.container}_max`]: Number(this.sliderTwo.value)
+        };
     }
     setValue(min, max) {
         this.sliderOne.value = min;
@@ -43,15 +47,11 @@ class DoubleRange {
 }
 
 export function getFilters() {
-    //console.log(DOM.searchInput.value);
-    console.log(doubleRangeYear.getValue());
-    console.log(doubleRangeBudget.getValue());
-    console.log(doubleRangeRating.getValue());
-    console.log(DOM.checkAdult.checked);
-    console.log(DOM.countrySelect.value);
-    console.log(DOM.genresSelect.value);
-    console.log(DOM.statusSelect.value);
+    const str = `movie?language=${DOM.countrySelect.value}&status=${DOM.checkReleased.value}&budget_min=${doubleRangeBudget.getValue().budget_min}&budget_max=${doubleRangeBudget.getValue().budget_max}&release_date_first=${doubleRangeYear.getValue().year_min}.01.01&release_date_last=${doubleRangeYear.getValue().year_max}.01.01&title=${DOM.headerInput.value}`.trim();
+    console.log(str);
+    sendData(str);
 }
+
 export function resetFilters() {
     DOM.headerInput.value = '';
     doubleRangeYear.setValue(1895, 2022);
@@ -62,8 +62,16 @@ export function resetFilters() {
     DOM.genresSelect.value = 'all';
     DOM.statusSelect.value = 'all';
 }
-export function openFilters() {hideShowElement(DOM.filtersForm)};
-const doubleRangeYear = new DoubleRange('year');
-const doubleRangeBudget = new DoubleRange('budget');
-const doubleRangeRating = new DoubleRange('rating');
+export function openFilters() { hideShowElement(DOM.filtersForm) };
+const doubleRangeYear = new DoubleRange('year', 5);
+const doubleRangeBudget = new DoubleRange('budget', 10000000);
+const doubleRangeRating = new DoubleRange('rating', 1);
 
+async function sendData(str) {
+    const response = await fetch(`https://wowmeup.pp.ua/${str}`);
+    const result = await response.json();
+    console.log(result)
+    cleanHTML()
+    await renderCards(result);
+    await renderPagination(result);
+}
