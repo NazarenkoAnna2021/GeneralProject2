@@ -7,30 +7,29 @@ const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 
 const filename = (ext) => isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`;
+const htmlBasConfig = (name) => ({
+    template: path.resolve(`src/${name}.html`),
+    filename: `${name}.html`,
+    chunks: [name],
+    minify: {
+        collapseWhitespace: isProd
+    }
+})
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
     mode: 'development',
-    entry: './js/index.js',
+    entry: {
+        index: './js/index.js',
+        filmPage: './js/filmPage.js',
+    },
     output: {
         filename: `./js/${filename('js')}`,
         path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-        new HTMLWebpackPlugin({
-            template: path.resolve('src/index.html'),
-            filename: 'index.html',
-            minify: {
-                collapseWhitespace: isProd
-            }
-        }),
-        /* new HTMLWebpackPlugin({
-            template: path.resolve('src/filmPage.html'),
-            filename: 'filmPage.html',
-            minify: {
-                collapseWhitespace: isProd
-            }
-        }), */
+        new HTMLWebpackPlugin(htmlBasConfig('index')),
+        new HTMLWebpackPlugin(htmlBasConfig('filmPage')),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: `./css/${filename('css')}`

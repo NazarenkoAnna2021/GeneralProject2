@@ -78,7 +78,7 @@ function createCards({ id, poster_path, title, movie_rate }) {
 	return htmlToElement(templateCardHtml);
 }
 
-function htmlToElement(html) {
+export function htmlToElement(html) {
 	const template = document.createElement('template');
 	template.innerHTML = html;
 	return template.content.firstChild;

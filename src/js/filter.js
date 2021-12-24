@@ -1,6 +1,6 @@
 import { DOM } from "./dom.js"
 import { hideShowElement } from "./visibility"
-import { cleanHTML, current, renderCards, renderPagination } from "./gallery";
+import { cleanHTML, renderCards, renderPagination } from "./gallery";
 
 
 class DoubleRange {
@@ -47,7 +47,8 @@ class DoubleRange {
 }
 
 export function getFilters() {
-    const str = `movie?language=${DOM.countrySelect.value}&status=${DOM.statusSelect.value}&budget_min=${doubleRangeBudget.getValue().budget_min}&budget_max=${doubleRangeBudget.getValue().budget_max}&release_date_first=${doubleRangeYear.getValue().year_min}.01.01&release_date_last=${doubleRangeYear.getValue().year_max}.01.01&title=${DOM.headerInput.value}`
+    const str = `movie?language=${DOM.countrySelect.value}&status=${DOM.checkReleased.value}&budget_min=${doubleRangeBudget.getValue().budget_min}&budget_max=${doubleRangeBudget.getValue().budget_max}&release_date_first=${doubleRangeYear.getValue().year_min}.01.01&release_date_last=${doubleRangeYear.getValue().year_max}.01.01&title=${DOM.headerInput.value}`.trim();
+    console.log(str);
     sendData(str);
 }
 
