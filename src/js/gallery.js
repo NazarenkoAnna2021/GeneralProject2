@@ -20,13 +20,13 @@ export async function renderStartCards() {
 	await renderPagination(films);
 }
 
-async function renderCards(arr) {
+export async function renderCards(arr) {
 	await arr.movies.forEach(card => {
 		DOM.filmsArea.appendChild(createCards(card));
 	})
 }
 
-async function renderPagination({ totalCount, movies }) {
+export async function renderPagination({ totalCount, movies }) {
 	const totalCountMovies = totalCount;
 	const lengthMoviesOnCurrentPage = movies.length;
 	pagesCount = Math.ceil(totalCountMovies / lengthMoviesOnCurrentPage);
@@ -35,7 +35,7 @@ async function renderPagination({ totalCount, movies }) {
 	return pagesCount;
 }
 
-function cleanHTML() {
+export function cleanHTML() {
 	DOM.filmsArea.innerHTML = '';
 }
 
