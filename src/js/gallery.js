@@ -1,34 +1,85 @@
-import {DOM} from "./dom.js";
-import {imagePosterLink, URL} from "./constants";
+import { DOM } from "./dom.js";
+import { URL } from "./constants";
 
-async function getResponseMovies() {
-	const res = await fetch(`${URL}/movie`);
+let current = 1;
+let films = {};
+let pagesCount = 0;
+
+async function getResponseMoviePage(currentPageNumber) {
 	try {
-		return await res.json();
+		const res = await fetch(`${URL.URL}/movie?page=${currentPageNumber}`);
+		return res.json();
 	} catch {
-		 alert('Что-то фильмы не отображаются');
+		alert('dont movie');
 	}
 }
 
-export async function renderCards() {
-	const films = await getResponseMovies();
-	films.movies.forEach(card => {
+export async function renderStartCards() {
+	films = await getResponseMoviePage(current);
+	await renderCards(films);
+	await renderPagination(films);
+}
+
+export async function renderCards(arr) {
+	await arr.movies.forEach(card => {
 		DOM.filmsArea.appendChild(createCards(card));
 	})
 }
 
-function createCards({ id, poster_path, title, movie_rate }) {
-	const tempCardId = DOM.templateCard.querySelector('.film-card');
-	const tempCardPoster = DOM.templateCard.querySelector('.film-card__poster');
-	const tempCardRate = DOM.templateCard.querySelector('.film-card__rate');
-	const tempCardTitleText = DOM.templateCard.querySelector('.film-card__title-text');
-	tempCardId.setAttribute('id', `card${id}`);
-	tempCardPoster.setAttribute('src', `${imagePosterLink}${poster_path}`);
-	tempCardRate.setAttribute('id', `rate${id}`);
-	(tempCardRate.textContent === null) ? tempCardRate.textContent = '' : tempCardRate.textContent = movie_rate;
-	tempCardTitleText.setAttribute('id', `title${id}`);
-	tempCardTitleText.textContent = title;
-	return tempCardId.cloneNode(true);
+export async function renderPagination({ totalCount, movies }) {
+	const totalCountMovies = totalCount;
+	const lengthMoviesOnCurrentPage = movies.length;
+	pagesCount = Math.ceil(totalCountMovies / lengthMoviesOnCurrentPage);
+	DOM.lastPage.textContent = pagesCount + '';
+	current = DOM.currentPage.textContent;
+	return pagesCount;
 }
 
+export function cleanHTML() {
+	DOM.filmsArea.innerHTML = '';
+}
 
+export async function switchPrev() {
+	await cleanHTML();
+	DOM.currentPage.textContent = --current + '';
+	check(current, pagesCount);
+	films = await getResponseMoviePage(current);
+	await renderCards(films);
+}
+
+export async function switchNext() {
+	await cleanHTML();
+	DOM.currentPage.textContent = ++current + '';
+	check(current, pagesCount);
+	films = await getResponseMoviePage(current);
+	await renderCards(films);
+}
+
+function check(current, lastPage) {
+	if (current === lastPage) {
+		DOM.paginationBtnNext.classList.add("disabled");
+	} else {
+		DOM.paginationBtnNext.classList.remove("disabled");
+	}
+
+	if (current === 1) {
+		DOM.paginationBtnPrev.classList.add("disabled");
+	} else {
+		DOM.paginationBtnPrev.classList.remove("disabled");
+	}
+}
+
+function createCards({ id, poster_path, title, movie_rate }) {
+	const templateCardHtml = DOM.templateCard
+		.replace("{{id}}", id)
+		.replace("{{url}}", URL.imagePosterLink.concat(poster_path))
+		.replace("{{text}}", title)
+		.replace("{{5}}", movie_rate === null ? '' : movie_rate);
+	return htmlToElement(templateCardHtml);
+}
+
+export function htmlToElement(html) {
+	const template = document.createElement('template');
+	template.innerHTML = html;
+	return template.content.firstChild;
+}

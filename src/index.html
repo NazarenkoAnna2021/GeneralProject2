@@ -13,86 +13,188 @@
 
 <body>
 	<header>
-		<!-- <div class="header-container"> -->
 		<div class="header-inner">
 			<div class="logo">
-				<!-- <div class="logo__film"> -->
-				<img class="logo__img" src="/img/logo.png" alt="">
-				<!-- </div> -->
+				<a href="index.html">
+					<img class="logo__img" src="/img/logo.png" alt="">
+				</a>
 				<div class="logo__text">
 					<p>
-						R e t r o<span>oo</span>F i l m s
+						<a href="index.html">
+							Retro Films
+						</a>
 					</p>
 				</div>
 			</div>
 			<div class="navigation">
 				<div class="header-search">
-					<input class="header-input">
-					<img class="search__img" src="/img/serch.png">
+					<input class="header-input" disabled>
+					<img class="search__img none" src="/img/serch.png">
 				</div>
 				<div class="login">
 					<img class="login__img" src="/img/iconSignIn.png">
 				</div>
 			</div>
 		</div>
-		<!-- </div> -->
 	</header>
-	<div>
-		<div class="modal-icon">
-			<div class="container-login-form">
-				<ul class="login-form">
-					<li>
-						<input type="radio" id="signin-input" name="sign-forms" value="" checked>
-						<label for="signin-input">Sing In</label>
-						<form class="sign-form" id="signin-form" action="">
-							<div class="login-form__img">
-								<img class="login-form__background" src="/img/formFon.jpg" alt="">
-							</div>
-							<div class="error-signin"></div>
-							<input type="text" placeholder="login" class="inputs-signin" data="login" autofocus>
-							<div class="error-signin"></div>
-							<input type="password" placeholder="password" class="inputs-signin" data="password">
-							<button>login</button>
-						</form>
-					</li>
-					<li>
-						<input type="radio" id="signup-input" name="sign-forms" value="">
-
-						<label for="signup-input">Sing Up</label>
-						<form class="sign-form" id="singup-form" action="">
-							<div class="login-form__img">
-								<img class="login-form__background" src="/img/formFon.jpg" alt="">
-							</div>
-							<div class="error-signup"></div>
-							<input type="text" placeholder="first_name" class="inputs-signup" data="first-name">
-							<div class="error-signup"></div>
-							<input type="text" placeholder="last_name" class="inputs-signup" data="last-name">
-							<div class="error-signup"></div>
-							<input type="text" placeholder="login" class="inputs-signup" data="login">
-							<div class="error-signup"></div>
-							<input type="password" placeholder="password" class="inputs-signup" data="password">
-							<button>submit</button>
-						</form>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="main-area none">
-			<div class="film-word">
-				<h1>FILMS</h1>
-			</div>
-			<div class="films-area"></div>
-		</div>
-		<!-- <div class="footer"></div> -->
+	<div class="preview">
+		<img class="preview__gif" src="" alt="preview">
 	</div>
-	<template id="template-card">
-		<div class="film-card">
-			<img class="film-card__poster" src="" alt="film poster">
-			<div class="film-card__title">
-				<p class="film-card__rate" id="rate{{id}}"></p>
-				<p class="film-card__title-text"></p>
+	<div class="modal-icon none">
+		<div class="container-login-form">
+			<ul class="login-form">
+				<li>
+					<input type="radio" id="signin-input" name="sign-forms" value="" checked>
+					<label for="signin-input">Sing In</label>
+					<form class="sign-form" id="signin-form" action="">
+						<div class="form-conteiner">
+							<div class="sign-form__tooltip error-signin" data-tooltip="includs only letters">
+								<input type="text" placeholder="login" class="inputs-signin" data="login" autofocus>
+							</div>
+							<div class="sign-form__tooltip error-signin" data-tooltip="this is pass, fool">
+								<input type="password" placeholder="password" class="inputs-signin" data="password">
+							</div>
+							<button>login</button>
+						</div>
+					</form>
+				</li>
+				<li>
+					<input type="radio" id="signup-input" name="sign-forms" value="">
+					<label for="signup-input">Sing Up</label>
+					<form class="sign-form" id="singup-form" action="">
+						<div form-conteiner>
+							<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
+								<input type="text" placeholder="first_name" class="inputs-signup" data="first-name">
+							</div>
+							<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
+								<input type="text" placeholder="last_name" class="inputs-signup" data="last-name">
+							</div>
+							<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
+								<input type="text" placeholder="login" class="inputs-signup" data="login">
+							</div>
+							<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
+								<input type="password" placeholder="password" class="inputs-signup" data="password">
+							</div>
+							<div id="messageSignUp"></div>
+							<button>submit</button>
+						</div>
+					</form>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="main-area none">
+		<div class="filters-form none">
+				<button class="reset-button filter-buttons">RST</button>
+				<div class="wrapper year">
+					<div class="values">
+						<span class="range1">
+							 0
+						</span>
+						<span class="range-name"> YEARS </span>
+						<span class="range2">
+							 100
+						</span>
+					</div>
+					<div class="container-range">
+						<div class="slider-track"></div>
+						<input type="range" min="1895" max="2022" value="1950" class="slider-1">
+						<input type="range" min="1895" max="2022" value="1989" class="slider-2">
+					</div>
+				</div>
+				<div class="wrapper budget">
+					<div class="values">
+						<span class="range1">
+							 0
+						</span>
+						<span class="range-name"> BUDGET </span>
+						<span class="range2">
+							 100
+						</span>
+					</div>
+					<div class="container-range">
+						<div class="slider-track"></div>
+						<input type="range" min="0" max="190000000" value="0" class="slider-1">
+						<input type="range" min="0" max="190000000" value="190000000" class="slider-2">
+					</div>
+				</div>
+				<div class="wrapper rating">
+					<div class="values">
+						<span class="range1">
+							 0
+						</span>
+						<span class="range-name"> RATING </span>
+						<span class="range2">
+							 100
+						</span>
+					</div>
+					<div class="container-range">
+						<div class="slider-track"></div>
+						<input type="range" min="0" max="10" value="5" class="slider-1">
+						<input type="range" min="0" max="10" value="10" class="slider-2">
+					</div>
+				</div>
+				<div class="country column">
+					<label class="label-select" for="country-select">COUNTRY</label>
+					<select name="country" id="country-select">
+						<option value="">all</option>
+						<option value="en">EN</option>
+						<option value="ru">RU</option>
+						<option value="ua">UA</option>
+					</select>
+				</div>
+				<div class="genres column">
+					<label class="label-select" for="genres-select">GENRES</label>
+					<select name="genres" id="genres-select">
+						<option value="">all</option>
+						<option value="comedy">comedy</option>
+						<option value="horror">horror</option>
+						<option value="sci-fi">sci-fi</option>
+						<option value="fantasy">fantasy</option>
+					</select>
+				</div>
+				<div class="status column">
+					<label class="label-select" for="status-select">STATUS</label>
+					<select name="status" id="status-select">
+						<option value="">all</option>
+						<option value="released">released</option>
+						<option value="in_production">in product</option>
+						<option value="trailer">trailer</option>
+					</select>
+				</div>
+				<div class="checkboxs column">
+					<div>
+						<label for="adult" class="check-container">adult
+							<input type="checkbox" name="adult" id="adult">
+							<span class="checkmark"></span>
+						</label>
+					</div>
+				</div>
+				<button class="go-button filter-buttons">GO</button>
+			</div>
+		<div class="main-area__film-word">
+			<h1>FILMS</h1>
+			<div class="main-area__filter-button">
+				<img class="main-area__filter-img " src="/img/filters.png">
 			</div>
 		</div>
+		<div class="main-area__films-area"></div>
+		<div class="main-area__pagination">
+			<img class="main-area__previous disabled" src="/img/arrowLeft-64.png" alt="">
+			<p class="main-area__page-info"><span class="current-page-number">1</span>/<span class="last-page-number">?</span></p>
+			<img class="main-area__next" src="/img/arrowRight-64.png" alt="">
+		</div>
+	</div>
+	<template type="text" id="template-card">
+		<a class="film-page" target="_blank" href="/filmPage.html?movie={{id}}">
+			<div class="film-card">
+				<img class="film-card__poster" id="img{{id}}" src="{{url}}" alt="film poster">
+				<div class="film-card__title">
+					<p class="film-card__rate" id="rate{{id}}">{{5}}</p>
+					<p class="film-card__title-text" id="text{{id}}">{{text}}</p>
+				</div>
+			</div>
+		</a>
 	</template>
 	<template id="pagination">
 		<li class="pagination__item"></li>

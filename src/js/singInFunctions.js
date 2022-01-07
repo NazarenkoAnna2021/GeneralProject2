@@ -1,86 +1,91 @@
 import { DOM } from "./dom"
-import { renderCards } from "./gallery"
+import { renderStartCards } from "./gallery"
+import "./img"
+import { hideShowElement, changeImg } from "./visibility"
+import { URL, constants } from "./constants";
 
-const url = 'https://wowmeup.pp.ua/user/sing_up';//Это константа!!!
 
-const regexp = /^[A-Za-z]+$/
 let userSingUp = {
 	first_name: null,
 	last_name: null,
 	login: null,
 	password: null
 }
-
 let userSingIn = {
 	login: null,
 	password: null
 }
 
-function hideForm(form) {
-	form.classList.add('none');
-}
-
-function showForm(form) {
-	form.classList.remove('none');
-}
+let countOfValidInputs = 0;
 
 export function singIn(e) {
 	e.preventDefault();
-	validation(DOM.singInInputs, DOM.errorsMessagesSingIn)
-	if (isValid(DOM.errorsMessagesSingIn)) {
+	validation(DOM.singInInputs)
+	if (isValid(DOM.singInInputs)) {
 		setUserBodyForFequest(userSingIn)
 		postSingIn()
-		renderCards();
 	}
 }
 
 export function singUp(e) {
 	e.preventDefault();
-	validation(DOM.singUpInputs, DOM.errorsMessagesSingUp)
-	if (isValid(DOM.errorsMessagesSingUp)) {
+	validation(DOM.singUpInputs)
+	if (isValid(DOM.singUpInputs)) {
 		setUserBodyForFequest(userSingUp)
 		postSingUp()
 	}
 }
 
-
-function validation(element, errorsection) {
-	for (let i = 0; i < element.length - 1; i++) {//Использовать forEach
-		if (element[i].value.length < 3) errorfunc('This field must contains at least 3 letters!', i, errorsection)
+function validation(element) {
+	for (let i = 0; i < element.length - 2; i++) {
+		if (element[i].value.length < 3) marker(element[i], 'red')
 		else {
-			if (regexp.test(element[i].value) === false) {
-				errorfunc('This field must contains only letters!', i, errorsection)
+			if (constants.regExp.test(element[i].value) === false) {
+				marker(element[i], 'red')
 			} else {
-				errorfunc('This field is OK!', i, errorsection)
-			}// тут нужна тернарка
+				marker(element[i], 'green')
+				countOfValidInputs++
+			}
 		}
 	}
-	if (element[element.length - 1].value.length < 6) {
-		errorfunc('This field must contains at least 8 symbols!', element.length - 1, errorsection)
+
+	if (element[element.length - 2].value.length < 3) {
+		marker(element[element.length - 2], 'red')
 	} else {
-		errorfunc('This field is OK!', element.length - 1, errorsection)
+		if (constants.regExpLogin.test(element[element.length - 2].value) === false) {
+			marker(element[element.length - 2], 'red')
+		} else {
+			marker(element[element.length - 2], 'green')
+			countOfValidInputs++
+		}
+	}
+	if (element[element.length - 1].value.length < 8) {
+		marker(element[element.length - 1], 'red')
+	} else {
+		if (constants.regExpLogin.test(element[element.length - 1].value) === false) {
+			marker(element[element.length - 1], 'red')
+		} else {
+			marker(element[element.length - 1], 'green')
+			countOfValidInputs++
+		}
 	}
 }
 
 function isValid(element) {
-	let countofvalidinputs = 0;
-	for (let i = 0; i < element.length; i++) {//Использовать forEach
-		if (element[i].innerText === 'This field is OK!') {
-			countofvalidinputs++
-		}
-	}
-	if (countofvalidinputs === element.length) {
+	if (countOfValidInputs === element.length) {
+		countOfValidInputs = 0;
 		return true
 	}
+	console.log(countOfValidInputs)
+	countOfValidInputs = 0;
 }
 
-function errorfunc(textoferror, position, errorsection) {
-	let error = errorsection
-	error[position].innerHTML = textoferror
+function marker(input, color) {
+	input.style.boxShadow = `0 0 10px ${color}`
 }
 
 async function postSingUp() {
-	let response = await fetch('https://wowmeup.pp.ua/user/sing_up', {
+	let response = await fetch(URL.signUpURL, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8'
@@ -88,11 +93,15 @@ async function postSingUp() {
 		body: JSON.stringify(userSingUp)
 	});
 	let result = await response.json();
-	alert(result);
+	if (response.ok) {
+		DOM.signInRadio.click()
+	} else {
+		DOM.messageSignUp.innerHTML = result.message
+	}
 }
 
 async function postSingIn() {
-	let response = await fetch('https://wowmeup.pp.ua/user/sign_in', {
+	let response = await fetch(URL.signInURL, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8'
@@ -100,14 +109,14 @@ async function postSingIn() {
 		body: JSON.stringify(userSingIn)
 	});
 	let result = await response.json();
-	localStorage.setItem('token', result['token'])
-	if (localStorage.getItem('token') === 'undefined') {
-		alert('Что-то пошло не так :(')
+	if (response.ok) {
+		localStorage.setItem('token', result['token'])
+		isAuthorised()
+		DOM.messageSignIn.innerHTML = result.message
+	} else {
+		DOM.messageSignIn.innerHTML = result.message
 	}
-	hideForm(DOM.modalIcon);
-	showForm(DOM.mainArea);
 }
-
 
 function setUserBodyForFequest(obj) {
 	if (obj === userSingUp) {
@@ -122,3 +131,28 @@ function setUserBodyForFequest(obj) {
 	}
 }
 
+export function isAuthorised() {
+	if (!(localStorage.getItem('token') === 'undefined') && !(localStorage.getItem('token') === null)) {
+		hideShowElement(DOM.modalIcon);
+		hideShowElement(DOM.mainArea);
+		hideShowElement(DOM.searchImg);
+		DOM.headerInput.disabled = !DOM.headerInput.disabled;
+		changeImg('/img/signOut.png', DOM.loginImg);
+		renderStartCards();
+	}
+}
+
+export function openSignIn() {
+	hideShowElement(DOM.preview);
+	hideShowElement(DOM.modalIcon);
+	isAuthorised();
+}
+
+export function signOut() {
+	localStorage.removeItem('token')
+	DOM.mainArea.classList.value();
+	hideShowElement(DOM.mainArea);
+	hideShowElement(DOM.searchImg);
+	changeImg('/img/iconSignIn.png', DOM.loginImg);
+	DOM.headerInput.disabled = true;
+}
