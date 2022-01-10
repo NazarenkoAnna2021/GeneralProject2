@@ -37,11 +37,24 @@
 	</header>
 	<div class="conteiner">
 		<div class="main-info"></div>
-		<div class="reviews"></div>
+		<div class="reviews">
+			<div class="review__content ">
+				<h1>Reviews</h1>
+				<label> {{login}}: Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus itaque quisquam
+					repellendus fugit, ducimus provident illum fuga qui ea incidunt. Molestias obcaecati modi sequi
+					similique, necessitatibus atque tempora ullam ipsam a fuga libero deleniti quos! Adipisci iusto
+					excepturi corporis repellat harum, aliquid quae culpa deleniti perspiciatis explicabo temporibus non
+					fuga?</label>
+			</div>
+			<div class="review__content">
+				<label> {{login}}: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nisi beatae
+					similique maiores quam tempora, quod reprehenderit itaque tempore debitis.</label>
+			</div>
+		</div>
 	</div>
 	<template type="text" id="main-container">
 		<div class="main__film-wrapper">
-			<div class="title-film">{{titleFilm}}</div>
+			<h1 class="title-film">{{titleFilm}}</h1>
 			<div class="main-content">
 				<img class="main-poster" src="{{img}}">
 				<div class="film-deteils">
@@ -54,7 +67,7 @@
 					<p class="main-content__info">Runtime: {{runtime}}</p>
 					<p class="main-content__info">Genres: {{ganre}}</p>
 					<p class="main-content__info">Tagline: {{tagline}}</p>
-					<p class="main-content__info">Homepage: {{}}</p>
+					<p class="main-content__info">Homepage: {{homepage}}</p>
 				</div>
 			</div>
 			<div class="description">
@@ -63,7 +76,9 @@
 		</div>
 	</template>
 	<template type="text" id="reviews-content">
-		<label>login: {{login}}</label>
+		<div>
+			<label>{{login}}: {{content}}</label>
+		</div>
 	</template>
 </body>
 
