@@ -8,7 +8,7 @@ export async function getCurrentFilmInfo() {
 }
 
 async function getResponseMovie(id) {
-	const request = await fetch(`${URL.URL}/movie/${id}`);
+	const request = await fetch(`${URL.URL}/movies/${id}`);
 	const response = await request.json();
 	return response.movie;
 }

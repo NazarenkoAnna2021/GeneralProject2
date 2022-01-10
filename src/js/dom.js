@@ -24,10 +24,10 @@ export const DOM = {
 	mainArea: document.querySelector('.main-area'),
 
 	filmsArea: document.querySelector('.main-area__films-area'),
-	filterButton: document.querySelector('.main-area__filter-img'),
+	filterButton: document.querySelector('.main-area__filter-button'),
 	filtersForm: document.querySelector('.filters-form'),
 	templateCardBlock: document.querySelector('#template-card'),
-	statusSelect: document.querySelector('.label-select'),
+	statusSelect: document.querySelector('#status-select'),
 	resetButton: document.querySelector('.reset-button'),
 
 	pagination: document.querySelector('.main-area__pagination'),

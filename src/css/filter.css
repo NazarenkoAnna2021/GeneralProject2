@@ -135,8 +135,18 @@ select{
     margin-right: 5px;
 }
 .reset-button{
-    background-color: #6e6446;
+    background-color: #f7e3ae;
     margin-left: 5px;
+}
+.reset-button:active{
+    box-shadow: 0 0 10px #ff0000;
+    text-shadow: 0 0 5px #ffffff;
+    color: red;
+}
+.go-button:active{
+    box-shadow: 0 0 10px #35ff00;
+    text-shadow: 0 0 5px #ffffff;
+    color: #35ff00;
 }
 .filters-form{
     justify-content: space-between;

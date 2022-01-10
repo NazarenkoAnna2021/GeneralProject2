@@ -2,6 +2,7 @@ import { DOM } from "./dom.js";
 import { hideShowElement } from "./visibility";
 import { cleanHTML, renderCards, renderPagination } from "./gallery";
 import {URL} from "./constants";
+import axios from "axios";
 
 class DoubleRange {
     constructor(container, gap) {
@@ -49,6 +50,7 @@ class DoubleRange {
 export function getFilters() {
     const str = `movie?language=${DOM.countrySelect.value}&status=${DOM.checkReleased.value}&budget_min=${doubleRangeBudget.getValue().budget_min}&budget_max=${doubleRangeBudget.getValue().budget_max}&release_date_first=${doubleRangeYear.getValue().year_min}.01.01&release_date_last=${doubleRangeYear.getValue().year_max}.01.01&title=${DOM.headerInput.value}`.trim();
     console.log(str);
+    DOM.filterButton.style.boxShadow = '0 0 20px white'
     sendData(str);
 }
 
@@ -58,16 +60,21 @@ export function resetFilters() {
     doubleRangeBudget.setValue(0, 190000000);
     doubleRangeRating.setValue(0, 10);
     DOM.checkAdult.checked = false;
-    DOM.countrySelect.value = 'all';
-    DOM.genresSelect.value = 'all';
-    DOM.statusSelect.value = 'all';
+    DOM.countrySelect.value = '';
+    DOM.genresSelect.value = '';
+    DOM.statusSelect.value = '';
+    DOM.filterButton.style.boxShadow = null
 }
 export function openFilters() { hideShowElement(DOM.filtersForm) };
 const doubleRangeYear = new DoubleRange('year', 5);
 const doubleRangeBudget = new DoubleRange('budget', 10000000);
 const doubleRangeRating = new DoubleRange('rating', 1);
 async function sendData(str) {
-    const response = await fetch(`${URL.URL}/${str}`);
+    const response = await axios.get(`${URL.URL}/${str}`, {
+        headers: {
+            'token': localStorage.getItem('token'),
+        }
+    });
     const result = await response.json();
     console.log(result)
     cleanHTML()
