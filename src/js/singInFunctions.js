@@ -3,7 +3,7 @@ import { renderStartCards } from "./gallery"
 import "./img"
 import { hideShowElement, changeImg } from "./visibility"
 import { URL, constants } from "./constants";
-
+const axios = require("axios");
 
 let userSingUp = {
 	first_name: null,
@@ -85,13 +85,9 @@ function marker(input, color) {
 }
 
 async function postSingUp() {
-	let response = await fetch(URL.signUpURL, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json;charset=utf-8'
-		},
-		body: JSON.stringify(userSingUp)
-	});
+	let response = await axios.post(URL.signUpURL,
+	userSingUp
+	);
 	let result = await response.json();
 	if (response.ok) {
 		DOM.signInRadio.click()
@@ -101,18 +97,16 @@ async function postSingUp() {
 }
 
 async function postSingIn() {
-	let response = await fetch(URL.signInURL, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json;charset=utf-8'
-		},
-		body: JSON.stringify(userSingIn)
-	});
-	let result = await response.json();
-	if (response.ok) {
-		localStorage.setItem('token', result['token'])
+	let response = await axios.post(URL.signInURL,
+		userSingIn
+	);
+	let result = response.data;
+	console.log(result)
+
+	if (response.status >= 200 <= 299) {
+		localStorage.setItem('token', response.headers.token)
 		isAuthorised()
-		DOM.messageSignIn.innerHTML = result.message
+		DOM.messageSignIn.innerHTML = result
 	} else {
 		DOM.messageSignIn.innerHTML = result.message
 	}
