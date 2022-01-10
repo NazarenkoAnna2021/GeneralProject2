@@ -31,7 +31,7 @@ function appendFilmInfoToDOM(data) {
 		// .replace("{{ganre}}", bbb(data.genre_ids))
 
 	const filmElem = htmlToElement(templateFilmHtml);
-	const mainContainer = document.querySelector('.main-container');
+	const mainContainer = document.querySelector('.main-info');
 	mainContainer.appendChild(filmElem);
 }
 

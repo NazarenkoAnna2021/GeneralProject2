@@ -12,49 +12,59 @@
 </head>
 
 <body>
-<header>
-	<div class="header-inner">
-		<div class="logo">
-			<img class="logo__img" src="./img/logo.png" alt="">
-			<div class="logo__text">
-				<p>
-					<a href="index.html">
-						Retro Films
-					</a>
-				</p>
+	<header>
+		<div class="header-inner">
+			<div class="logo">
+				<img class="logo__img" src="./img/logo.png" alt="">
+				<div class="logo__text">
+					<p>
+						<a href="index.html">
+							Retro Films
+						</a>
+					</p>
+				</div>
+			</div>
+			<div class="navigation">
+				<div class="header-search">
+					<input class="header-input">
+					<img class="search__img" src="./img/serch.png">
+				</div>
+				<div class="login">
+					<img class="login__img" src="./img/iconSignIn.png">
+				</div>
 			</div>
 		</div>
-		<div class="navigation">
-			<div class="header-search">
-				<input class="header-input">
-				<img class="search__img" src="./img/serch.png">
-			</div>
-			<div class="login">
-				<img class="login__img" src="./img/iconSignIn.png">
-			</div>
-		</div>
+	</header>
+	<div class="conteiner">
+		<div class="main-info"></div>
+		<div class="reviews"></div>
 	</div>
-</header>
-<main>
-	<div class="main-container">
-	</div>
-
 	<template type="text" id="main-container">
 		<div class="main__film-wrapper">
 			<div class="title-film">{{titleFilm}}</div>
 			<div class="main-content">
 				<img class="main-poster" src="{{img}}">
 				<div class="film-deteils">
-					<div class="film-rate">{{rate}}</div>
-					<div class="film-date">{{filmDate}}</div>
-					<div class="film-country">{{country}}</div>
-					<div class="film-maker">{{tagline}}</div>
-<!--					<div class="film-genre">{{ganre}}</div>-->
+					<p class="main-content__info">Rating: {{rate}}</p>
+					<p class="main-content__info">Status: {{status}}</p>
+					<p class="main-content__info">Release date: {{filmDate}}</p>
+					<p class="main-content__info">Original language: {{language}}</p>
+					<p class="main-content__info">Budget: {{budget}}</p>
+					<p class="main-content__info">Revenue: {{revenue}}</p>
+					<p class="main-content__info">Runtime: {{runtime}}</p>
+					<p class="main-content__info">Genres: {{ganre}}</p>
+					<p class="main-content__info">Tagline: {{tagline}}</p>
+					<p class="main-content__info">Homepage: {{}}</p>
 				</div>
 			</div>
-			<div class="discription">{{about}}</div>
+			<div class="description">
+				<label>Overview: {{about}}</label>
+			</div>
 		</div>
 	</template>
-</main>
+	<template type="text" id="reviews-content">
+		<label>login: {{login}}</label>
+	</template>
 </body>
+
 </html>
