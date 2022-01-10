@@ -7,15 +7,14 @@ let films = {};
 let pagesCount = 0;
 
 async function getResponseMoviePage(currentPageNumber) {
-
-		const res = await axios.get(`${URL.URL}/movie?id=11`,
+		const res = await axios.get(`${URL.URL}/movies?page=${currentPageNumber}`,
 			{
-				headers: { 'token': localStorage.getItem('token'),
+				headers: { 'Authorization': localStorage.getItem('token'),
 				}
 			});
-
-	console.log(res);
-	return res.json();
+		let resData=res.data.data.data
+	console.log(resData)
+	return resData;
 }
 
 export async function renderStartCards() {
@@ -25,14 +24,14 @@ export async function renderStartCards() {
 }
 
 export async function renderCards(arr) {
-	await arr.movies.forEach(card => {
+	await arr.forEach(card => {
 		DOM.filmsArea.appendChild(createCards(card));
 	})
 }
 
-export async function renderPagination({ totalCount, movies }) {
-	const totalCountMovies = totalCount;
-	const lengthMoviesOnCurrentPage = movies.length;
+export async function renderPagination({ totalCount, length }) {
+	const totalCountMovies = films.length;
+	const lengthMoviesOnCurrentPage = 20;
 	pagesCount = Math.ceil(totalCountMovies / lengthMoviesOnCurrentPage);
 	DOM.lastPage.textContent = pagesCount + '';
 	current = DOM.currentPage.textContent;
@@ -43,17 +42,9 @@ export function cleanHTML() {
 	DOM.filmsArea.innerHTML = '';
 }
 
-export async function switchPrev() {
-	await cleanHTML();
-	DOM.currentPage.textContent = --current + '';
-	check(current, pagesCount);
-	films = await getResponseMoviePage(current);
-	await renderCards(films);
-}
-
 export async function switchNext() {
-	await cleanHTML();
-	DOM.currentPage.textContent = ++current + '';
+	// await cleanHTML();
+	 DOM.currentPage.textContent = ++current + '';
 	check(current, pagesCount);
 	films = await getResponseMoviePage(current);
 	await renderCards(films);

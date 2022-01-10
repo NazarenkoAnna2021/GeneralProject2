@@ -6,7 +6,7 @@ import { constants } from "./constants"
 import "./img"
 import { preview } from "./preview"
 import { getFilters, resetFilters, openFilters } from "./filter.js"
-import { switchNext, switchPrev } from "./gallery";
+import { switchNext } from "./gallery";
 
 preview();
 
@@ -18,5 +18,5 @@ DOM.loginImg.addEventListener(constants.click, signOut);
 DOM.bigButton.addEventListener(constants.click, getFilters);
 DOM.filterButton.addEventListener(constants.click, openFilters);
 DOM.resetButton.addEventListener(constants.click, resetFilters);
-DOM.paginationBtnPrev.addEventListener(constants.click, switchPrev);
 DOM.paginationBtnNext.addEventListener(constants.click, switchNext);
+DOM.searchImg.addEventListener(constants.click, getFilters);
