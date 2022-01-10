@@ -3,7 +3,6 @@ import {htmlToElement} from './gallery';
 
 export async function getCurrentFilmInfo() {
 	const id = window.location.search.split('=')[1];
-
 	const info = await getResponseMovie(id);
 	appendFilmInfoToDOM(info);
 }
@@ -18,7 +17,6 @@ function correctReleaseDate(date) {
 	return date.split('T')[0].split('-').reverse().join('-');
 }
 
-
 function appendFilmInfoToDOM(data) {
 	const templateFilmHtml = document.querySelector('#main-container').innerHTML
 		.replace("{{titleFilm}}", data.title)
@@ -29,7 +27,6 @@ function appendFilmInfoToDOM(data) {
 		.replace("{{about}}", data.overview)
 		.replace("{{tagline}}", data.tagline)
 		// .replace("{{ganre}}", bbb(data.genre_ids))
-
 	const filmElem = htmlToElement(templateFilmHtml);
 	const mainContainer = document.querySelector('.main-container');
 	mainContainer.appendChild(filmElem);

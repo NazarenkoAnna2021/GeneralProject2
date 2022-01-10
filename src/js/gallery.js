@@ -1,17 +1,21 @@
 import { DOM } from "./dom.js";
 import { URL } from "./constants";
+import axios from "axios";
 
 let current = 1;
 let films = {};
 let pagesCount = 0;
 
 async function getResponseMoviePage(currentPageNumber) {
-	try {
-		const res = await fetch(`${URL.URL}/movie?page=${currentPageNumber}`);
-		return res.json();
-	} catch {
-		alert('dont movie');
-	}
+
+		const res = await axios.get(`${URL.URL}/movie?id=11`,
+			{
+				headers: { 'token': localStorage.getItem('token'),
+				}
+			});
+
+	console.log(res);
+	return res.json();
 }
 
 export async function renderStartCards() {

@@ -1,7 +1,7 @@
-import { DOM } from "./dom.js"
-import { hideShowElement } from "./visibility"
+import { DOM } from "./dom.js";
+import { hideShowElement } from "./visibility";
 import { cleanHTML, renderCards, renderPagination } from "./gallery";
-
+import {URL} from "./constants";
 
 class DoubleRange {
     constructor(container, gap) {
@@ -55,7 +55,7 @@ export function getFilters() {
 export function resetFilters() {
     DOM.headerInput.value = '';
     doubleRangeYear.setValue(1895, 2022);
-    doubleRangeBudget.setValue(0, 400);
+    doubleRangeBudget.setValue(0, 190000000);
     doubleRangeRating.setValue(0, 10);
     DOM.checkAdult.checked = false;
     DOM.countrySelect.value = 'all';
@@ -66,9 +66,8 @@ export function openFilters() { hideShowElement(DOM.filtersForm) };
 const doubleRangeYear = new DoubleRange('year', 5);
 const doubleRangeBudget = new DoubleRange('budget', 10000000);
 const doubleRangeRating = new DoubleRange('rating', 1);
-
 async function sendData(str) {
-    const response = await fetch(`https://wowmeup.pp.ua/${str}`);
+    const response = await fetch(`${URL.URL}/${str}`);
     const result = await response.json();
     console.log(result)
     cleanHTML()
