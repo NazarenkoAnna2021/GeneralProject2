@@ -56,7 +56,6 @@ function check(current, lastPage) {
 	} else {
 		DOM.paginationBtnNext.classList.remove("disabled");
 	}
-
 	if (current === 1) {
 		DOM.paginationBtnPrev.classList.add("disabled");
 	} else {

@@ -88,8 +88,7 @@ async function postSingUp() {
 	let response = await axios.post(URL.signUpURL,
 	userSingUp
 	);
-	let result = await response.json();
-	if (response.ok) {
+	if (response.status >= 200 <= 299) {
 		DOM.signInRadio.click()
 	} else {
 		DOM.messageSignUp.innerHTML = result.message
@@ -105,6 +104,7 @@ async function postSingIn() {
 
 	if (response.status >= 200 <= 299) {
 		localStorage.setItem('token', response.headers.token)
+		console.log(response.headers)
 		isAuthorised()
 		DOM.messageSignIn.innerHTML = result
 	} else {
