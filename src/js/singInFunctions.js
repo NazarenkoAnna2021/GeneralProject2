@@ -96,7 +96,7 @@ async function postSingUp() {
 	}
 }
 
-async function postSingIn() {
+export async function postSingIn() {
 	let response = await axios.post(URL.signInURL,
 		userSingIn
 	);
