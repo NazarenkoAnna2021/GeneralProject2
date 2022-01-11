@@ -1,7 +1,7 @@
 import { DOM } from "./dom.js";
 import { hideShowElement } from "./visibility";
 import { cleanHTML, renderCards, renderPagination } from "./gallery";
-import {URL} from "./constants";
+import { URL } from "./constants";
 import axios from "axios";
 
 class DoubleRange {
@@ -48,10 +48,27 @@ class DoubleRange {
 }
 
 export function getFilters() {
-    const str = `movie?language=${DOM.countrySelect.value}&status=${DOM.checkReleased.value}&budget_min=${doubleRangeBudget.getValue().budget_min}&budget_max=${doubleRangeBudget.getValue().budget_max}&release_date_first=${doubleRangeYear.getValue().year_min}.01.01&release_date_last=${doubleRangeYear.getValue().year_max}.01.01&title=${DOM.headerInput.value}`.trim();
-    console.log(str);
-    DOM.filterButton.style.boxShadow = '0 0 20px white'
-    sendData(str);
+    const params = {
+        params:
+        {
+            adult: ,
+            title: paramsForFilter.title,
+            genre: paramsForFilter.genre,
+            page: paramsForFilter.page,
+            pre_page: paramsForFilter.pre_page,
+            budget_min: paramsForFilter.budget_min,
+            budget_max: paramsForFilter.budget_max,
+            language: paramsForFilter.language,
+            popularity_min: paramsForFilter.popularity_min,
+            popularity_max: paramsForFilter.popularity_max,
+            release_date_first: paramsForFilter.release_date_first,
+            release_date_last: paramsForFilter.release_date_last,
+            revenue_min: paramsForFilter.revenue_min,
+            revenue_max: paramsForFilter.revenue_max,
+            status: paramsForFilter.status
+        }
+    }
+    sendData(params);
 }
 
 export function resetFilters() {
@@ -66,16 +83,16 @@ export function resetFilters() {
     DOM.filterButton.style.boxShadow = null
 }
 export function openFilters() { hideShowElement(DOM.filtersForm) };
+
 const doubleRangeYear = new DoubleRange('year', 5);
 const doubleRangeBudget = new DoubleRange('budget', 10000000);
 const doubleRangeRating = new DoubleRange('rating', 1);
-async function sendData(str) {
-    const response = await axios.get(`${URL.URL}/${str}`, {
-        headers: {
-            'token': localStorage.getItem('token'),
-        }
-    });
-    const result = await response.data.data.data;
+
+async function sendData(params) {
+    const response = await axios.get(`${URL.URL}/movies`,
+        { headers: { 'Authorization': localStorage.getItem('token') } }, params
+        );
+    const result = response.data;
     console.log(result)
     cleanHTML()
     await renderCards(result);

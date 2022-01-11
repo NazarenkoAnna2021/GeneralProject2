@@ -2,40 +2,32 @@ import { DOM } from "./dom.js";
 import { URL } from "./constants";
 import axios from "axios";
 
-let current = 1;
+//let current = 1;
 let films = {};
-let pagesCount = 0;
+let countFilms = 20;
 
-async function getResponseMoviePage(currentPageNumber) {
-		const res = await axios.get(`${URL.URL}/movies?page=${currentPageNumber}`,
-			{
-				headers: { 'Authorization': localStorage.getItem('token'),
-				}
-			});
-		let resData=res.data.data.data
+async function getResponseMoviePage(paramsForFilter) {
+	const res = await axios.get(`${URL.URL}/movies`, 
+		{ headers: { 'Authorization': localStorage.getItem('token') } });
+	let resData = res.data.data.data
 	console.log(resData)
 	return resData;
 }
 
 export async function renderStartCards() {
-	films = await getResponseMoviePage(current);
+	films = await getResponseMoviePage(countFilms);
 	await renderCards(films);
 	await renderPagination(films);
 }
 
 export async function renderCards(arr) {
-	await arr.forEach(card => {
+	arr.forEach(card => {
 		DOM.filmsArea.appendChild(createCards(card));
 	})
 }
 
-export async function renderPagination({ totalCount, length }) {
-	const totalCountMovies = films.length;
-	const lengthMoviesOnCurrentPage = 20;
-	pagesCount = Math.ceil(totalCountMovies / lengthMoviesOnCurrentPage);
-	DOM.lastPage.textContent = pagesCount + '';
-	current = DOM.currentPage.textContent;
-	return pagesCount;
+export async function renderPagination() {
+
 }
 
 export function cleanHTML() {
@@ -44,7 +36,7 @@ export function cleanHTML() {
 
 export async function switchNext() {
 	// await cleanHTML();
-	 DOM.currentPage.textContent = ++current + '';
+	DOM.currentPage.textContent = ++current + '';
 	check(current, pagesCount);
 	films = await getResponseMoviePage(current);
 	await renderCards(films);
