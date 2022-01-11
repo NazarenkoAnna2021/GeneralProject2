@@ -75,7 +75,7 @@ async function sendData(str) {
             'token': localStorage.getItem('token'),
         }
     });
-    const result = await response.json();
+    const result = await response.data.data.data;
     console.log(result)
     cleanHTML()
     await renderCards(result);
