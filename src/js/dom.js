@@ -44,7 +44,5 @@ export const DOM = {
 	paginationBtnNext: document.querySelector('.main-area__next'),
 	paginationBtnPrev: document.querySelector('.main-area__previous'),
 
-	mainContainer: document.querySelector('#main-container'),
-	mainInfo: document.querySelector('.main-info'),
 	templateCard: document.querySelector('#template-card').innerHTML,
 }
