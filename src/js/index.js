@@ -1,5 +1,4 @@
 import "/css/filter.css"
-import "/css/filmPage.css"
 import "/css/style.css"
 import "./img"
 import { DOM } from "./dom.js"
