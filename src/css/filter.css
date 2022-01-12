@@ -139,14 +139,14 @@ select{
     margin-left: 5px;
 }
 .reset-button:active{
-    box-shadow: 0 0 10px #6e2f2f;
+    box-shadow: 0 0 10px #ff0000;
     text-shadow: 0 0 5px #ffffff;
-    color: #6e2f2f;
+    color: red;
 }
 .go-button:active{
-    box-shadow: 0 0 10px #1f4715;
+    box-shadow: 0 0 10px #35ff00;
     text-shadow: 0 0 5px #ffffff;
-    color: #1f4715;
+    color: #35ff00;
 }
 .filters-form{
     justify-content: space-between;

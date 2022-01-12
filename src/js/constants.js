@@ -1,8 +1,32 @@
 export const constants = {
     click: 'click',
     src: 'src',
+    year: 'year',
+    budget: 'budget',
+    rating: 'rating',
+    token: 'token',
+    yearGap: 5,
+    budgetGap: 10000000,
+    ratingGap: 1,
     regExp: /^[A-Z][a-z]+$/,
     regExpLogin: /^[a-zA-Z][a-zA-Z0-9]+$/
+};
+export const filtersParams = {
+    headerInputValue: '',
+    yearValueMin: 1895,
+    yearValueMax: 2022,
+    budgetValueMin: 0,
+    budgetValueMax: 190000000,
+    ratingValueMin: 0,
+    ratingValueMax: 11000,
+    checkAdultValue: false,
+    countrySelectValue: '',
+    genresSelectValue: '',
+    statusSelectValue: ''
+
+};
+export const pathmames = {
+    movies: '/movies'
 }
 export const URL = {
     imagePosterLink: 'https://image.tmdb.org/t/p/original',

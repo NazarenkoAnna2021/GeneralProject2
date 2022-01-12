@@ -85,93 +85,94 @@
 	</div>
 	<div class="main-area none">
 		<div class="filters-form none">
-			<button class="reset-button filter-buttons">RST</button>
-			<div class="wrapper year">
-				<div class="values">
-					<span class="range1">
-						0
-					</span>
-					<span class="range-name"> YEARS </span>
-					<span class="range2">
-						100
-					</span>
+				<button class="reset-button filter-buttons">RST</button>
+				<div class="wrapper year">
+					<div class="values">
+						<span class="range1">
+							 0
+						</span>
+						<span class="range-name"> YEARS </span>
+						<span class="range2">
+							 100
+						</span>
+					</div>
+					<div class="container-range">
+						<div class="slider-track"></div>
+						<input type="range" min="1895" max="2022" value="1895" class="slider-1">
+						<input type="range" min="1895" max="2022" value="2022" class="slider-2">
+					</div>
 				</div>
-				<div class="container-range">
-					<div class="slider-track"></div>
-					<input type="range" min="1895" max="2022" value="1950" class="slider-1">
-					<input type="range" min="1895" max="2022" value="1989" class="slider-2">
+				<div class="wrapper budget">
+					<div class="values">
+						<span class="range1">
+							 0
+						</span>
+						<span class="range-name"> BUDGET </span>
+						<span class="range2">
+							 100
+						</span>
+					</div>
+					<div class="container-range">
+						<div class="slider-track"></div>
+						<input type="range" min="0" max="190000000" value="0" class="slider-1">
+						<input type="range" min="0" max="190000000" value="190000000" class="slider-2">
+					</div>
 				</div>
-			</div>
-			<div class="wrapper budget">
-				<div class="values">
-					<span class="range1">
-						0
-					</span>
-					<span class="range-name"> BUDGET </span>
-					<span class="range2">
-						100
-					</span>
+				<div class="wrapper rating">
+					<div class="values">
+						<span class="range1">
+							 0
+						</span>
+						<span class="range-name"> RATING </span>
+						<span class="range2">
+							 11000
+						</span>
+					</div>
+					<div class="container-range">
+						<div class="slider-track"></div>
+						<input type="range" min="0" max="11000" value="0" class="slider-1">
+						<input type="range" min="0" max="11000" value="11000" class="slider-2">
+					</div>
 				</div>
-				<div class="container-range">
-					<div class="slider-track"></div>
-					<input type="range" min="0" max="190000000" value="0" class="slider-1">
-					<input type="range" min="0" max="190000000" value="190000000" class="slider-2">
+				<div class="country column">
+					<label class="label-select" for="country-select">COUNTRY</label>
+					<select name="country" id="country-select">
+						<option value="">all</option>
+						<option value="en">EN</option>
+						<option value="ru">RU</option>
+						<option value="ua">UA</option>
+					</select>
 				</div>
-			</div>
-			<div class="wrapper rating">
-				<div class="values">
-					<span class="range1">
-						0
-					</span>
-					<span class="range-name"> RATING </span>
-					<span class="range2">
-						100
-					</span>
+				<div class="genres column">
+					<label class="label-select" for="genres-select">GENRES</label>
+					<select name="genres" id="genres-select" required>
+						<option value="">all</option>
+						<option value="comedy">comedy</option>
+						<option value="horror">horror</option>
+						<option value="sci-fi">sci-fi</option>
+						<option value="fantasy">fantasy</option>
+					</select>
 				</div>
-				<div class="container-range">
-					<div class="slider-track"></div>
-					<input type="range" min="0" max="10" value="5" class="slider-1">
-					<input type="range" min="0" max="10" value="10" class="slider-2">
+				<div class="status column">
+					<label class="label-select" for="status-select">STATUS</label>
+					<select name="status" id="status-select">
+						<option value="">all</option>
+						<option value="Released">released</option>
+						<option value="In Production">in product</option>
+						<option value="Planned">planned</option>
+						<option value="Post Production">post Product</option>
+					</select>
 				</div>
-			</div>
-			<div class="country column">
-				<label class="label-select" for="country-select">COUNTRY</label>
-				<select name="country" id="country-select">
-					<option value="">all</option>
-					<option value="en">EN</option>
-					<option value="ru">RU</option>
-					<option value="ua">UA</option>
-				</select>
-			</div>
-			<div class="genres column">
-				<label class="label-select" for="genres-select">GENRES</label>
-				<select name="genres" id="genres-select">
-					<option value="">all</option>
-					<option value="comedy">comedy</option>
-					<option value="horror">horror</option>
-					<option value="sci-fi">sci-fi</option>
-					<option value="fantasy">fantasy</option>
-				</select>
-			</div>
-			<div class="status column">
-				<label class="label-select" for="status-select">STATUS</label>
-				<select name="status" id="status-select">
-					<option value="">all</option>
-					<option value="released">released</option>
-					<option value="in_production">in product</option>
-					<option value="trailer">trailer</option>
-				</select>
-			</div>
-			<div class="checkboxs column">
-				<div>
-					<label for="adult" class="check-container">adult
-						<input type="checkbox" name="adult" id="adult">
-						<span class="checkmark"></span>
-					</label>
+				<div class="checkboxs column">
+					<div>
+						<label for="adult" class="check-container">adult
+							<input type="checkbox" name="adult" id="adult">
+							<span class="checkmark"></span>
+						</label>
+					</div>
 				</div>
+				<button class="go-button filter-buttons">GO</button>
 			</div>
-			<button class="go-button filter-buttons">GO</button>
-		</div>
 		<div class="main-area__film-word">
 			<h1>FILMS</h1>
 			<div class="main-area__filter-button">
@@ -180,12 +181,8 @@
 		</div>
 		<div class="main-area__films-area"></div>
 		<div class="main-area__pagination">
-			<img class="main-area__previous disabled" src="/img/arrowLeft-64.png" alt="">
-			<p class="main-area__page-info"><span class="current-page-number">1</span>/<span
-					class="last-page-number">?</span></p>
 			<img class="main-area__next" src="/img/arrowRight-64.png" alt="">
 		</div>
-		<div class="lds-dual-ring"></div>
 	</div>
 	<template type="text" id="template-card">
 		<a class="film-page" target="_blank" href="/filmPage.html?movie={{id}}">
@@ -197,9 +194,6 @@
 				</div>
 			</div>
 		</a>
-	</template>
-	<template id="pagination">
-		<li class="pagination__item"></li>
 	</template>
 </body>
 

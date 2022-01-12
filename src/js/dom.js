@@ -43,10 +43,6 @@ export const DOM = {
 	lastPage: document.querySelector('.last-page-number'),
 	paginationBtnNext: document.querySelector('.main-area__next'),
 	paginationBtnPrev: document.querySelector('.main-area__previous'),
-	templateFilmHtml: document.querySelector('#main-container').innerHTML,
-	mainContainer: document.querySelector('.main-container')
-}
 
-if (DOM.templateCardBlock) {
-	DOM.templateCard = document.querySelector('#template-card').innerHTML
+	templateCard: document.querySelector('#template-card').innerHTML,
 }
