@@ -4,42 +4,31 @@ import axios from "axios";
 
 //let current = 1;
 let films = {};
-let countFilms = 20;
+let currentPage = 0;
 
-async function getResponseMoviePage(paramsForFilter) {
-	const res = await axios.get(`${URL.URL}/movies`, 
-		{ headers: { 'Authorization': localStorage.getItem('token') } });
+async function getResponseMoviePage(setOfParams) {
+	const res = await axios.get(`${URL.URL}/movies`, { 
+		headers: { 'Authorization': localStorage.getItem('token') },
+		params: {page: ++currentPage}
+	});
 	let resData = res.data.data.data
 	console.log(resData)
 	return resData;
 }
 
-export async function renderStartCards() {
-	films = await getResponseMoviePage(countFilms);
-	await renderCards(films);
-	await renderPagination(films);
+export async function renderCards() {
+	films = await getResponseMoviePage(++currentPage);
+	drawCards(films);
 }
 
-export async function renderCards(arr) {
-	arr.forEach(card => {
+export function drawCards(cards) {
+	cards.forEach(card => {
 		DOM.filmsArea.appendChild(createCards(card));
 	})
 }
 
-export async function renderPagination() {
-
-}
-
 export function cleanHTML() {
 	DOM.filmsArea.innerHTML = '';
-}
-
-export async function switchNext() {
-	// await cleanHTML();
-	DOM.currentPage.textContent = ++current + '';
-	check(current, pagesCount);
-	films = await getResponseMoviePage(current);
-	await renderCards(films);
 }
 
 function check(current, lastPage) {
@@ -55,12 +44,12 @@ function check(current, lastPage) {
 	}
 }
 
-function createCards({ id, poster_path, title, movie_rate }) {
+function createCards({ id, poster_path, title, popularity }) {
 	const templateCardHtml = DOM.templateCard
 		.replace("{{id}}", id)
 		.replace("{{url}}", URL.imagePosterLink.concat(poster_path))
 		.replace("{{text}}", title)
-		.replace("{{5}}", movie_rate === null ? '' : movie_rate);
+		.replace("{{5}}", popularity === null ? '' : Math.round(popularity));
 	return htmlToElement(templateCardHtml);
 }
 

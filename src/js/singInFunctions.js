@@ -1,5 +1,5 @@
 import { DOM } from "./dom"
-import { renderStartCards } from "./gallery"
+import { renderCards } from "./gallery"
 import "./img"
 import { hideShowElement, changeImg } from "./visibility"
 import { URL, constants } from "./constants";
@@ -132,7 +132,7 @@ export function isAuthorised() {
 		hideShowElement(DOM.searchImg);
 		DOM.headerInput.disabled = !DOM.headerInput.disabled;
 		changeImg('/img/signOut.png', DOM.loginImg);
-		renderStartCards();
+		renderCards();
 	}
 }
 

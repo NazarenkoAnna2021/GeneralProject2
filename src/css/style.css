@@ -214,7 +214,7 @@ label:hover {
     position: absolute;
     align-items: center;
     height: 60px;
-    width: 250px;
+    width: 268px;
     border-radius: 40px;
     bottom: 0;
 }
@@ -232,7 +232,7 @@ label:hover {
     text-align: start;
     margin: 10px;
     color: #FFFFFF;
-    width: 100%;
+    width: 70%;
     height: 50px;
 }
 .header-inner{
@@ -329,13 +329,13 @@ p{
     transition: all 0.8s ease 0s;
     cursor: pointer;
   }
-  .main-area__previous:hover {
-    position: relative;
-    transform: translate(-10px);
+  .main-area__next{
+    height: 50px;
+    width: 50px;
   }
   .main-area__next:hover{
     position: relative;
-    transform: translate(10px);
+    transform: rotate(360deg);
   }
   .main-area__page-info{
       font-size: 40px;
