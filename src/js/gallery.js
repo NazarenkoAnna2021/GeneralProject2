@@ -1,23 +1,24 @@
 import { DOM } from "./dom.js";
-import { URL } from "./constants";
+import {URL ,constants, pathmames, filtersParams } from "./constants";
 import axios from "axios";
 
 //let current = 1;
 let films = {};
 let currentPage = 0;
 
-async function getResponseMoviePage(setOfParams) {
-	const res = await axios.get(`${URL.URL}/movies`, { 
+export async function getResponseMoviePage(setOfParams) {
+	const res = await axios.get(URL.URL.concat(pathmames.movies), {
 		headers: { 'Authorization': localStorage.getItem('token') },
-		params: {page: ++currentPage}
+		params: setOfParams
 	});
 	let resData = res.data.data.data
 	console.log(resData)
 	return resData;
 }
 
-export async function renderCards() {
-	films = await getResponseMoviePage(++currentPage);
+export async function renderCards(params) {
+	++currentPage
+	films = await getResponseMoviePage(params);
 	drawCards(films);
 }
 

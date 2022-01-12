@@ -5,7 +5,7 @@ import axios from "axios";
 
 export async function getCurrentFilmInfo() {
 	const id = window.location.search.split('=')[1];
-	const info = await getResponseMovie(id);
+	const info = getResponseMovie(id);
 	console.log(info);
 	appendFilmInfoToDOM(info);
 	appendReviewToDOM(info);

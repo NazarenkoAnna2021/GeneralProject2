@@ -7,7 +7,6 @@ import { constants } from "./constants"
 import { renderCards } from "./gallery";
 import { singIn, singUp, openSignIn, signOut } from "./singInFunctions"
 import { setGalleryByFilters, resetFilters, openFilters } from "./filter.js"
-
 preview();
 
 DOM.loginImg.addEventListener(constants.click, openSignIn);

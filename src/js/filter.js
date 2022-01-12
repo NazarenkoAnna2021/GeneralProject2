@@ -1,10 +1,10 @@
 import { DOM } from "./dom.js";
 import { hideShowElement } from "./visibility";
-import { cleanHTML, drawCards, renderPagination } from "./gallery";
-import { URL } from "./constants";
-import { constants, pathmames, filtersParams } from "./constants";
+import {cleanHTML, drawCards, renderCards, renderPagination} from "./gallery";
+import {URL ,constants, pathmames, filtersParams } from "./constants";
 import axios from "axios";
 import { DoubleRange } from "./classes"
+import {getResponseMoviePage} from "./gallery"
 
 const doubleRangeYear = new DoubleRange(constants.year, constants.yearGap);
 const doubleRangeBudget = new DoubleRange(constants.budget, constants.budgetGap);
@@ -24,7 +24,7 @@ export function setGalleryByFilters() {
         release_date_last: `${doubleRangeYear.getValue().year_max}-12-31`,
         status: DOM.checkReleased.value
     }
-    sendData(params);
+    renderCards(params)
 }
 
 export function resetFilters() {
@@ -41,11 +41,13 @@ export function resetFilters() {
 
 export function openFilters() { hideShowElement(DOM.filtersForm) };
 
-async function sendData(params) {
-    const response = await axios.get(URL.URL.concat(pathmames.movies),{
-            headers: { 'Authorization': localStorage.getItem(constants.token) },
-            params: params
-        });
-    cleanHTML()
-    await drawCards(response.data.data.data);
-}
+// async function sendData(params) {
+//     const response = await axios.get(URL.URL.concat(pathmames.movies),{
+//             headers: { 'Authorization': localStorage.getItem(constants.token) },
+//             params: params
+//         });
+//     cleanHTML()
+//     console.log(response.data.data.data)
+//     drawCards(response.data.data.data);
+// }
+
