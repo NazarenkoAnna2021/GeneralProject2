@@ -1,16 +1,21 @@
 import { DOM } from "./dom.js";
-import {URL ,constants, pathmames, filtersParams } from "./constants";
+import { URL } from "./constants";
 import axios from "axios";
 import { params } from "./filter"
 
 let currentPage = 0;
 
 async function getResponseMoviePage(setOfParams) {
+	try{
 	const res = await axios.get(`${URL.URL}/movies`, {
 		headers: { 'Authorization': localStorage.getItem('token') },
 		params: setOfParams
 	});
-	return res.data.data.data
+	return res.data.data.data;
+	}
+	catch(e){
+		throw(e.massage);
+	}
 }
 
 export async function renderCards() {

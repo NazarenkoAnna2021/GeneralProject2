@@ -152,6 +152,10 @@ select{
     justify-content: space-between;
     align-items: center;
     border-radius: 65px;
+    position: fixed;
+    z-index: 10;
+    margin: 0 0 0 5vw;
+    top: 80px;
 }
 .filters-form > *{
     margin-left: 5px;
