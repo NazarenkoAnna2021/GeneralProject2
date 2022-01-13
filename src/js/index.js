@@ -10,8 +10,6 @@ import { setGalleryByFilters, resetFilters, openFilters, getLanguages, getGenres
 
 preview();
 setTimeout(() => openSignIn(), 1000);
-getGenres()
-getLanguages()
 //DOM.loginImg.addEventListener(constants.click, openSignIn);
 DOM.singInButton.addEventListener(constants.click, singIn);
 DOM.singUpButton.addEventListener(constants.click, singUp);
@@ -24,3 +22,5 @@ DOM.paginationBtnNext.addEventListener(constants.click, renderCards);
 DOM.searchImg.addEventListener(constants.click, setGalleryByFilters);
 DOM.goToTopButton.addEventListener(constants.click, scrollToTop);
 window.addEventListener('scroll', trackScroll);
+getGenres();
+getLanguages();
