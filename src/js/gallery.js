@@ -7,34 +7,25 @@ let films = {};
 export let currentPage = 1;
 
 export async function getResponseMoviePage(setOfParams) {
-	try {
-		const res = await axios.get(URL.URL.concat(pathmames.movies), {
-			headers: {'Authorization': localStorage.getItem('token')},
-			params: setOfParams
-		});
-		console.log(setOfParams)
-		let resData = res.data.data.data
-		console.log(res)
-		return resData;
-	}
-	catch (error) {
-		if (error.response.status === 418){
-			DOM.filmsArea.append('There seems to be nothing here...')
-	// 		DOM.paginationBtnNext.setAttribute('disabled', true)   Почему-то не блокирует
-		}
-	}
+	const res = await axios.get(URL.URL.concat(pathmames.movies), {
+		headers: { 'Authorization': localStorage.getItem('token') },
+		params: setOfParams
+	});
+	console.log(setOfParams)
+	let resData = res.data.data.data
+	return resData;
 }
 
 export async function renderNextPage() {
-		currentPage++
-		if (isFiltersOn) {
-			setGalleryByFilters(currentPage)
-			console.log('filters')
-		} else {
-			renderCards({page: currentPage})
-			console.log('page')
-		}
+	currentPage++
+	if (isFiltersOn){
+		setGalleryByFilters(currentPage)
+		console.log('filters')
+	}else{
+		renderCards({page: currentPage})
+		console.log('page')
 	}
+}
 
 export async function renderCards(params) {
 	films = await getResponseMoviePage(params);
