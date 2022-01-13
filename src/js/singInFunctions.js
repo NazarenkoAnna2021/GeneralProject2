@@ -99,22 +99,24 @@ async function postSingUp() {
 }
 
 async function postSingIn() {
-	try {
-		let response = await axios.post(URL.signInURL,
-			userSingIn
-		);
-		if (response.status >= 200 <= 299) {
-			localStorage.setItem('token', response.headers.token)
-			console.log(response.headers)
-			isAuthorised()
+	if ((DOM.singInLogin.value.length >= 3) && (DOM.singInPassword.value.length >= 8)) {
+		try {
+			let response = await axios.post(URL.signInURL,
+				userSingIn
+			);
+			if (response.status >= 200 <= 299) {
+				localStorage.setItem('token', response.headers.token)
+				console.log(response.headers)
+				isAuthorised()
+			}
+		} catch (error) {
+			DOM.singInInputs.forEach((a) => {
+				marker(a, 'red')
+			})
 		}
-
-	}
-	catch (error) {
-		DOM.singInInputs.forEach((a)=>{
-			marker(a,'red')
-
-		})
+	}else{
+		marker(DOM.singInLogin, 'red')
+		marker(DOM.singInPassword, 'red')
 	}
 }
 
