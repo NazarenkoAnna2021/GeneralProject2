@@ -6,11 +6,12 @@ import { preview } from "./preview"
 import { constants } from "./constants"
 import { renderCards } from "./gallery";
 import { singIn, singUp, openSignIn, signOut } from "./singInFunctions"
-import { setGalleryByFilters, resetFilters, openFilters } from "./filter.js"
+import { setGalleryByFilters, resetFilters, openFilters, getLanguages, getGenres } from "./filter.js"
 
 preview();
 setTimeout(() => openSignIn(), 1000);
-
+getGenres()
+getLanguages()
 //DOM.loginImg.addEventListener(constants.click, openSignIn);
 DOM.singInButton.addEventListener(constants.click, singIn);
 DOM.singUpButton.addEventListener(constants.click, singUp);

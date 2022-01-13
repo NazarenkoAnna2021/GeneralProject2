@@ -27,7 +27,9 @@ export const filtersParams = {
 };
 export const pathmames = {
     movies: '/movies',
-    movie: '/movie'
+    movie: '/movie',
+    genres: '/genres',
+    languages: '/languages'
 }
 export const URL = {
     imagePosterLink: 'https://image.tmdb.org/t/p/original',

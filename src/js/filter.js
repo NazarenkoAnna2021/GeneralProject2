@@ -1,9 +1,9 @@
 import { DOM } from "./dom.js";
 import { hideShowElement } from "./visibility";
 import { renderCards, cleanHTML, setCurrentPage } from "./gallery";
-import { constants, filtersParams } from "./constants";
+import { constants, filtersParams, pathmames, URL } from "./constants";
 import { DoubleRange } from "./classes"
-
+import axios from "axios";
 const doubleRangeYear = new DoubleRange(constants.year, constants.yearGap);
 const doubleRangeBudget = new DoubleRange(constants.budget, constants.budgetGap);
 const doubleRangeRating = new DoubleRange(constants.rating, constants.ratingGap);
@@ -52,3 +52,28 @@ export function resetFilters() {
 }
 
 export function openFilters() { hideShowElement(DOM.filtersForm) };
+
+export async function getLanguages() {
+    const res = await axios.get(`${URL.URL}${pathmames.languages}`, {
+        headers: { 'Authorization': localStorage.getItem('token') },
+    });
+    res.data.data.forEach((a)=> {
+        let option = document.createElement('option')
+        option.textContent = a.iso_639_1
+        option.value = a.iso_639_1
+        DOM.countrySelect.appendChild(option)
+    });
+}
+
+
+export async function getGenres() {
+    const res = await axios.get(`${URL.URL}${pathmames.genres}`, {
+        headers: { 'Authorization': localStorage.getItem('token') },
+    });
+    res.data.data.forEach((a)=> {
+        let option = document.createElement('option')
+        option.textContent = a.name
+        option.value = a.name
+        DOM.genresSelect.appendChild(option)
+    });
+}
