@@ -6,7 +6,7 @@ import { preview } from "./preview"
 import { constants } from "./constants"
 import { renderCards, trackScroll, scrollToTop} from "./gallery";
 import { singIn, singUp, openSignIn, signOut } from "./singInFunctions"
-import { setGalleryByFilters, resetFilters, openFilters, getLanguages, getGenres } from "./filter.js"
+import { setGalleryByFilters, resetFilters, openFilters } from "./filter.js"
 
 preview();
 setTimeout(() => openSignIn(), 1000);

@@ -3,6 +3,7 @@ import { renderCards } from "./gallery"
 import "./img"
 import { hideShowElement, hideElement, showElement, changeImg } from "./visibility"
 import { URL, constants } from "./constants";
+import {getGenres, getLanguages} from "./filter";
 const axios = require("axios");
 
 let userSingUp = {
@@ -20,11 +21,8 @@ let countOfValidInputs = 0;
 
 export function singIn(e) {
 	e.preventDefault();
-	validation(DOM.singInInputs)
-	if (isValid(DOM.singInInputs)) {
 		setUserBodyForFequest(userSingIn)
 		postSingIn()
-	}
 }
 
 export function singUp(e) {
@@ -48,7 +46,6 @@ function validation(element) {
 			}
 		}
 	}
-
 	if (element[element.length - 2].value.length < 3) {
 		marker(element[element.length - 2], 'red')
 	} else {
@@ -95,10 +92,15 @@ async function postSingUp() {
 	}
 	catch(error)
 	{
-		const { response: { data: { data } } } = error
-		DOM.messageSignUp.innerHTML = data
+		if (error.response.status === 406){
+		DOM.messageSignUp.innerHTML ='This login is already exist'
+	}
+		DOM.singUpInputs.forEach((a)=> {
+			marker(a, 'red')
+		});
 	}
 }
+
 
 async function postSingIn() {
 	try {
@@ -113,8 +115,9 @@ async function postSingIn() {
 
 	}
 	catch (error) {
-		const { response: { data: { data } } } = error
-		DOM.messageSignIn.innerHTML = data
+		DOM.singInInputs.forEach((a)=>{
+			marker(a,'red')
+		})
 	}
 }
 
@@ -139,6 +142,8 @@ export function isAuthorised() {
 		DOM.headerInput.disabled = !DOM.headerInput.disabled;
 		changeImg('/img/signOut.png', DOM.loginImg);
 		renderCards();
+		getGenres()
+		getLanguages()
 	}
 }
 
