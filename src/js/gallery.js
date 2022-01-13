@@ -1,35 +1,23 @@
 import { DOM } from "./dom.js";
 import {URL ,constants, pathmames, filtersParams } from "./constants";
 import axios from "axios";
-import {isFiltersOn, setGalleryByFilters} from "./filter";
+import { params } from "./filter"
 
-let films = {};
-export let currentPage = 1;
+let currentPage = 0;
 
-export async function getResponseMoviePage(setOfParams) {
-	const res = await axios.get(URL.URL.concat(pathmames.movies), {
+async function getResponseMoviePage(setOfParams) {
+	const res = await axios.get(`${URL.URL}/movies`, {
 		headers: { 'Authorization': localStorage.getItem('token') },
 		params: setOfParams
 	});
-	console.log(setOfParams)
-	let resData = res.data.data.data
-	return resData;
+	return res.data.data.data
 }
 
-export async function renderNextPage() {
-	currentPage++
-	if (isFiltersOn){
-		setGalleryByFilters(currentPage)
-		console.log('filters')
-	}else{
-		renderCards({page: currentPage})
-		console.log('page')
-	}
-}
-
-export async function renderCards(params) {
-	films = await getResponseMoviePage(params);
+export async function renderCards() {
+	params.page = ++currentPage;
+	const films = await getResponseMoviePage(params);
 	drawCards(films);
+	console.log(params, films);
 }
 
 export function drawCards(cards) {
@@ -41,7 +29,6 @@ export function drawCards(cards) {
 export function cleanHTML() {
 	DOM.filmsArea.innerHTML = '';
 }
-
 
 function createCards({ id, poster_path, title, popularity }) {
 	const templateCardHtml = DOM.templateCard
@@ -57,3 +44,5 @@ export function htmlToElement(html) {
 	template.innerHTML = html;
 	return template.content.firstChild;
 }
+
+export function setCurrentPage(newCurrentPage) { currentPage = newCurrentPage }

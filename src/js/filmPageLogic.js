@@ -1,11 +1,11 @@
 import { URL } from "./constants";
 //import { htmlToElement } from './gallery';
 import axios from "axios";
-//const { DOM } =  require("./dom");
+import { DOM_PAGE } from  "./pageDom";
 
 export async function getCurrentFilmInfo() {
 	const id = window.location.search.split('=')[1];
-	const info = getResponseMovie(id);
+	const info = await getResponseMovie(id);
 	console.log(info);
 	appendFilmInfoToDOM(info);
 	appendReviewToDOM(info);
@@ -17,7 +17,7 @@ async function getResponseMovie(id) {
 }
 
 function appendFilmInfoToDOM(data) {
-	const template = document.querySelector('#main-container').innerHTML
+	const template = DOM_PAGE.templateInfo
 		.replace("{{titleFilm}}", data.title)
 		.replace("{{img}}", URL.imagePosterLink.concat(data.backdrop_path))
 		.replace("{{rate}}", data.popularity ? data.popularity : 0)
@@ -36,19 +36,17 @@ function appendFilmInfoToDOM(data) {
 	const element = document.createElement('template');
 	element.innerHTML = template;
 	console.log(element);
-	const info = document.querySelector('.main-info')
-	info.append(element.content.firstChild);
+	DOM_PAGE.mainInfo.append(element.content.firstChild);
 }
 
 function appendReviewToDOM(data) {
 	data.reviews.forEach(item => {
-		const template = document.querySelector('#reviews-content').innerHTML
+		const template = DOM_PAGE.templateReview
 			.replace("{{login}}", item.login)
 			.replace("{{content}}", item.content)
 		const element = document.createElement('template');
 		element.innerHTML = template;
 		console.log(element);
-		const info = document.querySelector('.reviews')
-		info.append(element.content.firstChild);
+		DOM_PAGE.reviewArea.append(element.content.firstChild);
 	})
 }

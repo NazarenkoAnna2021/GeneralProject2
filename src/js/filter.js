@@ -1,40 +1,42 @@
 import { DOM } from "./dom.js";
 import { hideShowElement } from "./visibility";
-import {cleanHTML, drawCards, renderCards, renderPagination} from "./gallery";
-import {URL ,constants, pathmames, filtersParams } from "./constants";
-import axios from "axios";
+import { renderCards, cleanHTML, setCurrentPage } from "./gallery";
+import { constants, filtersParams } from "./constants";
 import { DoubleRange } from "./classes"
-import {getResponseMoviePage, currentPage } from "./gallery"
 
-export let isFiltersOn = false;
 const doubleRangeYear = new DoubleRange(constants.year, constants.yearGap);
 const doubleRangeBudget = new DoubleRange(constants.budget, constants.budgetGap);
 const doubleRangeRating = new DoubleRange(constants.rating, constants.ratingGap);
-
-export function applyFilters(){
-    isFiltersOn = true
-    cleanHTML()
-    DOM.filterButton.style.boxShadow = '0 0 10px white'
-    setGalleryByFilters(1)
+export const params = {
+    adult: false,
+    title: DOM.headerInput.value,
+    genre: DOM.genresSelect.value,
+    budget_min: doubleRangeBudget.getValue().budget_min,
+    budget_max: doubleRangeBudget.getValue().budget_max,
+    language: DOM.countrySelect.value,
+    popularity_min: Math.round(doubleRangeRating.getValue().rating_min),
+    popularity_max: Math.round(doubleRangeRating.getValue().rating_max),
+    release_date_first: `${doubleRangeYear.getValue().year_min}-01-01`,
+    release_date_last: `${doubleRangeYear.getValue().year_max}-12-31`,
+    status: DOM.checkReleased.value
 }
 
-
-export function setGalleryByFilters(page) {
-    const params = {
-        adult: false,
-        title: DOM.headerInput.value,
-        genre: DOM.genresSelect.value,
-        budget_min: doubleRangeBudget.getValue().budget_min,
-        budget_max: doubleRangeBudget.getValue().budget_max,
-        language: DOM.countrySelect.value,
-        popularity_min: Math.round(doubleRangeRating.getValue().rating_min),
-        popularity_max: Math.round(doubleRangeRating.getValue().rating_max),
-        release_date_first: `${doubleRangeYear.getValue().year_min}-01-01`,
-        release_date_last: `${doubleRangeYear.getValue().year_max}-12-31`,
-        status: DOM.checkReleased.value,
-        page: page
-    }
-    renderCards(params)
+export function setGalleryByFilters() {
+    params.adult = false;
+    params.title = DOM.headerInput.value;
+    params.genre = DOM.genresSelect.value;
+    params.budget_min = doubleRangeBudget.getValue().budget_min;
+    params.budget_max = doubleRangeBudget.getValue().budget_max;
+    params.language = DOM.countrySelect.value;
+    params.popularity_min = Math.round(doubleRangeRating.getValue().rating_min);
+    params.popularity_max = Math.round(doubleRangeRating.getValue().rating_max);
+    params.release_date_first = `${doubleRangeYear.getValue().year_min}-01-01`;
+    params.release_date_last = `${doubleRangeYear.getValue().year_max}-12-31`;
+    params.status = DOM.checkReleased.value;
+    setCurrentPage(0);
+    renderCards();
+    cleanHTML();
+    openFilters();
 }
 
 export function resetFilters() {
@@ -46,6 +48,7 @@ export function resetFilters() {
     DOM.countrySelect.value = filtersParams.countrySelectValue;
     DOM.genresSelect.value = filtersParams.genresSelectValue;
     DOM.statusSelect.value = filtersParams.statusSelectValue;
+    DOM.filterButton.style.boxShadow = null
 }
 
 export function openFilters() { hideShowElement(DOM.filtersForm) };
@@ -56,7 +59,5 @@ export function openFilters() { hideShowElement(DOM.filtersForm) };
 //             params: params
 //         });
 //     cleanHTML()
-//     console.log(response.data.data.data)
-//     drawCards(response.data.data.data);
+//     await drawCards(response.data.data.data);
 // }
-
