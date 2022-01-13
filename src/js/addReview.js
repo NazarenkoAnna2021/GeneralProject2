@@ -10,7 +10,6 @@ async function getResponseMoviePage(setOfParams) {
         });
     }
     catch (error) {
-       //const { response: { data: { data } } } = error;
        console.log(error);
     }
 }
