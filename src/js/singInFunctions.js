@@ -33,7 +33,7 @@ export function singUp(e) {
 	}
 }
 
-function validation(element) {
+export function validation(element) {
 	for (let i = 0; i < element.length - 2; i++) {
 		if (element[i].value.length < 3) marker(element[i], 'red')
 		else {
@@ -91,34 +91,32 @@ async function postSingUp() {
 	}
 	catch(error)
 	{
-		if (error.response.status === 406){
-		DOM.messageSignUp.innerHTML ='This login is already exist'
-	}
-		DOM.singUpInputs.forEach((a)=> {
-			marker(a, 'red')
-			a.innerHTML = ''
-		});
+		if (error.response.status === 406) {
+			DOM.messageSignUp.innerHTML = 'This login is already exist';
+			marker(DOM.singUpLogin, 'red');
+		}
 	}
 }
 
-
 async function postSingIn() {
-	try {
-		let response = await axios.post(URL.signInURL,
-			userSingIn
-		);
-		if (response.status >= 200 <= 299) {
-			localStorage.setItem('token', response.headers.token)
-			console.log(response.headers)
-			isAuthorised()
+	if ((DOM.singInLogin.value.length >= 3) && (DOM.singInPassword.value.length >= 8)) {
+		try {
+			let response = await axios.post(URL.signInURL,
+				userSingIn
+			);
+			if (response.status >= 200 <= 299) {
+				localStorage.setItem('token', response.headers.token)
+				console.log(response.headers)
+				isAuthorised()
+			}
+		} catch (error) {
+			DOM.singInInputs.forEach((a) => {
+				marker(a, 'red')
+			})
 		}
-
-	}
-	catch (error) {
-		DOM.singInInputs.forEach((a)=>{
-			marker(a,'red')
-
-		})
+	}else{
+		marker(DOM.singInLogin, 'red')
+		marker(DOM.singInPassword, 'red')
 	}
 }
 
@@ -162,11 +160,5 @@ export function openSignIn() {
 
 export function signOut() {
 	localStorage.removeItem('token')
-	DOM.mainArea.classList.value;
-	hideShowElement(DOM.mainArea);
-	hideShowElement(DOM.searchImg);
-	hideShowElement(DOM.preview);
-	openSignIn();
-	changeImg('/img/iconSignIn.png', DOM.loginImg);
-	DOM.headerInput.disabled = true;
+	location.reload()
 }

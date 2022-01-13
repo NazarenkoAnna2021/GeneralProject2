@@ -5,7 +5,7 @@ import { DOM } from "./dom.js"
 import { preview } from "./preview"
 import { constants } from "./constants"
 import { renderCards, trackScroll, scrollToTop } from "./gallery";
-import { singIn, singUp, openSignIn, signOut } from "./singInFunctions"
+import {singIn, singUp, openSignIn, signOut, validation} from "./singInFunctions"
 import { setGalleryByFilters, resetFilters, openFilters, getLanguages, getGenres } from "./filter.js"
 
 preview();
@@ -22,5 +22,12 @@ DOM.paginationBtnNext.addEventListener(constants.click, renderCards);
 DOM.searchImg.addEventListener(constants.click, setGalleryByFilters);
 DOM.goToTopButton.addEventListener(constants.click, scrollToTop);
 window.addEventListener(constants.scroll, trackScroll);
+DOM.singUpFirstName.addEventListener('blur', validation);
+DOM.singUpLastName.addEventListener('blur', validation);
+DOM.singUpLogin.addEventListener('blur', validation);
+DOM.singUpPassword.addEventListener('blur', validation);
+DOM.singInLogin.addEventListener('blur', validation);
+DOM.singInPassword.addEventListener('blur', validation);
+
 getGenres();
 getLanguages();
