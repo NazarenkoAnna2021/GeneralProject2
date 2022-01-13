@@ -1,5 +1,6 @@
 export const constants = {
     click: 'click',
+    scroll: 'scroll',
     src: 'src',
     year: 'year',
     budget: 'budget',
