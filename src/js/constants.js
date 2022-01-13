@@ -9,7 +9,7 @@ export const constants = {
     yearGap: 5,
     budgetGap: 10000000,
     ratingGap: 1,
-    regExp: /^[a-z]+$/,
+    regExp: /^[a-zA-Z]+$/,
     regExpLogin: /^[a-zA-Z][a-zA-Z0-9]+$/
 };
 export const filtersParams = {
