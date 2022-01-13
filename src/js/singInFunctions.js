@@ -33,7 +33,7 @@ export function singUp(e) {
 	}
 }
 
-function validation(element) {
+export function validation(element) {
 	for (let i = 0; i < element.length - 2; i++) {
 		if (element[i].value.length < 3) marker(element[i], 'red')
 		else {
