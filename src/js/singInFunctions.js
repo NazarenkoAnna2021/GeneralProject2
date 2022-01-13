@@ -91,16 +91,12 @@ async function postSingUp() {
 	}
 	catch(error)
 	{
-		if (error.response.status === 406){
-		DOM.messageSignUp.innerHTML ='This login is already exist'
-	}
-		DOM.singUpInputs.forEach((a)=> {
-			marker(a, 'red')
-			a.innerHTML = ''
-		});
+		if (error.response.status === 406) {
+			DOM.messageSignUp.innerHTML = 'This login is already exist';
+			marker(DOM.singUpLogin, 'red');
+		}
 	}
 }
-
 
 async function postSingIn() {
 	try {
