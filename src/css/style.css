@@ -338,7 +338,7 @@ p{
     width: 100vw;
     height: 60px;
 }
-.main-area__previous, .main-area__next, .search__img, .login__img, .arrow-up__img {
+.main-area__previous, .main-area__next, .search__img, .login__img {
     transition: all 0.8s ease 0s;
     cursor: pointer;
   }
@@ -353,7 +353,7 @@ p{
   .main-area__page-info{
       font-size: 40px;
   }
-  .search__img:hover, .login__img:hover, .arrow-up__img:hover{
+  .search__img:hover, .login__img:hover{
     transform: rotate(360deg);
   }
   .film-conteiner{
@@ -375,7 +375,7 @@ label:hover{
 }
 .reviews{
     width: 30%;
-    height: 99%;
+    height: 100%;
     flex-direction: column;
     padding: 1%;
 }
@@ -433,6 +433,9 @@ label:hover{
 .main-content__info{
     font-size: 20px;
     color: #CDC6B0;
+}
+.none {
+    display: none;
 }
 .form-conteiner{
     display: flex;
@@ -509,7 +512,7 @@ label:hover{
     align-items: center;
     position: fixed;
     margin-left: 90%;
-    right: 40px;
+    right: 10px;
     margin-top: 90%;
     bottom: 100px;
     width: 40px;
@@ -522,7 +525,5 @@ label:hover{
     border-radius: 0;
     width: 30px;
     height: 30px;
-}
-.none {
-    display: none;
+    cursor: pointer;
 }

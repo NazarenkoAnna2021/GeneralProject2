@@ -45,7 +45,7 @@ export function resetFilters() {
     doubleRangeBudget.setValue(filtersParams.budgetValueMin, filtersParams.budgetValueMax);
     doubleRangeRating.setValue(filtersParams.ratingValueMin, filtersParams.ratingValueMax);
     DOM.checkAdult.checked = filtersParams.checkAdultValue;
-    DOM.countrySelect.option[0].selected = 'selected';
+    DOM.countrySelect.value = filtersParams.countrySelectValue;
     DOM.genresSelect.value = filtersParams.genresSelectValue;
     DOM.statusSelect.value = filtersParams.statusSelectValue;
     DOM.filterButton.style.boxShadow = null

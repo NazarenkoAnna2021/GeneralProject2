@@ -1,7 +1,7 @@
 import { DOM } from "./dom"
 import { renderCards } from "./gallery"
 import "./img"
-import { hideShowElement, hideElement, showElement, changeImg } from "./visibility"
+import { hideShowElement, changeImg } from "./visibility"
 import { URL, constants } from "./constants";
 import {getGenres, getLanguages} from "./filter";
 const axios = require("axios");
@@ -148,16 +148,18 @@ export function isAuthorised() {
 }
 
 export function openSignIn() {
-	hideElement(DOM.preview);
-	showElement(DOM.modalIcon);
+	hideShowElement(DOM.preview);
+	hideShowElement(DOM.modalIcon);
 	isAuthorised();
 }
 
 export function signOut() {
 	localStorage.removeItem('token')
-	DOM.mainArea.classList.add('none');
-	hideElement(DOM.searchImg);
-	setTimeout(openSignIn(), 1000);
+	DOM.mainArea.classList.value;
+	hideShowElement(DOM.mainArea);
+	hideShowElement(DOM.searchImg);
+	hideShowElement(DOM.preview);
+	openSignIn();
 	changeImg('/img/iconSignIn.png', DOM.loginImg);
 	DOM.headerInput.disabled = true;
 }
