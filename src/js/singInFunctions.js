@@ -161,4 +161,5 @@ export function openSignIn() {
 export function signOut() {
 	localStorage.removeItem('token')
 	location.reload()
+
 }

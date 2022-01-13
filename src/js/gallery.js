@@ -11,7 +11,7 @@ async function getResponseMoviePage(setOfParams) {
 			headers: { 'Authorization': localStorage.getItem('token') },
 			params: setOfParams
 		});
-		return res.data.data.data;
+		return res.data.data;
 	}
 	catch (error) {
 		const { response: { data: { data } } } = error
