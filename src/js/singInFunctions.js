@@ -150,9 +150,11 @@ export function openSignIn() {
 
 export function signOut() {
 	localStorage.removeItem('token')
-	DOM.mainArea.classList.value();
+	DOM.mainArea.classList.value;
 	hideShowElement(DOM.mainArea);
 	hideShowElement(DOM.searchImg);
+	hideShowElement(DOM.preview);
+	openSignIn();
 	changeImg('/img/iconSignIn.png', DOM.loginImg);
 	DOM.headerInput.disabled = true;
 }
