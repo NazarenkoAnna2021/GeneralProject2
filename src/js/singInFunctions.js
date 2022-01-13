@@ -3,7 +3,6 @@ import { renderCards } from "./gallery"
 import "./img"
 import { hideShowElement, changeImg } from "./visibility"
 import { URL, constants } from "./constants";
-import {getGenres, getLanguages} from "./filter";
 const axios = require("axios");
 
 let userSingUp = {
