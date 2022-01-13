@@ -506,3 +506,24 @@ label:hover{
 .last-page-number {
     color: #000;
 }
+.arrow-up{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    margin-left: 90%;
+    right: 10px;
+    margin-top: 90%;
+    bottom: 100px;
+    width: 40px;
+    height: 40px;
+    background-color: #5A5339;
+    border-radius: 43px;
+}
+.arrow-up__img{
+    position: absolute;
+    border-radius: 0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
