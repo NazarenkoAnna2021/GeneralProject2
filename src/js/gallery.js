@@ -2,6 +2,7 @@ import { DOM } from "./dom.js";
 import { URL } from "./constants";
 import axios from "axios";
 import { params } from "./filter"
+import { hideShowElement } from "./visibility.js";
 
 let currentPage = 0;
 
@@ -15,7 +16,7 @@ async function getResponseMoviePage(setOfParams) {
 	}
 	catch (error) {
 		const { response: { data: { data } } } = error
-		DOM.filmsArea.innerHTML = data.data;
+		if(!DOM.filmsArea.innerHTML) DOM.filmsArea.innerHTML = data.data;
 	}
 }
 
@@ -42,8 +43,8 @@ function createCards({ id, poster_path, title, popularity }) {
 	return htmlToElement(templateCardHtml);
 }
 
-function createMassage(text){
-	return createElement('label').innerHTML = text; 
+function createMassage(text) {
+	return createElement('label').innerHTML = text;
 }
 
 export function htmlToElement(html) {
@@ -53,3 +54,21 @@ export function htmlToElement(html) {
 }
 
 export function setCurrentPage(newCurrentPage) { currentPage = newCurrentPage }
+
+export function trackScroll() {
+	var scrolled = window.pageYOffset;
+	var coords = document.documentElement.clientHeight;
+
+	if (scrolled > coords) {
+		DOM.goToTopButton.classList.remove('none');
+	}
+	if (scrolled < coords) {
+		DOM.goToTopButton.classList.add('none');
+	}
+}
+
+export function scrollToTop() {
+	if (window.pageYOffset > 0) {
+		window.scrollTo(0, 0);
+	}
+}

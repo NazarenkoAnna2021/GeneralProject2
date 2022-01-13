@@ -29,6 +29,7 @@ export const DOM = {
 	templateCardBlock: document.querySelector('#template-card'),
 	statusSelect: document.querySelector('#status-select'),
 	resetButton: document.querySelector('.reset-button'),
+	goToTopButton: document.querySelector('.arrow-up'),
 
 	pagination: document.querySelector('.main-area__pagination'),
 
@@ -39,10 +40,7 @@ export const DOM = {
 	genresSelect: document.querySelector('#genres-select'),
 	bigButton: document.querySelector('.go-button'),
 
-	currentPage: document.querySelector('.current-page-number'),
-	lastPage: document.querySelector('.last-page-number'),
 	paginationBtnNext: document.querySelector('.main-area__next'),
-	paginationBtnPrev: document.querySelector('.main-area__previous'),
 
 	templateCard: document.querySelector('#template-card').innerHTML,
 }
