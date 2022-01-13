@@ -12,7 +12,7 @@
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
-input:focus{
+input:focus, textarea:focus{
     outline: 0;
     box-shadow: 0 0 10px #ffffff;
 }
@@ -34,6 +34,7 @@ header{
     position: fixed;
     height: fit-content;
     z-index: 10;
+    width: 100vw;
 }
 .container{
     width: 100vw;
@@ -250,7 +251,7 @@ label:hover {
 }
 .header-inner{
     display: flex;
-    width: 100vw;
+    width: 100%;
     height: 60px;
     background-color: #9B8D62;
 }
@@ -277,13 +278,13 @@ label:hover {
 }
 a:hover{
     
-    color: rgb(32, 32, 32);
+    color: #202020;
 }
 p{
     color: #000;
 }
-.header-input{
-    width: 255px;
+.text-input{
+    width: 100%;
     height: 33px;
     background-color: #5A5339;
     border-radius: 54px;
@@ -296,7 +297,7 @@ p{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-left: 15vw;
+    width: 70%;
 }
 .search__img{
     display: flex;
@@ -328,7 +329,8 @@ p{
     height: 40px;
     background-color: #5A5339;
     border-radius: 43px;
-    margin-left: 15vw;
+    margin-left: 25%;
+    margin-right: 20px;
 }
 .main-area__pagination{
     display: flex;
@@ -353,7 +355,7 @@ p{
   .main-area__page-info{
       font-size: 40px;
   }
-  .search__img:hover, .login__img:hover{
+  .search__img:hover, .login__img:hover, .reviews__button:hover >:last-child{
     transform: rotate(360deg);
   }
   .film-conteiner{
@@ -433,9 +435,6 @@ label:hover{
 .main-content__info{
     font-size: 20px;
     color: #CDC6B0;
-}
-.none {
-    display: none;
 }
 .form-conteiner{
     display: flex;
@@ -529,4 +528,31 @@ label:hover{
 }
 .none {
     display: none;
+}
+.reviews__add{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.reviews__input{
+    width: 100%;
+    border-radius: 3px;
+    height: 50%;
+    text-align:left;
+    padding: 1%;
+}
+.reviews__button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 35px;
+    background-color: #9B8D62;
+    border-radius: 3px;
+    margin-top: 20px;
+}
+.reviews__button:hover{
+    box-shadow: 0 0 10px #ffffff;
 }
