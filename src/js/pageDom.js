@@ -3,5 +3,7 @@ export const DOM_PAGE = {
     mainInfo: document.querySelector('.main-info'),
     templateReview: document.querySelector('#reviews-content').innerHTML,
     reviewArea: document.querySelector('.reviews__text'),
-    loginBtn: document.querySelector('.login')
+    loginBtn: document.querySelector('.login'),
+    headerSearch: document.querySelector('.header-input'),
+    searchImage:document.querySelector('.search__img')
 }
