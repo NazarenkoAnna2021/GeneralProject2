@@ -6,15 +6,16 @@ import { params } from "./filter"
 let currentPage = 0;
 
 async function getResponseMoviePage(setOfParams) {
-	try{
-	const res = await axios.get(`${URL.URL}/movies`, {
-		headers: { 'Authorization': localStorage.getItem('token') },
-		params: setOfParams
-	});
-	return res.data.data.data;
+	try {
+		const res = await axios.get(`${URL.URL}/movies`, {
+			headers: { 'Authorization': localStorage.getItem('token') },
+			params: setOfParams
+		});
+		return res.data.data.data;
 	}
-	catch(e){
-		throw(e.massage);
+	catch (error) {
+		const { response: { data: { data } } } = error
+		DOM.filmsArea.innerHTML = data.data;
 	}
 }
 
@@ -22,13 +23,10 @@ export async function renderCards() {
 	params.page = ++currentPage;
 	const films = await getResponseMoviePage(params);
 	drawCards(films);
-	console.log(params, films);
 }
 
 export function drawCards(cards) {
-	cards.forEach(card => {
-		DOM.filmsArea.appendChild(createCards(card));
-	})
+	if (cards) cards.forEach(card => { DOM.filmsArea.appendChild(createCards(card)) });
 }
 
 export function cleanHTML() {
@@ -42,6 +40,10 @@ function createCards({ id, poster_path, title, popularity }) {
 		.replace("{{text}}", title)
 		.replace("{{5}}", popularity === null ? '' : Math.round(popularity));
 	return htmlToElement(templateCardHtml);
+}
+
+function createMassage(text){
+	return createElement('label').innerHTML = text; 
 }
 
 export function htmlToElement(html) {

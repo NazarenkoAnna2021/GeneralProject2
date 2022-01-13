@@ -5,6 +5,7 @@
     list-style: none;
     font-family: 'Skranji', cursive;
     color: #ffffff;
+    scroll-behavior: smooth;
 }
 *,*:before,*:after{
 	-moz-box-sizing: border-box;
