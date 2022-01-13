@@ -4,13 +4,22 @@ import {cleanHTML, drawCards, renderCards, renderPagination} from "./gallery";
 import {URL ,constants, pathmames, filtersParams } from "./constants";
 import axios from "axios";
 import { DoubleRange } from "./classes"
-import {getResponseMoviePage} from "./gallery"
+import {getResponseMoviePage, currentPage } from "./gallery"
 
+export let isFiltersOn = false;
 const doubleRangeYear = new DoubleRange(constants.year, constants.yearGap);
 const doubleRangeBudget = new DoubleRange(constants.budget, constants.budgetGap);
 const doubleRangeRating = new DoubleRange(constants.rating, constants.ratingGap);
 
-export function setGalleryByFilters() {
+export function applyFilters(){
+    isFiltersOn = true
+    cleanHTML()
+    DOM.filterButton.style.boxShadow = '0 0 10px white'
+    setGalleryByFilters(1)
+}
+
+
+export function setGalleryByFilters(page) {
     const params = {
         adult: false,
         title: DOM.headerInput.value,
@@ -22,7 +31,8 @@ export function setGalleryByFilters() {
         popularity_max: Math.round(doubleRangeRating.getValue().rating_max),
         release_date_first: `${doubleRangeYear.getValue().year_min}-01-01`,
         release_date_last: `${doubleRangeYear.getValue().year_max}-12-31`,
-        status: DOM.checkReleased.value
+        status: DOM.checkReleased.value,
+        page: page
     }
     renderCards(params)
 }
@@ -36,7 +46,6 @@ export function resetFilters() {
     DOM.countrySelect.value = filtersParams.countrySelectValue;
     DOM.genresSelect.value = filtersParams.genresSelectValue;
     DOM.statusSelect.value = filtersParams.statusSelectValue;
-    DOM.filterButton.style.boxShadow = null
 }
 
 export function openFilters() { hideShowElement(DOM.filtersForm) };
