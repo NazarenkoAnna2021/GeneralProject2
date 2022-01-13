@@ -152,6 +152,7 @@ button:hover{
     z-index: 5;
     width: 100vw;
     height: 100vh;
+    margin-top: 60px;
 }
 .preview{
     display: flex;
