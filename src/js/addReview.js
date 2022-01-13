@@ -1,5 +1,7 @@
 import { URL } from "./constants";
+import { hideShowElement } from "./visibility";
 import axios from "axios";
+import { DOM_PAGE } from "./pageDom";
 
 async function getResponseMoviePage(setOfParams) {
     try {
@@ -19,4 +21,10 @@ export async function addReview(id, content) {
         movie_id: id,
         content: content
     });
+    changeVisibilityEdding();
+}
+
+export function changeVisibilityEdding(){
+    hideShowElement(DOM_PAGE.reviewsAdd);
+    hideShowElement(DOM_PAGE.reviewArea);
 }

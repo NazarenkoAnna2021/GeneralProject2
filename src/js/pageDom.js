@@ -7,5 +7,7 @@ export const DOM_PAGE = {
     headerSearch: document.querySelector('.header-input'),
     searchImage: document.querySelector('.search__img'),
     reviewInput: document.querySelector('.reviews__input'),
-    reviewsButton: document.querySelector('.reviews__button')
+    reviewsButton: document.querySelector('.reviews__button'),
+    reviewsOpenButton: document.querySelector('.reviews__open-button'),
+    reviewsAdd: document.querySelector('.reviews__add')
 }
