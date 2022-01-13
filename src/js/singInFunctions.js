@@ -97,6 +97,7 @@ async function postSingUp() {
 	}
 		DOM.singUpInputs.forEach((a)=> {
 			marker(a, 'red')
+			a.innerHTML = ''
 		});
 	}
 }
@@ -117,9 +118,12 @@ async function postSingIn() {
 	catch (error) {
 		DOM.singInInputs.forEach((a)=>{
 			marker(a,'red')
+
 		})
 	}
 }
+
+
 
 function setUserBodyForFequest(obj) {
 	if (obj === userSingUp) {
@@ -142,8 +146,12 @@ export function isAuthorised() {
 		DOM.headerInput.disabled = !DOM.headerInput.disabled;
 		changeImg('/img/signOut.png', DOM.loginImg);
 		renderCards();
-		getGenres()
-		getLanguages()
+		DOM.singInInputs.forEach((a)=>{
+			a.value = '';
+		});
+		DOM.singUpInputs.forEach((a)=>{
+			a.value = '';
+		})
 	}
 }
 
