@@ -52,12 +52,3 @@ export function resetFilters() {
 }
 
 export function openFilters() { hideShowElement(DOM.filtersForm) };
-
-// async function sendData(params) {
-//     const response = await axios.get(URL.URL.concat(pathmames.movies),{
-//             headers: { 'Authorization': localStorage.getItem(constants.token) },
-//             params: params
-//         });
-//     cleanHTML()
-//     await drawCards(response.data.data.data);
-// }

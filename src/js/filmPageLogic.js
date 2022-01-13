@@ -11,8 +11,11 @@ export async function getCurrentFilmInfo() {
 	appendReviewToDOM(info);
 }
 
-async function getResponseMovie(id) {
-	const request = await axios.get(`http://localhost:3001/movie?id=${id}`, { headers: { 'Authorization': localStorage.getItem('token') } });
+async function getResponseMovie(pageId) {
+	const request = await axios.get(`http://localhost:3001/movie`, { 
+		headers: { 'Authorization': localStorage.getItem('token') },
+		params: { id: pageId}
+	});
 	return request.data.data;
 }
 
@@ -31,7 +34,6 @@ function appendFilmInfoToDOM(data) {
 		.replace("{{budget}}", data.budget)
 		.replace("{{revenue}}", data.revenue)
 		.replace("{{runtime}}", data.runtime)
-		.replace("{{homepage}}", data.homepage)
 		.replace("{{homepage}}", data.homepage)
 	const element = document.createElement('template');
 	element.innerHTML = template;

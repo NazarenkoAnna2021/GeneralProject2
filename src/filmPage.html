@@ -37,7 +37,10 @@
 	</header>
 	<div class="film-conteiner">
 		<div class="main-info"></div>
-		<div class="reviews"></div>
+		<div class="reviews">
+			<h1 class="reviews__header">Reviews</h1>
+			<div class="reviews__text"></div>
+		</div>
 	</div>
 	<template type="text" id="main-container">
 		<div class="main__film-wrapper">
@@ -54,17 +57,17 @@
 					<p class="main-content__info">Runtime: {{runtime}}</p>
 					<p class="main-content__info">Genres: {{ganre}}</p>
 					<p class="main-content__info">Tagline: {{tagline}}</p>
-					<p class="main-content__info">Homepage: <a href="{{homepage}}">{{homepage}}</a></p>
+					<p class="main-content__info"><a href="{{homepage}}" class="homapage">Go to homepage</a></p>
 				</div>
 			</div>
 			<div class="description">
-				<label>Overview: {{about}}</label>
+				<p class="main-content__info">Overview: {{about}}</p>
 			</div>
 		</div>
 	</template>
 	<template type="text" id="reviews-content">
-		<div>
-			<label>{{login}}: {{content}}</label>
+		<div class="reviews-content__text">
+			<label><span class="reviews-content__login">{{login}}:</span> {{content}}</label>
 		</div>
 	</template>
 </body>
