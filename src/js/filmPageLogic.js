@@ -52,3 +52,8 @@ function appendReviewToDOM(data) {
 		DOM_PAGE.reviewArea.append(element.content.firstChild);
 	})
 }
+
+
+export function closePage(){
+	window.close();
+}
