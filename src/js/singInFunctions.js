@@ -25,7 +25,7 @@ export function singIn(e) {
 }
 
 export function singUp(e) {
-	e.preventDefault();
+	e.preventDefault()
 	validation(DOM.singUpInputs)
 	if (isValid(DOM.singUpInputs)) {
 		setUserBodyForFequest(userSingUp)
@@ -85,7 +85,8 @@ async function postSingUp() {
 		let response = await axios.post(URL.signUpURL,
 			userSingUp
 		);
-		if (response.status >= 200 <= 299) {
+		console.log(response)
+		if (response.statusText === "OK") {
 			DOM.signInRadio.click()
 		}
 	}
@@ -104,9 +105,9 @@ async function postSingIn() {
 			let response = await axios.post(URL.signInURL,
 				userSingIn
 			);
-			if (response.status >= 200 <= 299) {
+			console.dir(response)
+			if (response.statusText === "OK") {
 				localStorage.setItem('token', response.headers.token)
-				console.log(response.headers)
 				isAuthorised()
 			}
 		} catch (error) {
@@ -161,5 +162,4 @@ export function openSignIn() {
 export function signOut() {
 	localStorage.removeItem('token')
 	location.reload()
-
 }
