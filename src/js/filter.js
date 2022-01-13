@@ -44,7 +44,7 @@ export function resetFilters() {
     doubleRangeYear.setValue(filtersParams.yearValueMin, filtersParams.yearValueMax);
     doubleRangeBudget.setValue(filtersParams.budgetValueMin, filtersParams.budgetValueMax);
     doubleRangeRating.setValue(filtersParams.ratingValueMin, filtersParams.ratingValueMax);
-    DOM.checkAdult.checked = filtersParams.checkAdultValue;
+    // DOM.checkAdult.checked = filtersParams.checkAdultValue.value;
     DOM.countrySelect.value = filtersParams.countrySelectValue;
     DOM.genresSelect.value = filtersParams.genresSelectValue;
     DOM.statusSelect.value = filtersParams.statusSelectValue;
@@ -77,3 +77,9 @@ export async function getGenres() {
         DOM.genresSelect.appendChild(option)
     });
 }
+
+DOM.headerInput.addEventListener('keydown', (event)=> {
+    if (event.code === 'Enter') {
+        setGalleryByFilters()
+    }
+});
