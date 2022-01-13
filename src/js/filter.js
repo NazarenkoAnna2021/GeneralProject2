@@ -1,10 +1,8 @@
 import { DOM } from "./dom.js";
 import { hideShowElement } from "./visibility";
 import {cleanHTML, drawCards, renderCards, renderPagination} from "./gallery";
-import {URL ,constants, pathmames, filtersParams } from "./constants";
-import axios from "axios";
+import {constants, filtersParams } from "./constants";
 import { DoubleRange } from "./classes"
-import {getResponseMoviePage, currentPage } from "./gallery"
 
 export let isFiltersOn = false;
 const doubleRangeYear = new DoubleRange(constants.year, constants.yearGap);
