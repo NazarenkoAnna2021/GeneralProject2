@@ -3,7 +3,6 @@ import "/img/formFon.jpg"
 import "/img/iconSignIn.png"
 import "/img/serch.png"
 import "/img/signOut.png"
-import "/img/arrowRight-64.png"
 import "/img/arrowLeft-64.png"
 import '/img/filters.png'
 import "/img/prev1.gif"

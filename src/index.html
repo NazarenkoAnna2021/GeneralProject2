@@ -54,6 +54,7 @@
 							<div class="sign-form__tooltip error-signin" data-tooltip="this is pass, fool">
 								<input type="password" placeholder="password" class="inputs-signin" data="password">
 							</div>
+							<div id="messageSignIn"></div>
 							<button>login</button>
 						</div>
 					</form>
@@ -98,8 +99,8 @@
 					</div>
 					<div class="container-range">
 						<div class="slider-track"></div>
-						<input type="range" min="1895" max="2022" value="1895" class="slider-1">
-						<input type="range" min="1895" max="2022" value="2022" class="slider-2">
+						<input type="range" min="1895" max="2023" value="1895" class="slider-1">
+						<input type="range" min="1895" max="2024" value="2042" class="slider-2">
 					</div>
 				</div>
 				<div class="wrapper budget">
@@ -125,41 +126,35 @@
 						</span>
 						<span class="range-name"> RATING </span>
 						<span class="range2">
-							 100
+							 11000
 						</span>
 					</div>
 					<div class="container-range">
 						<div class="slider-track"></div>
-						<input type="range" min="0" max="10" value="0" class="slider-1">
-						<input type="range" min="0" max="10" value="10" class="slider-2">
+						<input type="range" min="0" max="11000" value="0" class="slider-1">
+						<input type="range" min="0" max="11000" value="11000" class="slider-2">
 					</div>
 				</div>
 				<div class="country column">
 					<label class="label-select" for="country-select">COUNTRY</label>
 					<select name="country" id="country-select">
 						<option value="">all</option>
-						<option value="en">EN</option>
-						<option value="ru">RU</option>
-						<option value="ua">UA</option>
 					</select>
 				</div>
 				<div class="genres column">
 					<label class="label-select" for="genres-select">GENRES</label>
-					<select name="genres" id="genres-select">
+					<select name="genres" id="genres-select" required>
 						<option value="">all</option>
-						<option value="comedy">comedy</option>
-						<option value="horror">horror</option>
-						<option value="sci-fi">sci-fi</option>
-						<option value="fantasy">fantasy</option>
 					</select>
 				</div>
 				<div class="status column">
 					<label class="label-select" for="status-select">STATUS</label>
 					<select name="status" id="status-select">
 						<option value="">all</option>
-						<option value="released">released</option>
-						<option value="in_production">in product</option>
-						<option value="trailer">trailer</option>
+						<option value="Released">released</option>
+						<option value="In Production">in product</option>
+						<option value="Planned">planned</option>
+						<option value="Post Production">post Product</option>
 					</select>
 				</div>
 				<div class="checkboxs column">
@@ -180,9 +175,7 @@
 		</div>
 		<div class="main-area__films-area"></div>
 		<div class="main-area__pagination">
-			<img class="main-area__previous disabled" src="/img/arrowLeft-64.png" alt="">
-			<p class="main-area__page-info"><span class="current-page-number">1</span>/<span class="last-page-number">?</span></p>
-			<img class="main-area__next" src="/img/arrowRight-64.png" alt="">
+			<img class="main-area__next" src="/img/arrowLeft-64.png" alt="">
 		</div>
 	</div>
 	<template type="text" id="template-card">
@@ -195,9 +188,6 @@
 				</div>
 			</div>
 		</a>
-	</template>
-	<template id="pagination">
-		<li class="pagination__item"></li>
 	</template>
 </body>
 

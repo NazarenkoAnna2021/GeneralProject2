@@ -1,5 +1,5 @@
 import { DOM } from "./dom"
-import { renderStartCards } from "./gallery"
+import { renderCards } from "./gallery"
 import "./img"
 import { hideShowElement, changeImg } from "./visibility"
 import { URL, constants } from "./constants";
@@ -85,30 +85,36 @@ function marker(input, color) {
 }
 
 async function postSingUp() {
-	let response = await axios.post(URL.signUpURL,
-	userSingUp
-	);
-	if (response.status >= 200 <= 299) {
-		DOM.signInRadio.click()
-	} else {
-		DOM.messageSignUp.innerHTML = result.message
+	try {
+		let response = await axios.post(URL.signUpURL,
+			userSingUp
+		);
+		if (response.status >= 200 <= 299) {
+			DOM.signInRadio.click()
+		}
+	}
+	catch(error)
+	{
+		const { response: { data: { data } } } = error
+		DOM.messageSignUp.innerHTML = data
 	}
 }
 
 async function postSingIn() {
-	let response = await axios.post(URL.signInURL,
-		userSingIn
-	);
-	let result = response.data;
-	console.log(result)
+	try {
+		let response = await axios.post(URL.signInURL,
+			userSingIn
+		);
+		if (response.status >= 200 <= 299) {
+			localStorage.setItem('token', response.headers.token)
+			console.log(response.headers)
+			isAuthorised()
+		}
 
-	if (response.status >= 200 <= 299) {
-		localStorage.setItem('token', response.headers.token)
-		console.log(response.headers)
-		isAuthorised()
-		DOM.messageSignIn.innerHTML = result
-	} else {
-		DOM.messageSignIn.innerHTML = result.message
+	}
+	catch (error) {
+		const { response: { data: { data } } } = error
+		DOM.messageSignIn.innerHTML = data
 	}
 }
 
@@ -132,7 +138,7 @@ export function isAuthorised() {
 		hideShowElement(DOM.searchImg);
 		DOM.headerInput.disabled = !DOM.headerInput.disabled;
 		changeImg('/img/signOut.png', DOM.loginImg);
-		renderStartCards();
+		renderCards();
 	}
 }
 
@@ -144,9 +150,11 @@ export function openSignIn() {
 
 export function signOut() {
 	localStorage.removeItem('token')
-	DOM.mainArea.classList.value();
+	DOM.mainArea.classList.value;
 	hideShowElement(DOM.mainArea);
 	hideShowElement(DOM.searchImg);
+	hideShowElement(DOM.preview);
+	openSignIn();
 	changeImg('/img/iconSignIn.png', DOM.loginImg);
 	DOM.headerInput.disabled = true;
 }

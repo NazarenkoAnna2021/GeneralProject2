@@ -1,42 +1,52 @@
-import {URL} from "./constants";
-import {htmlToElement} from './gallery';
+import { URL } from "./constants";
+//import { htmlToElement } from './gallery';
+import axios from "axios";
+import { DOM_PAGE } from  "./pageDom";
 
 export async function getCurrentFilmInfo() {
 	const id = window.location.search.split('=')[1];
 	const info = await getResponseMovie(id);
+	console.log(info);
 	appendFilmInfoToDOM(info);
+	appendReviewToDOM(info);
 }
 
 async function getResponseMovie(id) {
-	const request = await fetch(`${URL.URL}/movies/${id}`);
-	const response = await request.json();
-	return response.movie;
-}
-
-function correctReleaseDate(date) {
-	return date.split('T')[0].split('-').reverse().join('-');
+	const request = await axios.get(`http://localhost:3001/movie?id=${id}`, { headers: { 'Authorization': localStorage.getItem('token') } });
+	return request.data.data;
 }
 
 function appendFilmInfoToDOM(data) {
-	const templateFilmHtml = document.querySelector('#main-container').innerHTML
+	const template = DOM_PAGE.templateInfo
 		.replace("{{titleFilm}}", data.title)
 		.replace("{{img}}", URL.imagePosterLink.concat(data.backdrop_path))
-		.replace("{{rate}}", data.movie_rate === null ? 'Rating is not defined' : `Rate: ${data.movie_rate}`)
-		.replace("{{filmDate}}", correctReleaseDate(data.release_date))
-		.replace("{{country}}", correctReleaseDate(data.original_language.toUpperCase()))
+		.replace("{{rate}}", data.popularity ? data.popularity : 0)
+		.replace("{{filmDate}}", data.release_date)
+		.replace("{{country}}", data.original_language.toUpperCase())
 		.replace("{{about}}", data.overview)
 		.replace("{{tagline}}", data.tagline)
-		// .replace("{{ganre}}", bbb(data.genre_ids))
-	const filmElem = htmlToElement(templateFilmHtml);
-	const mainContainer = document.querySelector('.main-container');
-	mainContainer.appendChild(filmElem);
+		.replace("{{ganre}}", data.genres)
+		.replace("{{status}}", data.status)
+		.replace("{{language}}", data.language_in_en)
+		.replace("{{budget}}", data.budget)
+		.replace("{{revenue}}", data.revenue)
+		.replace("{{runtime}}", data.runtime)
+		.replace("{{homepage}}", data.homepage)
+		.replace("{{homepage}}", data.homepage)
+	const element = document.createElement('template');
+	element.innerHTML = template;
+	console.log(element);
+	DOM_PAGE.mainInfo.append(element.content.firstChild);
 }
 
-// ============= DONT REMOVE FUNCTION =================
-//===============================================
-// async function getGenres() {
-// 	const requestGanres = await fetch(`${URL.URL}/genres`)
-// 	const response = await requestGanres.json();
-// 	return response.genres;
-// }
-//===============================================
+function appendReviewToDOM(data) {
+	data.reviews.forEach(item => {
+		const template = DOM_PAGE.templateReview
+			.replace("{{login}}", item.login)
+			.replace("{{content}}", item.content)
+		const element = document.createElement('template');
+		element.innerHTML = template;
+		console.log(element);
+		DOM_PAGE.reviewArea.append(element.content.firstChild);
+	})
+}

@@ -1,83 +1,91 @@
 import { DOM } from "./dom.js";
 import { hideShowElement } from "./visibility";
-import { cleanHTML, renderCards, renderPagination } from "./gallery";
-import {URL} from "./constants";
+import { renderCards, cleanHTML, setCurrentPage } from "./gallery";
+import {constants, filtersParams, URL, pathNames} from "./constants";
+import { DoubleRange } from "./classes"
 import axios from "axios";
 
-class DoubleRange {
-    constructor(container, gap) {
-        this.container = container;
-        this.sliderOne = document.querySelector(`.${this.container} .slider-1`);
-        this.sliderTwo = document.querySelector(`.${this.container} .slider-2`);
-        this.displayValOne = document.querySelector(`.${this.container} .range1`);
-        this.displayValTwo = document.querySelector(`.${this.container} .range2`);
-        this.minGap = gap;
-        this.sliderTrack = document.querySelector(`.${this.container} .slider-track`);
-        this.sliderMaxValue = this.sliderOne?.max;
-        this.slideOne = this.slideOne.bind(this);
-        this.slideTwo = this.slideTwo.bind(this);
-        this.sliderOne.addEventListener('input', this.slideOne);
-        this.sliderTwo.addEventListener('input', this.slideTwo);
-        window.addEventListener('load', this.slideOne);
-        window.addEventListener('load', this.slideTwo);
-    }
-    slideOne() {
-        if (Number(this.sliderTwo.value) - Number(this.sliderOne.value) <= this.minGap) {
-            this.sliderOne.value = Number(this.sliderTwo.value) - this.minGap;
-        }
-        this.displayValOne.textContent = this.sliderOne.value;
-    }
-    slideTwo() {
-        if (Number(this.sliderTwo.value) - Number(this.sliderOne.value) <= this.minGap) {
-            this.sliderTwo.value = Number(this.sliderOne.value) + this.minGap;
-        }
-        this.displayValTwo.textContent = this.sliderTwo.value;
-    }
-    getValue() {
-        return {
-            [`${this.container}_min`]: Number(this.sliderOne.value),
-            [`${this.container}_max`]: Number(this.sliderTwo.value)
-        };
-    }
-    setValue(min, max) {
-        this.sliderOne.value = min;
-        this.sliderTwo.value = max;
-        this.slideOne();
-        this.slideTwo();
-    }
+const doubleRangeYear = new DoubleRange(constants.year, constants.yearGap);
+const doubleRangeBudget = new DoubleRange(constants.budget, constants.budgetGap);
+const doubleRangeRating = new DoubleRange(constants.rating, constants.ratingGap);
+export const params = {
+    adult: false,
+    title: DOM.headerInput.value,
+    genre: DOM.genresSelect.value,
+    budget_min: doubleRangeBudget.getValue().budget_min,
+    budget_max: doubleRangeBudget.getValue().budget_max,
+    language: DOM.countrySelect.value,
+    popularity_min: Math.round(doubleRangeRating.getValue().rating_min),
+    popularity_max: Math.round(doubleRangeRating.getValue().rating_max),
+    release_date_first: `${doubleRangeYear.getValue().year_min}-01-01`,
+    release_date_last: `${doubleRangeYear.getValue().year_max}-12-31`,
+    status: DOM.checkReleased.value
 }
 
-export function getFilters() {
-    const str = `movie?language=${DOM.countrySelect.value}&status=${DOM.checkReleased.value}&budget_min=${doubleRangeBudget.getValue().budget_min}&budget_max=${doubleRangeBudget.getValue().budget_max}&release_date_first=${doubleRangeYear.getValue().year_min}.01.01&release_date_last=${doubleRangeYear.getValue().year_max}.01.01&title=${DOM.headerInput.value}`.trim();
-    console.log(str);
-    DOM.filterButton.style.boxShadow = '0 0 20px white'
-    sendData(str);
+export function setGalleryByFilters() {
+    params.adult = false;
+    params.title = DOM.headerInput.value;
+    params.genre = DOM.genresSelect.value;
+    params.budget_min = doubleRangeBudget.getValue().budget_min;
+    params.budget_max = doubleRangeBudget.getValue().budget_max;
+    params.language = DOM.countrySelect.value;
+    params.popularity_min = Math.round(doubleRangeRating.getValue().rating_min);
+    params.popularity_max = Math.round(doubleRangeRating.getValue().rating_max);
+    params.release_date_first = `${doubleRangeYear.getValue().year_min}-01-01`;
+    params.release_date_last = `${doubleRangeYear.getValue().year_max}-12-31`;
+    params.status = DOM.checkReleased.value;
+    setCurrentPage(0);
+    renderCards();
+    cleanHTML();
+    openFilters();
+    DOM.filterButton.style.boxShadow = '0 0 10px white';
 }
 
 export function resetFilters() {
-    DOM.headerInput.value = '';
-    doubleRangeYear.setValue(1895, 2022);
-    doubleRangeBudget.setValue(0, 190000000);
-    doubleRangeRating.setValue(0, 10);
-    DOM.checkAdult.checked = false;
-    DOM.countrySelect.value = '';
-    DOM.genresSelect.value = '';
-    DOM.statusSelect.value = '';
+    DOM.headerInput.value = filtersParams.headerInputValue;
+    doubleRangeYear.setValue(filtersParams.yearValueMin, filtersParams.yearValueMax);
+    doubleRangeBudget.setValue(filtersParams.budgetValueMin, filtersParams.budgetValueMax);
+    doubleRangeRating.setValue(filtersParams.ratingValueMin, filtersParams.ratingValueMax);
+    DOM.checkAdult.checked = filtersParams.checkAdultValue;
+    DOM.countrySelect.value = filtersParams.countrySelectValue;
+    DOM.genresSelect.value = filtersParams.genresSelectValue;
+    DOM.statusSelect.value = filtersParams.statusSelectValue;
     DOM.filterButton.style.boxShadow = null
 }
+
 export function openFilters() { hideShowElement(DOM.filtersForm) };
-const doubleRangeYear = new DoubleRange('year', 5);
-const doubleRangeBudget = new DoubleRange('budget', 10000000);
-const doubleRangeRating = new DoubleRange('rating', 1);
-async function sendData(str) {
-    const response = await axios.get(`${URL.URL}/${str}`, {
-        headers: {
-            'token': localStorage.getItem('token'),
-        }
+
+export async function getLanguages() {
+    const res = await axios.get(`${URL.URL}${pathNames.languages}`, {
+        headers: { 'Authorization': localStorage.getItem('token') },
     });
-    const result = await response.data.data.data;
-    console.log(result)
-    cleanHTML()
-    await renderCards(result);
-    await renderPagination(result);
+    res.data.data.forEach((a)=> {
+        let option = document.createElement('option')
+        option.textContent = a.iso_639_1
+        option.value = a.iso_639_1
+        DOM.countrySelect.appendChild(option)
+    });
 }
+
+
+export async function getGenres() {
+    const res = await axios.get(`${URL.URL}${pathNames.genres}`, {
+        headers: { 'Authorization': localStorage.getItem('token') },
+    });
+
+    res.data.data.forEach((a)=> {
+        let option = document.createElement('option')
+        option.textContent = a.name
+        option.value = a.name
+        DOM.genresSelect.appendChild(option)
+    });
+}
+
+// async function sendData(params) {
+//     const response = await axios.get(URL.URL.concat(pathmames.movies),{
+//             headers: { 'Authorization': localStorage.getItem(constants.token) },
+//             params: params
+//         });
+//     cleanHTML()
+//     await drawCards(response.data.data.data);
+// }
