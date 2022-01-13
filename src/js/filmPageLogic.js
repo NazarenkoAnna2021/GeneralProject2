@@ -53,7 +53,6 @@ function appendReviewToDOM(data) {
 	})
 }
 
-
 export function closePage(){
 	window.close();
 }
