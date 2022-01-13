@@ -42,10 +42,6 @@ function createCards({ id, poster_path, title, popularity }) {
 	return htmlToElement(templateCardHtml);
 }
 
-function createMassage(text){
-	return createElement('label').innerHTML = text; 
-}
-
 export function htmlToElement(html) {
 	const template = document.createElement('template');
 	template.innerHTML = html;
@@ -53,3 +49,21 @@ export function htmlToElement(html) {
 }
 
 export function setCurrentPage(newCurrentPage) { currentPage = newCurrentPage }
+
+export function trackScroll() {
+	var scrolled = window.pageYOffset;
+	var coords = document.documentElement.clientHeight;
+
+	if (scrolled > coords) {
+		DOM.goToTopButton.classList.remove('none');
+	}
+	if (scrolled < coords) {
+		DOM.goToTopButton.classList.add('none');
+	}
+}
+
+export function scrollToTop() {
+	if (window.pageYOffset > 0) {
+		window.scrollTo(0, 0);
+	}
+}

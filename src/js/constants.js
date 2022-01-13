@@ -14,7 +14,7 @@ export const constants = {
 export const filtersParams = {
     headerInputValue: '',
     yearValueMin: 1895,
-    yearValueMax: 2022,
+    yearValueMax: 2030,
     budgetValueMin: 0,
     budgetValueMax: 190000000,
     ratingValueMin: 0,

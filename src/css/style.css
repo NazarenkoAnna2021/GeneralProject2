@@ -527,3 +527,6 @@ label:hover{
     height: 30px;
     cursor: pointer;
 }
+.none {
+    display: none;
+}

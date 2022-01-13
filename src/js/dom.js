@@ -29,6 +29,7 @@ export const DOM = {
 	templateCardBlock: document.querySelector('#template-card'),
 	statusSelect: document.querySelector('#status-select'),
 	resetButton: document.querySelector('.reset-button'),
+	goToTopButton: document.querySelector('.arrow-up'),
 
 	pagination: document.querySelector('.main-area__pagination'),
 
