@@ -1,5 +1,5 @@
 import { DOM } from "./dom.js";
-import { URL } from "./constants";
+import {URL ,constants, pathmames, filtersParams } from "./constants";
 import axios from "axios";
 import { params } from "./filter"
 
