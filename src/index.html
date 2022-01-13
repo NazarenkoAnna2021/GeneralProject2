@@ -12,89 +12,90 @@
 </head>
 
 <body>
-	<header>
-		<div class="header-inner">
-			<div class="logo">
-				<a href="index.html">
-					<img class="logo__img" src="/img/logo.png" alt="">
-				</a>
-				<div class="logo__text">
-					<p>
-						<a href="index.html">
-							Retro Films
-						</a>
-					</p>
+	<div class="container">
+		<header>
+			<div class="header-inner">
+				<div class="logo">
+					<a href="index.html">
+						<img class="logo__img" src="/img/logo.png" alt="">
+					</a>
+					<div class="logo__text">
+						<p>
+							<a href="index.html">
+								Retro Films
+							</a>
+						</p>
+					</div>
+				</div>
+				<div class="navigation">
+					<div class="header-search">
+						<input class="header-input" disabled>
+						<img class="search__img none" src="/img/serch.png">
+					</div>
+					<div class="login">
+						<img class="login__img" src="/img/iconSignIn.png">
+					</div>
 				</div>
 			</div>
-			<div class="navigation">
-				<div class="header-search">
-					<input class="header-input" disabled>
-					<img class="search__img none" src="/img/serch.png">
-				</div>
-				<div class="login">
-					<img class="login__img" src="/img/iconSignIn.png">
-				</div>
+		</header>
+		<div class="preview">
+			<img class="preview__gif" src="" alt="preview">
+		</div>
+		<div class="modal-icon none">
+			<div class="container-login-form">
+				<ul class="login-form">
+					<li>
+						<input type="radio" id="signin-input" name="sign-forms" value="" checked>
+						<label for="signin-input">Sing In</label>
+						<form class="sign-form" id="signin-form" action="">
+							<div class="form-conteiner">
+								<div class="sign-form__tooltip error-signin" data-tooltip="includs only letters">
+									<input type="text" placeholder="login" class="inputs-signin" data="login" autofocus>
+								</div>
+								<div class="sign-form__tooltip error-signin" data-tooltip="this is pass, fool">
+									<input type="password" placeholder="password" class="inputs-signin" data="password">
+								</div>
+								<div id="messageSignIn"></div>
+								<button>login</button>
+							</div>
+						</form>
+					</li>
+					<li>
+						<input type="radio" id="signup-input" name="sign-forms" value="">
+						<label for="signup-input">Sing Up</label>
+						<form class="sign-form" id="singup-form" action="">
+							<div form-conteiner>
+								<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
+									<input type="text" placeholder="first_name" class="inputs-signup" data="first-name">
+								</div>
+								<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
+									<input type="text" placeholder="last_name" class="inputs-signup" data="last-name">
+								</div>
+								<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
+									<input type="text" placeholder="login" class="inputs-signup" data="login">
+								</div>
+								<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
+									<input type="password" placeholder="password" class="inputs-signup" data="password">
+								</div>
+								<div id="messageSignUp"></div>
+								<button>submit</button>
+							</div>
+						</form>
+					</li>
+				</ul>
 			</div>
 		</div>
-	</header>
-	<div class="preview">
-		<img class="preview__gif" src="" alt="preview">
-	</div>
-	<div class="modal-icon none">
-		<div class="container-login-form">
-			<ul class="login-form">
-				<li>
-					<input type="radio" id="signin-input" name="sign-forms" value="" checked>
-					<label for="signin-input">Sing In</label>
-					<form class="sign-form" id="signin-form" action="">
-						<div class="form-conteiner">
-							<div class="sign-form__tooltip error-signin" data-tooltip="includs only letters">
-								<input type="text" placeholder="login" class="inputs-signin" data="login" autofocus>
-							</div>
-							<div class="sign-form__tooltip error-signin" data-tooltip="this is pass, fool">
-								<input type="password" placeholder="password" class="inputs-signin" data="password">
-							</div>
-							<div id="messageSignIn"></div>
-							<button>login</button>
-						</div>
-					</form>
-				</li>
-				<li>
-					<input type="radio" id="signup-input" name="sign-forms" value="">
-					<label for="signup-input">Sing Up</label>
-					<form class="sign-form" id="singup-form" action="">
-						<div form-conteiner>
-							<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
-								<input type="text" placeholder="first_name" class="inputs-signup" data="first-name">
-							</div>
-							<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
-								<input type="text" placeholder="last_name" class="inputs-signup" data="last-name">
-							</div>
-							<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
-								<input type="text" placeholder="login" class="inputs-signup" data="login">
-							</div>
-							<div class="error-signup sign-form__tooltip" data-tooltip="includs only letters">
-								<input type="password" placeholder="password" class="inputs-signup" data="password">
-							</div>
-							<div id="messageSignUp"></div>
-							<button>submit</button>
-						</div>
-					</form>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div class="main-area none">
-		<div class="filters-form none">
+		<div class="main-area none">
+			<div class="filters-form none">
 				<button class="reset-button filter-buttons">RST</button>
 				<div class="wrapper year">
 					<div class="values">
 						<span class="range1">
-							 0
+							0
 						</span>
 						<span class="range-name"> YEARS </span>
 						<span class="range2">
-							 100
+							100
 						</span>
 					</div>
 					<div class="container-range">
@@ -106,11 +107,11 @@
 				<div class="wrapper budget">
 					<div class="values">
 						<span class="range1">
-							 0
+							0
 						</span>
 						<span class="range-name"> BUDGET </span>
 						<span class="range2">
-							 100
+							100
 						</span>
 					</div>
 					<div class="container-range">
@@ -122,11 +123,11 @@
 				<div class="wrapper rating">
 					<div class="values">
 						<span class="range1">
-							 0
+							0
 						</span>
 						<span class="range-name"> RATING </span>
 						<span class="range2">
-							 11000
+							11000
 						</span>
 					</div>
 					<div class="container-range">
@@ -139,12 +140,19 @@
 					<label class="label-select" for="country-select">COUNTRY</label>
 					<select name="country" id="country-select">
 						<option value="">all</option>
+						<option value="en">EN</option>
+						<option value="ru">RU</option>
+						<option value="ua">UA</option>
 					</select>
 				</div>
 				<div class="genres column">
 					<label class="label-select" for="genres-select">GENRES</label>
 					<select name="genres" id="genres-select" required>
 						<option value="">all</option>
+						<option value="comedy">comedy</option>
+						<option value="horror">horror</option>
+						<option value="sci-fi">sci-fi</option>
+						<option value="fantasy">fantasy</option>
 					</select>
 				</div>
 				<div class="status column">
@@ -157,25 +165,26 @@
 						<option value="Post Production">post Product</option>
 					</select>
 				</div>
-				<div class="checkboxs column">
-					<div>
-						<label for="adult" class="check-container">adult
-							<input type="checkbox" name="adult" id="adult">
-							<span class="checkmark"></span>
-						</label>
-					</div>
+				<!-- <div class="checkboxs column">
+				<div >
+					<label for="adult" class="check-container">adult
+						<input type="checkbox" name="adult" id="adult">
+						<span class="checkmark" ></span>
+					</label>
 				</div>
+			</div> -->
 				<button class="go-button filter-buttons">GO</button>
 			</div>
-		<div class="main-area__film-word">
-			<h1>FILMS</h1>
-			<div class="main-area__filter-button">
-				<img class="main-area__filter-img " src="/img/filters.png">
+			<div class="main-area__film-word">
+				<h1>FILMS</h1>
+				<div class="main-area__filter-button">
+					<img class="main-area__filter-img " src="/img/filters.png">
+				</div>
 			</div>
-		</div>
-		<div class="main-area__films-area"></div>
-		<div class="main-area__pagination">
-			<img class="main-area__next" src="/img/arrowLeft-64.png" alt="">
+			<div class="main-area__films-area"></div>
+			<div class="main-area__pagination">
+				<img class="main-area__next" src="/img/arrowLeft-64.png" alt="">
+			</div>
 		</div>
 	</div>
 	<template type="text" id="template-card">

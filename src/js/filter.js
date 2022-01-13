@@ -1,10 +1,9 @@
 import { DOM } from "./dom.js";
 import { hideShowElement } from "./visibility";
 import { renderCards, cleanHTML, setCurrentPage } from "./gallery";
-import {constants, filtersParams, URL, pathNames} from "./constants";
+import { constants, filtersParams, pathmames, URL } from "./constants";
 import { DoubleRange } from "./classes"
 import axios from "axios";
-
 const doubleRangeYear = new DoubleRange(constants.year, constants.yearGap);
 const doubleRangeBudget = new DoubleRange(constants.budget, constants.budgetGap);
 const doubleRangeRating = new DoubleRange(constants.rating, constants.ratingGap);
@@ -38,7 +37,6 @@ export function setGalleryByFilters() {
     renderCards();
     cleanHTML();
     openFilters();
-    DOM.filterButton.style.boxShadow = '0 0 10px white';
 }
 
 export function resetFilters() {
@@ -56,7 +54,7 @@ export function resetFilters() {
 export function openFilters() { hideShowElement(DOM.filtersForm) };
 
 export async function getLanguages() {
-    const res = await axios.get(`${URL.URL}${pathNames.languages}`, {
+    const res = await axios.get(`${URL.URL}${pathmames.languages}`, {
         headers: { 'Authorization': localStorage.getItem('token') },
     });
     res.data.data.forEach((a)=> {
@@ -69,10 +67,9 @@ export async function getLanguages() {
 
 
 export async function getGenres() {
-    const res = await axios.get(`${URL.URL}${pathNames.genres}`, {
+    const res = await axios.get(`${URL.URL}${pathmames.genres}`, {
         headers: { 'Authorization': localStorage.getItem('token') },
     });
-
     res.data.data.forEach((a)=> {
         let option = document.createElement('option')
         option.textContent = a.name
@@ -80,12 +77,3 @@ export async function getGenres() {
         DOM.genresSelect.appendChild(option)
     });
 }
-
-// async function sendData(params) {
-//     const response = await axios.get(URL.URL.concat(pathmames.movies),{
-//             headers: { 'Authorization': localStorage.getItem(constants.token) },
-//             params: params
-//         });
-//     cleanHTML()
-//     await drawCards(response.data.data.data);
-// }

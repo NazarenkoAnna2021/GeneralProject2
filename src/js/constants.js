@@ -25,10 +25,11 @@ export const filtersParams = {
     statusSelectValue: ''
 
 };
-export const pathNames = {
+export const pathmames = {
     movies: '/movies',
-    languages: '/languages',
-    genres: '/genres'
+    movie: '/movie',
+    genres: '/genres',
+    languages: '/languages'
 }
 export const URL = {
     imagePosterLink: 'https://image.tmdb.org/t/p/original',
