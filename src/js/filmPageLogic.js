@@ -11,7 +11,7 @@ export async function getCurrentFilmInfo() {
 	const info = await getResponseMovie(id);
 	console.log(info);
 	appendFilmInfoToDOM(info);
-	appendReviewToDOM(info);
+	appendReviewToDOM(info.reviews);
 }
 
 async function getResponseMovie(pageId) {
@@ -44,11 +44,11 @@ function appendFilmInfoToDOM(data) {
 	DOM_PAGE.mainInfo.append(element.content.firstChild);
 }
 
-function appendReviewToDOM(data) {
-	data.reviews.forEach(item => {
+export function appendReviewToDOM(data) {
+	data.forEach(item => {
 		const template = DOM_PAGE.templateReview
 			.replace("{{login}}", item.login)
-			.replace("{{content}}", item.content)
+			.replace("{{content}}", item.content_review)
 		const element = document.createElement('template');
 		element.innerHTML = template;
 		console.log(element);
