@@ -1,26 +1,25 @@
-import { URL } from "./constants";
+import {pathmames, URL} from "./constants";
 import { hideShowElement } from "./visibility";
 import axios from "axios";
 import { DOM_PAGE } from "./pageDom";
-
-async function getResponseMoviePage(setOfParams) {
+// headers: { 'Authorization': localStorage.getItem('token')
+async function getResponseMoviePage(id, content) {
     try {
-        console.log(localStorage.getItem('token'));
-        await axios.post(`${URL.URL}/review`, {
-            headers: { 'Authorization': localStorage.getItem('token') },
-            body: setOfParams
-        });
+        const response = await axios.post(`${URL.URL}/review`, {  movie_id: id,
+                content: content},
+            {headers: { 'Authorization': localStorage.getItem('token')},
+                },
+        )
+        console.dir(response)
+        console.log(response)
     }
     catch (error) {
-       console.log(error);
+       console.dir(error.response.data.error);
     }
 }
 
 export async function addReview(id, content) {
-    await getResponseMoviePage({
-        movie_id: id,
-        content: content
-    });
+    await getResponseMoviePage(id, content);
     changeVisibilityEdding();
 }
 
