@@ -16,11 +16,12 @@ async function getResponseMoviePage(id, content) {
 
 export async function addReview(id, content) {
     await getResponseMoviePage(id, content);
-    changeVisibilityEdding();
-    location.reload()
+        changeVisibilityEdding();
+        location.reload()
 }
 
 export function changeVisibilityEdding(){
+    DOM_PAGE.reviewsButton.style.pointerEvents = 'none';
     hideShowElement(DOM_PAGE.reviewsAdd);
     hideShowElement(DOM_PAGE.reviewArea);
 }

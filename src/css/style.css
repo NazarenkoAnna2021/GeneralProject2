@@ -539,6 +539,8 @@ label:hover{
     height: 50%;
     text-align:left;
     padding: 1%;
+    border: solid #afa095;
+
 }
 .reviews__button{
     display: flex;
