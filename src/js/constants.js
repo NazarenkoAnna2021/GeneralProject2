@@ -30,7 +30,8 @@ export const pathmames = {
     movies: '/movies',
     movie: '/movie',
     genres: '/genres',
-    languages: '/languages'
+    languages: '/languages',
+    review: '/review'
 }
 export const URL = {
     imagePosterLink: 'https://image.tmdb.org/t/p/original',
