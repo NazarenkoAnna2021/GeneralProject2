@@ -15,7 +15,7 @@ async function getResponseMoviePage(setOfParams) {
 	}
 	catch (error) {
 		const { response: { data: { data } } } = error
-		DOM.filmsArea.innerHTML = data.data;
+		DOM.filmsArea.innerHTML = data;
 	}
 }
 
