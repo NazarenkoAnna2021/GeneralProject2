@@ -9,13 +9,12 @@ DOM_PAGE.searchImage.style.display = 'none';
 export async function getCurrentFilmInfo() {
 	const id = window.location.search.split('=')[1];
 	const info = await getResponseMovie(id);
-	console.log(info);
 	appendFilmInfoToDOM(info);
 	appendReviewToDOM(info);
 }
 
 async function getResponseMovie(pageId) {
-	const request = await axios.get(`http://localhost:3001/movie`, { 
+	const request = await axios.get(`http://localhost:3001/movie`, {
 		headers: { 'Authorization': localStorage.getItem('token') },
 		params: { id: pageId}
 	});

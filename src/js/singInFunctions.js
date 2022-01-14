@@ -20,49 +20,49 @@ let countOfValidInputs = 0;
 
 export function singIn(e) {
 	e.preventDefault();
-		setUserBodyForFequest(userSingIn)
-		postSingIn()
+		setUserBodyForFequest(userSingIn);
+		postSingIn();
 }
 
 export function singUp(e) {
-	e.preventDefault()
-	validation(DOM.singUpInputs)
+	e.preventDefault();
+	validation(DOM.singUpInputs);
 	if (isValid(DOM.singUpInputs)) {
-		setUserBodyForFequest(userSingUp)
-		postSingUp()
+		setUserBodyForFequest(userSingUp);
+		postSingUp();
 	}
 }
 
 export function validation(element) {
 	for (let i = 0; i < element.length - 2; i++) {
-		if (element[i].value.length < 3) marker(element[i], 'red')
+		if (element[i].value.length < 3) marker(element[i], 'red');
 		else {
 			if (constants.regExp.test(element[i].value) === false) {
-				marker(element[i], 'red')
+				marker(element[i], 'red');
 			} else {
-				marker(element[i], 'green')
-				countOfValidInputs++
+				marker(element[i], 'green');
+				countOfValidInputs++;
 			}
 		}
 	}
 	if (element[element.length - 2].value.length < 3) {
-		marker(element[element.length - 2], 'red')
+		marker(element[element.length - 2], 'red');
 	} else {
 		if (constants.regExpLogin.test(element[element.length - 2].value) === false) {
-			marker(element[element.length - 2], 'red')
+			marker(element[element.length - 2], 'red');
 		} else {
-			marker(element[element.length - 2], 'green')
-			countOfValidInputs++
+			marker(element[element.length - 2], 'green');
+			countOfValidInputs++;
 		}
 	}
 	if (element[element.length - 1].value.length < 8) {
-		marker(element[element.length - 1], 'red')
+		marker(element[element.length - 1], 'red');
 	} else {
 		if (constants.regExpLogin.test(element[element.length - 1].value) === false) {
-			marker(element[element.length - 1], 'red')
+			marker(element[element.length - 1], 'red');
 		} else {
-			marker(element[element.length - 1], 'green')
-			countOfValidInputs++
+			marker(element[element.length - 1], 'green');
+			countOfValidInputs++;
 		}
 	}
 }
@@ -70,14 +70,13 @@ export function validation(element) {
 function isValid(element) {
 	if (countOfValidInputs === element.length) {
 		countOfValidInputs = 0;
-		return true
+		return true;
 	}
-	console.log(countOfValidInputs)
 	countOfValidInputs = 0;
 }
 
 function marker(input, color) {
-	input.style.boxShadow = `0 0 10px ${color}`
+	input.style.boxShadow = `0 0 10px ${color}`;
 }
 
 async function postSingUp() {
@@ -85,9 +84,8 @@ async function postSingUp() {
 		let response = await axios.post(URL.signUpURL,
 			userSingUp
 		);
-		console.log(response)
 		if (response.statusText === "OK") {
-			DOM.signInRadio.click()
+			DOM.signInRadio.click();
 		}
 	}
 	catch(error)
@@ -105,34 +103,31 @@ async function postSingIn() {
 			let response = await axios.post(URL.signInURL,
 				userSingIn
 			);
-			console.dir(response)
 			if (response.statusText === "OK") {
-				localStorage.setItem('token', response.headers.token)
-				isAuthorised()
+				localStorage.setItem('token', response.headers.token);
+				isAuthorised();
 			}
 		} catch (error) {
 			DOM.singInInputs.forEach((a) => {
-				marker(a, 'red')
+				marker(a, 'red');
 			})
 		}
 	}else{
-		marker(DOM.singInLogin, 'red')
-		marker(DOM.singInPassword, 'red')
+		marker(DOM.singInLogin, 'red');
+		marker(DOM.singInPassword, 'red');
 	}
 }
 
-
-
 function setUserBodyForFequest(obj) {
 	if (obj === userSingUp) {
-		userSingUp.first_name = DOM.singUpFirstName.value
-		userSingUp.last_name = DOM.singUpLastName.value
-		userSingUp.login = DOM.singUpLogin.value
-		userSingUp.password = DOM.singUpPassword.value
+		userSingUp.first_name = DOM.singUpFirstName.value;
+		userSingUp.last_name = DOM.singUpLastName.value;
+		userSingUp.login = DOM.singUpLogin.value;
+		userSingUp.password = DOM.singUpPassword.value;
 	}
 	if (obj === userSingIn) {
-		userSingIn.login = DOM.singInLogin.value
-		userSingIn.password = DOM.singInPassword.value
+		userSingIn.login = DOM.singInLogin.value;
+		userSingIn.password = DOM.singInPassword.value;
 	}
 }
 
@@ -160,6 +155,6 @@ export function openSignIn() {
 }
 
 export function signOut() {
-	localStorage.removeItem('token')
-	location.reload()
+	localStorage.removeItem('token');
+	location.reload();
 }

@@ -7,5 +7,5 @@ import { addReview, changeVisibilityEdding, isReviewValid } from "./addReview";
 
 getCurrentFilmInfo();
 DOM_PAGE.loginBtn.addEventListener(constants.click, closePage);
-DOM_PAGE.reviewsOpenButton.addEventListener(constants.click, changeVisibilityEdding)
+DOM_PAGE.reviewsOpenButton.addEventListener(constants.click, changeVisibilityEdding);
 DOM_PAGE.reviewsButton.addEventListener(constants.click, () => addReview(window.location.search.split('=')[1], DOM_PAGE.reviewInput.value));

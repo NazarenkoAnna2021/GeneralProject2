@@ -7,6 +7,7 @@ import axios from "axios";
 const doubleRangeYear = new DoubleRange(constants.year, constants.yearGap);
 const doubleRangeBudget = new DoubleRange(constants.budget, constants.budgetGap);
 const doubleRangeRating = new DoubleRange(constants.rating, constants.ratingGap);
+
 export const params = {
     adult: false,
     title: DOM.headerInput.value,
@@ -48,7 +49,7 @@ export function resetFilters() {
     DOM.countrySelect.value = filtersParams.countrySelectValue;
     DOM.genresSelect.value = filtersParams.genresSelectValue;
     DOM.statusSelect.value = filtersParams.statusSelectValue;
-    DOM.filterButton.style.boxShadow = null
+    DOM.filterButton.style.boxShadow = null;
 }
 
 export function openFilters() { hideShowElement(DOM.filtersForm) };
@@ -58,10 +59,10 @@ export async function getLanguages() {
         headers: { 'Authorization': localStorage.getItem('token') },
     });
     res.data.data.forEach((a)=> {
-        let option = document.createElement('option')
-        option.textContent = a.iso_639_1
-        option.value = a.iso_639_1
-        DOM.countrySelect.appendChild(option)
+        let option = document.createElement('option');
+        option.textContent = a.iso_639_1;
+        option.value = a.iso_639_1;
+        DOM.countrySelect.appendChild(option);
     });
 }
 
@@ -71,15 +72,15 @@ export async function getGenres() {
         headers: { 'Authorization': localStorage.getItem('token') },
     });
     res.data.data.forEach((a)=> {
-        let option = document.createElement('option')
-        option.textContent = a.name
-        option.value = a.name
-        DOM.genresSelect.appendChild(option)
+        let option = document.createElement('option');
+        option.textContent = a.name;
+        option.value = a.name;
+        DOM.genresSelect.appendChild(option);
     });
 }
 
 DOM.headerInput.addEventListener('keydown', (event)=> {
     if (event.code === 'Enter') {
-        setGalleryByFilters()
+        setGalleryByFilters();
     }
 });
