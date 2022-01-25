@@ -15,7 +15,9 @@ async function getResponseMoviePage(setOfParams) {
 	}
 	catch (error) {
 		const { response: { data: { data } } } = error
-		if(!DOM.filmsArea.innerHTML) DOM.filmsArea.innerHTML = data;
+		if(!DOM.filmsArea.innerHTML) {
+			DOM.filmsArea.innerHTML = `<div class="empty-data"><img class="preview__gif" src="https://c.tenor.com/e1Epw1KKhJMAAAAM/star-trek-the-next-generation-data.gif}">${data}</div>`;
+		}
 	}
 }
 

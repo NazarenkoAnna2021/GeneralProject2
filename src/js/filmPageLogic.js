@@ -36,7 +36,7 @@ function appendFilmInfoToDOM(data) {
 		.replace("{{budget}}", data.budget)
 		.replace("{{revenue}}", data.revenue)
 		.replace("{{runtime}}", data.runtime)
-		.replace("{{homepage}}", data.homepage)
+		.replace("{{homepage}}", data.homepage === 'null' ? 'http://localhost:3001/error': data.homepage);
 	const element = document.createElement('template');
 	element.innerHTML = template;
 	console.log(element);

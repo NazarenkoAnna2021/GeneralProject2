@@ -6,7 +6,7 @@ import { DOM_PAGE } from "./pageDom";
 
 async function setReview(id, content) {
     try {
-        const response = await axios.post(`${URL.URL}${pathmames.review}`,
+        await axios.post(`${URL.URL}${pathmames.review}`,
             { movie_id: id, content: content },
             {
                 headers: { 'Authorization': localStorage.getItem('token') },
@@ -35,9 +35,8 @@ export async function addReview(id, content = '') {
     await setReview(id, content);
     changeVisibilityEdding();
     const reviews = await getReviews(id);
-    console.log(reviews);
     DOM_PAGE.reviewArea.innerHTML = '';
-    appendReviewToDOM(reviews);
+    if (reviews) appendReviewToDOM(reviews);
 }
 
 export function changeVisibilityEdding() {

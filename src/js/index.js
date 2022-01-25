@@ -9,7 +9,7 @@ import {singIn, singUp, openSignIn, signOut, validation} from "./singInFunctions
 import { setGalleryByFilters, resetFilters, openFilters, getLanguages, getGenres } from "./filter.js"
 
 preview();
-setTimeout(() => openSignIn(), 1000);
+setTimeout(() => openSignIn(), 5000);
 
 DOM.singInButton.addEventListener(constants.click, singIn);
 DOM.singUpButton.addEventListener(constants.click, singUp);
